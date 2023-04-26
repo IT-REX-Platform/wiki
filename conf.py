@@ -25,3 +25,13 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 html_theme = 'alabaster'
 html_static_path = ['_static']
+
+# Generate HTML anchors (test#h1-title) for titles up to h4
+myst_heading_anchors = 4
+
+myst_enable_extensions = [
+        'colon_fence', # :::$TYPE\n$CONTENT\n::: == ```$TYPE\n$CONTENT\n```
+        'html_admonition', # :::{attention, caution, danger, error, hint, important, note, tip, warning} $TITLE\n$CONTENT\n::: -> renders a message with the given title and content in the given style
+        'linkify', # www.google.com -> <www.google.com>
+        'tasklist', # [ ] -> unchecked checkbox, [x] -> checked checkbox
+        ]
