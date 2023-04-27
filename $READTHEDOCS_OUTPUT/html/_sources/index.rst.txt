@@ -6,15 +6,19 @@
 Welcome to GITS - Gamified Intelligent Tutoring System's documentation!
 =======================================================================
 
+.. TOC is sorted by importance: usage -> installation -> developer hints -> structure -> protocols
+
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 1
+
+   user-manuals/index.rst
+   dev-manuals/index.rst
+   adr/index.rst
 
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. Indices and tables
+.. ==================
+.. 
+.. * :ref:`genindex`
+.. * :ref:`modindex`
+.. * :ref:`search`

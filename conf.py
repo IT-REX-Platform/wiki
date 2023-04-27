@@ -16,7 +16,12 @@ author = 'Universität Stuttgart'
 extensions = ["myst_parser"]
 
 templates_path = ['_templates']
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store',
+        'README.md',
+        'dev-manuals/README.md',
+        'adr/README.md',
+        'install-manuals/README.md',
+        'user-manuals/README.md']
 
 
 
@@ -32,6 +37,5 @@ myst_heading_anchors = 4
 myst_enable_extensions = [
         'colon_fence', # :::$TYPE\n$CONTENT\n::: == ```$TYPE\n$CONTENT\n```
         'html_admonition', # :::{attention, caution, danger, error, hint, important, note, tip, warning} $TITLE\n$CONTENT\n::: -> renders a message with the given title and content in the given style
-        'linkify', # www.google.com -> <www.google.com>
         'tasklist', # [ ] -> unchecked checkbox, [x] -> checked checkbox
         ]

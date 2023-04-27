@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>How to add a new folder to ReadTheDocs &#8212; GITS - Gamified Intelligent Tutoring System  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="How to setup ReadTheDocs locally" href="setup-locally.html" />
+    <link rel="prev" title="Get Started" href="../frontend/get-started.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="how-to-add-a-new-folder-to-readthedocs">
+<h1>How to add a new folder to ReadTheDocs<a class="headerlink" href="#how-to-add-a-new-folder-to-readthedocs" title="Permalink to this heading">¶</a></h1>
+<ol class="arabic simple">
+<li><p>Find the nearest <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> in the parents of the folder.</p></li>
+<li><p>Add the following code block at the intended TOC location:</p></li>
+</ol>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">toctree</span><span class="p">::</span>
+   <span class="nc">:glob:</span>
+   <span class="nc">:titlesonly:</span>
+   <span class="nc">:caption:</span> $CAPTION
+
+   ./$FOLDER/*
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">$CAPTION</span></code> is effectively the folder name in normal English and <code class="docutils literal notranslate"><span class="pre">$FOLDER</span></code> is the new folder to add.</p>
+<ol class="arabic simple" start="3">
+<li><p>If the folder is of the form <code class="docutils literal notranslate"><span class="pre">$a/$b/.../$c</span></code> and it should be added to <code class="docutils literal notranslate"><span class="pre">$a/index.rst</span></code>, the last line should be <code class="docutils literal notranslate"><span class="pre">./$b/**</span></code> instead. This change includes all subdirectories as well and is hence more useful in this case.</p></li>
+</ol>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">GITS - Gamified Intelligent Tutoring System</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user-manuals/index.html">User Manuals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Developer Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../adr/index.html">Architecture Decision Records</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Developer Manuals</a><ul>
+      <li>Previous: <a href="../frontend/get-started.html" title="previous chapter">Get Started</a></li>
+      <li>Next: <a href="setup-locally.html" title="next chapter">How to setup ReadTheDocs locally</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Universität Stuttgart.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="../../_sources/dev-manuals/readthedocs/add-folder.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
