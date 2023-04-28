@@ -1,6 +1,6 @@
 # Repository structure
 
-For strucuturing our microservices we had basically three options
+For structuring our microservices we had basically three options
 - Having one large repository for frontend and all backend services (Mono repository)
 - Having separate repositories for both frontend and each microservice
 - Having one parent repository and sub-repositories for both frontend and each microservice
