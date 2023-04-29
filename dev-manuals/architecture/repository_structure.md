@@ -12,6 +12,7 @@ We decided to use separate repositories for the front-end and each microservice 
 - Microservices are supposed to be independent of each other for the most part. Separating the repositories reflects the idea of microservices better.
 - The commit history of a single large repository is very crowded and commits of different services will be intertwined
 - Frontend developers or developers on a single microservice do not need to check the whole project
+- To create a new microservice you can simply fork the template repository
 - No developer has sufficient experience with the usage of sub repository, which would add another layer of complexity
 
 ## Challenges and solutions of having different repositories
