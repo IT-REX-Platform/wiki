@@ -6,11 +6,11 @@ This is just an example how this could look
 
 ## Precondition
 
----
+example precondition
 
 ## Postcondition
 
----
+example postcondition
 
 ## Typical procedure
 
