@@ -58,6 +58,15 @@ Then you can open the project in IntelliJ IDEA via `File > Open...`.
 Run the database locally or in a Docker container.
 
 We recommend to run the databases in a Docker container, as you can easily add new instances for different microservices. 
+The easiest way to do so is to use Docker Desktop. Use the search bar at the top to search for "postgres", select images. The first result should be the correct image.
+Press pull to download the image to your machine.
+Go to "Images" press the run button next on the postgres image.
+Click on optional settings enter the name and port of the container. 
+Under Volumes select a folder to persist the data, for when the container stops running.
+Under environment variables enter POSTGRES_USER as the variable and a username as the value.
+Add another environment variable and enter POSTGRES_PASSWORD as the variable and a password as the value.
+Click run to start the container.
+
 
 *TODO: Docker Compose file*
 
