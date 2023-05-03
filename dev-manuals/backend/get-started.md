@@ -28,6 +28,8 @@ We use Docker to run our microservices and the database. You can download it [he
 
 We use PostgreSQL as database. You can download it [here](https://www.postgresql.org/download/) to run it locally. 
 
+We recommend using PGAdmin locally to manage the databases. You can download it [here](https://www.pgadmin.org) in case you didn't already install it together with PostgresSQL.
+
 Alternatively, you can use the database in a Docker container. A guide on how to do this can be found [here](https://www.baeldung.com/ops/postgresql-docker-setup). We will provide a Docker Compose file for this in each microservice.
 
 ### Dapr
@@ -55,15 +57,19 @@ Then you can open the project in IntelliJ IDEA via `File > Open...`.
 
 Run the database locally or in a Docker container.
 
-*TODO: Describe how to run the database*
+We recommend to run the databases in a Docker container, as you can easily add new instances for different microservices. 
 
 *TODO: Docker Compose file*
 
 ### Database configuration
 
-*TODO: Describe how to configure the database*
+The easiest way to create a new database is with PGAdmin. A guide can be found here: [here](https://www.pgadmin.org/docs/pgadmin4/7.0/server_dialog.html)
 
-Enter the database configuration in `src/main/resources/application.properties`. You need to enter the database URL, username and password. 
+Once the server connection has been established, right-click on the entry on the right-hand side of your newly created server.
+Select Create... and then Database... to create a new Database. 
+Enter the name of the database and click save. This is important, as if you don't create the database first the application will NOT run!
+
+Enter the database configuration in `src/main/resources/application.properties`. You need to enter the database URL, username and password.
 
 ### Run Dapr
 
