@@ -32,6 +32,9 @@ We recommend using PGAdmin locally to manage the databases. You can download it 
 
 Alternatively, you can use the database in a Docker container. A guide on how to do this can be found [here](https://www.baeldung.com/ops/postgresql-docker-setup). We will provide a Docker Compose file for this in each microservice.
 
+For Media Storage we use MinIO. How to set it up is explained here: [here](https://min.io/docs/minio/container/index.html)
+
+
 ### Dapr
 
 We use Dapr as runtime for our microservices.
