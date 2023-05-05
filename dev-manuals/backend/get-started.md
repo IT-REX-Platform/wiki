@@ -69,8 +69,6 @@ Click run to start the container.
 
 See here if you prefer to use the command line: [here](https://www.baeldung.com/ops/postgresql-docker-setup).
 
-*TODO: Docker Compose file*
-
 ### Database configuration
 
 The easiest way to create a new database is with PGAdmin. A guide can be found here: [here](https://www.pgadmin.org/docs/pgadmin4/7.0/server_dialog.html)
@@ -81,6 +79,16 @@ Enter the name of the database and click save. This is important, as if you don'
 
 Enter the database configuration in `src/main/resources/application.properties`. You need to enter the database URL, username and password.
 
+### Docker compose configuration
+In the docker-compose.yml change the environment variables of the database service, to match the ones in the application.properties.
+
+Change the expose and ports of both apps to the ones in application properties. The values in expose must match the first part of the ports values.
+
+For the database port only change the first value. It should look like this "XXXX:5432",
+where XXXX is the port number of the microservice database.
+
+Change "templatedatabase" in the SPRING_DATASOURCE_URL to match the POSTGRES_DB value.
+
 ### Run Dapr
 
 *TODO: Describe how to run Dapr with IDEA*
@@ -90,3 +98,18 @@ Enter the database configuration in `src/main/resources/application.properties`.
 ### Run microservice without Dapr
 
 Just run the main method of the spring application class with IDEA or run the command `gradle bootRun` in the command line.
+
+### Run the Microservice
+If you want to test the microservice, you can use docker compose.
+
+To build and start the microservice including the database use:
+
+docker compose up -d
+
+More info [here](https://docs.docker.com/engine/reference/commandline/compose_up/)
+
+To stop the containers and removes containers, networks, volumes, and images created by up.
+
+docker compose down
+
+More info [here](https://docs.docker.com/engine/reference/commandline/compose_down/)
