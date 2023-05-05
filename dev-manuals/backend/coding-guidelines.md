@@ -18,4 +18,8 @@ The detailed package structure is documented [here](https://github.com/IT-REX-Pl
 
 ## Style Guide
 
-We use the default Oracle Styleguide, i.e., the default settings of IntelliJ.
+We use the default Oracle Styleguide, i.e., the default settings of IntelliJ, as a base.
+
+### Special Style Rules
+
+- If acronyms are used in class, variable, or other names, only the first letter of the acronym should be capitalized, all other letters must not be capitalized.
