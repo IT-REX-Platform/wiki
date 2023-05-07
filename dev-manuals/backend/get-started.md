@@ -31,7 +31,7 @@ If you don't want to develop and only run the service, there is docker compose f
 
   We recommend using PGAdmin locally to manage the databases. You can download it [here](https://www.pgadmin.org) in case you didn't already install it together with PostgresSQL.
 
-  Alternatively, you can use the database in a Docker container. A guide on how to do this can be found [here](https://www.baeldung.com/ops/postgresql-docker-setup). We will provide a Docker Compose file for this in each microservice.
+  Alternatively, you can use the database in a Docker container. We will provide a Docker Compose file for this in each microservice. See below for details.
 
   For Media Storage we use MinIO. How to set it up is explained here: [here](https://min.io/docs/minio/container/index.html)
 
