@@ -102,7 +102,7 @@ Just run the main method of the spring application class with IDEA or run the co
 You can enable auto reload, where when you make changes in the code, the server will automatically reload the code. [Here](https://dev.to/imanuel/auto-reload-springboot-in-intellij-idea-1l65) is a short guide how to enable it.
 
 ### Run the Microservice
-If you want to test the microservice, you can use docker compose.
+If you want to test the microservice, you can use docker compose. You can also use the built.in Docker support of IntelliJ for starting and stopping the docker containers. You can also use the command line:
 
 To build and start the microservice including the database use:
 
