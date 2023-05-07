@@ -32,6 +32,9 @@ We recommend using PGAdmin locally to manage the databases. You can download it 
 
 Alternatively, you can use the database in a Docker container. A guide on how to do this can be found [here](https://www.baeldung.com/ops/postgresql-docker-setup). We will provide a Docker Compose file for this in each microservice.
 
+For Media Storage we use MinIO. How to set it up is explained here: [here](https://min.io/docs/minio/container/index.html)
+
+
 ### Dapr
 
 We use Dapr as runtime for our microservices.
@@ -58,25 +61,27 @@ Then you can open the project in IntelliJ IDEA via `File > Open...`.
 Run the database locally or in a Docker container.
 
 We recommend to run the databases in a Docker container, as you can easily add new instances for different microservices. 
-The recommended way to do so is to use Docker Desktop. Use the search bar at the top to search for "postgres", select images. The first result should be the correct image.
+The recommended way to do so is to use Docker Desktop. 
+
+Use the search bar at the top to search for "postgres", select images. The first result should be the correct image.
 Press pull to download the image to your machine.
+
 Go to "Images" press the run button next on the postgres image.
 Click on optional settings enter the name and port of the container. 
-Under Volumes select a folder to persist the data, for when the container stops running.
-Under environment variables enter POSTGRES_USER as the variable and a username as the value.
-Add another environment variable and enter POSTGRES_PASSWORD as the variable and a password as the value.
+
+* Under Volumes select a folder to persist the data, for when the container stops running.
+* Under environment variables enter POSTGRES_USER as the variable and a username as the value.
+* Add another environment variable and enter POSTGRES_PASSWORD as the variable and a password as the value.
+* Add a third variable and enter POSTGRES_DB as the variable and a the database name as the value. 
+* This will automatically create a new Database in the docker container.
+
 Click run to start the container.
 
 See here if you prefer to use the command line: [here](https://www.baeldung.com/ops/postgresql-docker-setup).
 
 ### Database configuration
 
-The easiest way to create a new database is with PGAdmin. A guide can be found here: [here](https://www.pgadmin.org/docs/pgadmin4/7.0/server_dialog.html)
-
-Once the server connection has been established, right-click on the entry on the right-hand side of your newly created server.
-Select Create... and then Database... to create a new Database. 
-Enter the name of the database and click save. This is important, as if you don't create the database first the application will NOT run!
-
+If you set the database up as described in "Run the database", you only need to add the previously defined variables to the configuration.
 Enter the database configuration in `src/main/resources/application.properties`. You need to enter the database URL, username and password.
 
 ### Docker compose configuration
