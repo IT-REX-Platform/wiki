@@ -1,6 +1,7 @@
 # Get Started
 
 This will contain a description on how get started to work as a backend dev.
+If you don't want to develop and only run the service, there is docker compose file provided.
 
 ## Prerequisites
 
@@ -94,14 +95,9 @@ where XXXX is the port number of the microservice database.
 
 Change "templatedatabase" in the SPRING_DATASOURCE_URL to match the POSTGRES_DB value.
 
-### Run Dapr
-
-*TODO: Describe how to run Dapr with IDEA*
-
-*TODO: Provide script to run Dapr with Docker*
-
 ### Run microservice without Dapr
 
+For the usual developement process.
 Just run the main method of the spring application class with IDEA or run the command `gradle bootRun` in the command line.
 
 ### Run the Microservice
@@ -118,3 +114,7 @@ To stop the containers and removes containers, networks, volumes, and images cre
 docker compose down
 
 More info [here](https://docs.docker.com/engine/reference/commandline/compose_down/)
+
+### Run scripts for dapr
+
+There exist run scripts for windows (dapr-run.cmd) and bash (dapr-run.sh) if you want to run the service outside docker but with dapr.
