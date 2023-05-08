@@ -105,15 +105,16 @@ You can enable auto reload, where when you make changes in the code, the server 
 If you want to test the microservice, you can use docker compose. You can also use the built.in Docker support of IntelliJ for starting and stopping the docker containers. You can also use the command line:
 
 To build and start the microservice including the database use:
-
+```
 docker compose up -d
+```
 
 More info [here](https://docs.docker.com/engine/reference/commandline/compose_up/)
 
 To stop the containers and removes containers, networks, volumes, and images created by up.
-
+```
 docker compose down
-
+```
 More info [here](https://docs.docker.com/engine/reference/commandline/compose_down/)
 
 ### Run scripts for dapr
