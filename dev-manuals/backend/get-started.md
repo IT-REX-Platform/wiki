@@ -1,46 +1,46 @@
 # Get Started
 
 This will contain a description on how get started to work as a backend dev.
+If you don't want to develop and only run the service, there is docker compose file provided.
 
 ## Prerequisites
 
-### Java
+- Java
+  
+  We use Java 17. You can download the JDK [here](https://www.oracle.com/java/technologies/downloads/#java17).
+  
+- Git
 
-We use Java 17. You can download the JDK [here](https://www.oracle.com/java/technologies/downloads/#java17).
+  We use Git as version control system. You can download it [here](https://git-scm.com/downloads). To be able to push and pull from GitHub, you will need to set up an SSH key. You can find a guide [here]  (https://docs.github.com/en/authentication/connecting-to-github-with-ssh).
+  
+- IDE
 
-### Git
+  We use IntelliJ IDEA as IDE. You can download it [here](https://www.jetbrains.com/idea/download/). As a student you can get a free license for the Ultimate Edition [here](https://www.jetbrains.com/community/education/#students).
+  
+- Gradle
 
-We use Git as version control system. You can download it [here](https://git-scm.com/downloads). To be able to push and pull from GitHub, you will need to set up an SSH key. You can find a guide [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh).
+  We use Gradle as build tool. You can download it [here](https://gradle.org/install/).
+  
+- Docker
 
-### IDE
+  We use Docker to run our microservices and the database. You can download it [here](https://www.docker.com/products/docker-desktop).
+  
+- Database (optional)
 
-We use IntelliJ IDEA as IDE. You can download it [here](https://www.jetbrains.com/idea/download/). As a student you can get a free license for the Ultimate Edition [here](https://www.jetbrains.com/community/education/#students).
+  We use PostgreSQL as database. You can download it [here](https://www.postgresql.org/download/) to run it locally. 
 
-### Gradle
+  We recommend using PGAdmin locally to manage the databases. You can download it [here](https://www.pgadmin.org) in case you didn't already install it together with PostgresSQL.
 
-We use Gradle as build tool. You can download it [here](https://gradle.org/install/).
+  Alternatively, you can use the database in a Docker container. We will provide a Docker Compose file for this in each microservice. See below for details.
 
-### Docker
+  For Media Storage we use MinIO. How to set it up is explained here: [here](https://min.io/docs/minio/container/index.html)
 
-We use Docker to run our microservices and the database. You can download it [here](https://www.docker.com/products/docker-desktop).
+- Dapr
 
-### Database
+  We use Dapr as runtime for our microservices.
+  To run locally, you can download it [here](https://docs.dapr.io/getting-started/install-dapr-cli/).
 
-We use PostgreSQL as database. You can download it [here](https://www.postgresql.org/download/) to run it locally. 
-
-We recommend using PGAdmin locally to manage the databases. You can download it [here](https://www.pgadmin.org) in case you didn't already install it together with PostgresSQL.
-
-Alternatively, you can use the database in a Docker container. A guide on how to do this can be found [here](https://www.baeldung.com/ops/postgresql-docker-setup). We will provide a Docker Compose file for this in each microservice.
-
-For Media Storage we use MinIO. How to set it up is explained here: [here](https://min.io/docs/minio/container/index.html)
-
-
-### Dapr
-
-We use Dapr as runtime for our microservices.
-To run locally, you can download it [here](https://docs.dapr.io/getting-started/install-dapr-cli/).
-
-We will however use Docker to run Dapr and provide a Docker Compose file for this in each microservice.
+  We will however use Docker to run Dapr and provide a Docker Compose file for this in each microservice. 
 
 ## Setup
 
@@ -79,19 +79,43 @@ Click run to start the container.
 
 See here if you prefer to use the command line: [here](https://www.baeldung.com/ops/postgresql-docker-setup).
 
-*TODO: Docker Compose file*
-
 ### Database configuration
 
 If you set the database up as described in "Run the database", you only need to add the previously defined variables to the configuration.
 Enter the database configuration in `src/main/resources/application.properties`. You need to enter the database URL, username and password.
 
-### Run Dapr
+### Docker compose configuration
+In the docker-compose.yml change the environment variables of the database service, to match the ones in the application.properties.
 
-*TODO: Describe how to run Dapr with IDEA*
+Change the expose and ports of both apps to the ones in application properties. The values in expose must match the first part of the ports values.
 
-*TODO: Provide script to run Dapr with Docker*
+For the database port only change the first value. It should look like this "XXXX:5432",
+where XXXX is the port number of the microservice database.
 
-### Run microservice without Dapr
+Change "templatedatabase" in the SPRING_DATASOURCE_URL to match the POSTGRES_DB value.
 
+### Run microservice without Dapr (in development)
+
+For the usual developement process.
 Just run the main method of the spring application class with IDEA or run the command `gradle bootRun` in the command line.
+
+You can enable auto reload, where when you make changes in the code, the server will automatically reload the code. [Here](https://dev.to/imanuel/auto-reload-springboot-in-intellij-idea-1l65) is a short guide how to enable it.
+
+### Run the Microservice
+If you want to test the microservice, you can use docker compose. You can also use the built.in Docker support of IntelliJ for starting and stopping the docker containers. You can also use the command line:
+
+To build and start the microservice including the database use:
+
+docker compose up -d
+
+More info [here](https://docs.docker.com/engine/reference/commandline/compose_up/)
+
+To stop the containers and removes containers, networks, volumes, and images created by up.
+
+docker compose down
+
+More info [here](https://docs.docker.com/engine/reference/commandline/compose_down/)
+
+### Run scripts for dapr
+
+There exist run scripts for windows (dapr-run.cmd) and bash (dapr-run.sh) if you want to run the service outside docker but with dapr.
