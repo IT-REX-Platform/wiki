@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Get Started" href="../frontend/get-started.html" />
-    <link rel="prev" title="Team members and responsibilities" href="../project-management/team.html" /> 
+    <link rel="prev" title="Coding Guidelines" href="coding-guidelines.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -51,7 +51,28 @@
 <li class="toctree-l2"><a class="reference internal" href="../gamification/README.html">Gamification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../project-management/definition-of-done.html">Definition of Done</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../project-management/team.html">Team members and responsibilities</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Get Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coding-guidelines.html">Coding Guidelines</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Get Started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#java">Java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#git">Git</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ide">IDE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gradle">Gradle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker">Docker</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database">Database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dapr">Dapr</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#clone-the-repository">Clone the repository</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-the-database">Run the database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database-configuration">Database configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-dapr">Run Dapr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-microservice-without-dapr">Run microservice without Dapr</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../frontend/get-started.html">Get Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../readthedocs/add-folder.html">How to add a new folder to ReadTheDocs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../readthedocs/setup-locally.html">How to setup ReadTheDocs locally</a></li>
@@ -93,13 +114,95 @@
   <section id="get-started">
 <h1>Get Started<a class="headerlink" href="#get-started" title="Permalink to this heading"></a></h1>
 <p>This will contain a description on how get started to work as a backend dev.</p>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading"></a></h2>
+<section id="java">
+<h3>Java<a class="headerlink" href="#java" title="Permalink to this heading"></a></h3>
+<p>We use Java 17. You can download the JDK <a class="reference external" href="https://www.oracle.com/java/technologies/downloads/#java17">here</a>.</p>
+</section>
+<section id="git">
+<h3>Git<a class="headerlink" href="#git" title="Permalink to this heading"></a></h3>
+<p>We use Git as version control system. You can download it <a class="reference external" href="https://git-scm.com/downloads">here</a>. To be able to push and pull from GitHub, you will need to set up an SSH key. You can find a guide <a class="reference external" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh">here</a>.</p>
+</section>
+<section id="ide">
+<h3>IDE<a class="headerlink" href="#ide" title="Permalink to this heading"></a></h3>
+<p>We use IntelliJ IDEA as IDE. You can download it <a class="reference external" href="https://www.jetbrains.com/idea/download/">here</a>. As a student you can get a free license for the Ultimate Edition <a class="reference external" href="https://www.jetbrains.com/community/education/#students">here</a>.</p>
+</section>
+<section id="gradle">
+<h3>Gradle<a class="headerlink" href="#gradle" title="Permalink to this heading"></a></h3>
+<p>We use Gradle as build tool. You can download it <a class="reference external" href="https://gradle.org/install/">here</a>.</p>
+</section>
+<section id="docker">
+<h3>Docker<a class="headerlink" href="#docker" title="Permalink to this heading"></a></h3>
+<p>We use Docker to run our microservices and the database. You can download it <a class="reference external" href="https://www.docker.com/products/docker-desktop">here</a>.</p>
+</section>
+<section id="database">
+<h3>Database<a class="headerlink" href="#database" title="Permalink to this heading"></a></h3>
+<p>We use PostgreSQL as database. You can download it <a class="reference external" href="https://www.postgresql.org/download/">here</a> to run it locally.</p>
+<p>We recommend using PGAdmin locally to manage the databases. You can download it <a class="reference external" href="https://www.pgadmin.org">here</a> in case you didn’t already install it together with PostgresSQL.</p>
+<p>Alternatively, you can use the database in a Docker container. A guide on how to do this can be found <a class="reference external" href="https://www.baeldung.com/ops/postgresql-docker-setup">here</a>. We will provide a Docker Compose file for this in each microservice.</p>
+<p>For Media Storage we use MinIO. How to set it up is explained here: <a class="reference external" href="https://min.io/docs/minio/container/index.html">here</a></p>
+</section>
+<section id="dapr">
+<h3>Dapr<a class="headerlink" href="#dapr" title="Permalink to this heading"></a></h3>
+<p>We use Dapr as runtime for our microservices.
+To run locally, you can download it <a class="reference external" href="https://docs.dapr.io/getting-started/install-dapr-cli/">here</a>.</p>
+<p>We will however use Docker to run Dapr and provide a Docker Compose file for this in each microservice.</p>
+</section>
+</section>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading"></a></h2>
+<section id="clone-the-repository">
+<h3>Clone the repository<a class="headerlink" href="#clone-the-repository" title="Permalink to this heading"></a></h3>
+<p>To clone the repository,  you can use IntelliJ IDEA to clone the repository via <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">New</span> <span class="pre">&gt;</span> <span class="pre">Project</span> <span class="pre">from</span> <span class="pre">Version</span> <span class="pre">Control...</span></code>.</p>
+<p>Alternatively, you can use the command line:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span><span class="o">{</span>repository-url<span class="o">}</span>
+</pre></div>
+</div>
+<p>Then you can open the project in IntelliJ IDEA via <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Open...</span></code>.</p>
+</section>
+<section id="run-the-database">
+<h3>Run the database<a class="headerlink" href="#run-the-database" title="Permalink to this heading"></a></h3>
+<p>Run the database locally or in a Docker container.</p>
+<p>We recommend to run the databases in a Docker container, as you can easily add new instances for different microservices.
+The recommended way to do so is to use Docker Desktop.</p>
+<p>Use the search bar at the top to search for “postgres”, select images. The first result should be the correct image.
+Press pull to download the image to your machine.</p>
+<p>Go to “Images” press the run button next on the postgres image.
+Click on optional settings enter the name and port of the container.</p>
+<ul class="simple">
+<li><p>Under Volumes select a folder to persist the data, for when the container stops running.</p></li>
+<li><p>Under environment variables enter POSTGRES_USER as the variable and a username as the value.</p></li>
+<li><p>Add another environment variable and enter POSTGRES_PASSWORD as the variable and a password as the value.</p></li>
+<li><p>Add a third variable and enter POSTGRES_DB as the variable and a the database name as the value.</p></li>
+<li><p>This will automatically create a new Database in the docker container.</p></li>
+</ul>
+<p>Click run to start the container.</p>
+<p>See here if you prefer to use the command line: <a class="reference external" href="https://www.baeldung.com/ops/postgresql-docker-setup">here</a>.</p>
+<p><em>TODO: Docker Compose file</em></p>
+</section>
+<section id="database-configuration">
+<h3>Database configuration<a class="headerlink" href="#database-configuration" title="Permalink to this heading"></a></h3>
+<p>If you set the database up as described in “Run the database”, you only need to add the previously defined variables to the configuration.
+Enter the database configuration in <code class="docutils literal notranslate"><span class="pre">src/main/resources/application.properties</span></code>. You need to enter the database URL, username and password.</p>
+</section>
+<section id="run-dapr">
+<h3>Run Dapr<a class="headerlink" href="#run-dapr" title="Permalink to this heading"></a></h3>
+<p><em>TODO: Describe how to run Dapr with IDEA</em></p>
+<p><em>TODO: Provide script to run Dapr with Docker</em></p>
+</section>
+<section id="run-microservice-without-dapr">
+<h3>Run microservice without Dapr<a class="headerlink" href="#run-microservice-without-dapr" title="Permalink to this heading"></a></h3>
+<p>Just run the main method of the spring application class with IDEA or run the command <code class="docutils literal notranslate"><span class="pre">gradle</span> <span class="pre">bootRun</span></code> in the command line.</p>
+</section>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../project-management/team.html" class="btn btn-neutral float-left" title="Team members and responsibilities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="coding-guidelines.html" class="btn btn-neutral float-left" title="Coding Guidelines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../frontend/get-started.html" class="btn btn-neutral float-right" title="Get Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -51,8 +51,18 @@
 <li class="toctree-l2"><a class="reference internal" href="../gamification/README.html">Gamification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../project-management/definition-of-done.html">Definition of Done</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../project-management/team.html">Team members and responsibilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backend/coding-guidelines.html">Coding Guidelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../backend/get-started.html">Get Started</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Get Started</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Get Started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#technologies-used">Technologies used</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#next-js">Next.js</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tailwind-css">Tailwind CSS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#typescript">TypeScript</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pnpm">pnpm</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../readthedocs/add-folder.html">How to add a new folder to ReadTheDocs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../readthedocs/setup-locally.html">How to setup ReadTheDocs locally</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../readthedocs/test-locally.html">How to test the ReadTheDocs pages locally</a></li>
@@ -92,7 +102,60 @@
              
   <section id="get-started">
 <h1>Get Started<a class="headerlink" href="#get-started" title="Permalink to this heading"></a></h1>
-<p>This will contain a description on how get started to work as a frontend dev.</p>
+<p>This document will contain a short overview of the technologies used in this project as well as a short decription of how to setup your enviroment to start coding.</p>
+<section id="technologies-used">
+<h2>Technologies used<a class="headerlink" href="#technologies-used" title="Permalink to this heading"></a></h2>
+<p>For this project we use the following technologies:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://nextjs.org/">Next.js</a></p></li>
+<li><p><a class="reference external" href="https://tailwindcss.com/">Tailwind CSS</a></p></li>
+<li><p><a class="reference external" href="https://www.typescriptlang.org/">TypeScript</a></p></li>
+<li><p><a class="reference external" href="https://pnpm.io/">pnpm</a>
+Using the <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">install</span></code> command after installing <a class="reference external" href="https://nodejs.org/en">Node.js</a>, should ensure that all needed packages and technologies are installed.</p></li>
+</ul>
+<section id="next-js">
+<h3>Next.js<a class="headerlink" href="#next-js" title="Permalink to this heading"></a></h3>
+<p>Next.js is a framework that is based on React. It allows you to create full-stack Web applications by extending the latest React features, and integrating powerful Rust-based JavaScript tooling for the fastest builds.
+The system requirements are the follwing:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://nodejs.org/en/download">Node.js</a> 16.8.0 or newer</p></li>
+<li><p>A Linux, Mac or Windows system
+To create an app you can use either the automatic setup or the manual setup.
+Because this project has already setup everything important that is handeled by the automatic setup, please follow the manual setup which is:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">install</span> <span class="nb">next</span> <span class="n">react</span> <span class="n">react</span><span class="o">-</span><span class="n">dom</span>
+<span class="c1"># or</span>
+<span class="n">yarn</span> <span class="n">add</span> <span class="nb">next</span> <span class="n">react</span> <span class="n">react</span><span class="o">-</span><span class="n">dom</span>
+<span class="c1"># or</span>
+<span class="n">pnpm</span> <span class="n">add</span> <span class="nb">next</span> <span class="n">react</span> <span class="n">react</span><span class="o">-</span><span class="n">dom</span>
+</pre></div>
+</div>
+<p>To learn more about Next.js, please read either the <a class="reference external" href="https://nextjs.org/docs">documentation</a> or learn it with their interactive <a class="reference external" href="https://nextjs.org/learn/basics/create-nextjs-app">learn course</a>.</p>
+</section>
+<section id="tailwind-css">
+<h3>Tailwind CSS<a class="headerlink" href="#tailwind-css" title="Permalink to this heading"></a></h3>
+<p>Tailwind CSS functions as a CSS framework and makes working with CSS easier and faster than with plain CSS. It is fast, flexible, and reliable — with zero-runtime.
+You can install it via <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">install</span> <span class="pre">-D</span> <span class="pre">tailwindcss</span></code>. All other steps like configuring the template path or adding Tailwind to the CSS should be already taken care of.
+If you use VSCode please consider using the <em>Tailwind CSS IntelliSense</em> to avoid triggering warnings or errors where the Tailwind rules aren’t recognized.
+To learn more about Tailwind CSS or if you want to look up code examples for your coding please look at the <a class="reference external" href="https://tailwindcss.com/docs/utility-first">documentation</a>.</p>
+</section>
+<section id="typescript">
+<h3>TypeScript<a class="headerlink" href="#typescript" title="Permalink to this heading"></a></h3>
+<p>TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale. It adds additional syntax to JavaScript to support a tighter integration with your editor. Catch errors early in your editor. TypeScript code converts to JavaScript, which runs anywhere JavaScript runs: In a browser, on Node.js or Deno and in your apps. It understands JavaScript and uses type inference to give you great tooling without additional code.
+To install TypeScript you can use <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">install</span> <span class="pre">-g</span> <span class="pre">typescript</span></code>.
+Futher reference to how TypeScript works can be found in their <a class="reference external" href="https://www.typescriptlang.org/docs/">documentation</a>.</p>
+</section>
+<section id="pnpm">
+<h3>pnpm<a class="headerlink" href="#pnpm" title="Permalink to this heading"></a></h3>
+<p>pnpm is a fast, disk space efficient package manager. It is faster than alternatives and it saves disk space. It is an alternative to npm and can be installed with the follwing commands:</p>
+<ul class="simple">
+<li><p>On Windows: <code class="docutils literal notranslate"><span class="pre">iwr</span> <span class="pre">https://get.pnpm.io/install.ps1</span> <span class="pre">-useb</span> <span class="pre">|</span> <span class="pre">iex</span> </code></p></li>
+<li><p>Using npm: <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">install</span> <span class="pre">-g</span> <span class="pre">pnpm</span></code></p></li>
+<li><p>Using Homebrew: <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">pnpm</span></code>
+If you seek more information on pnpm, check out their <a class="reference external" href="https://pnpm.io/motivation">documentation</a>.</p></li>
+</ul>
+</section>
+</section>
 </section>
 
 
