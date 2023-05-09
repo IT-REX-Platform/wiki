@@ -31,6 +31,9 @@ Considering this, there are two specific dataflow cases which could be identifie
 
 ### Gateway-Managed Permissions Check
 
+![](/images/authorization-gateway.png)
+[Edit Diagram (Image and this link have to be updated manually after editing)](https://mermaid.live/edit#pako:eNqdlM1uAiEUhV_lhlVNbB_ANG5q0jSNm5ruZnOFO0qcAQuMzdT47oX50WEYk6YujFzgO5xzkTPjWhBbMEtfFSlOK4k7g2WmwH-QO23g05Jpx0c0TnJ5ROXgFR19Y51OvOjKWNqQOUlO6XSgdZOAdjh83prlwzvVvNB4mE2BlSPl7pLXJCRGs-13kHhcLrsDL-AjWLUOsCigDHtAChvEdd7UeGPAXiOQJ78z9tsNPDVyG7M7DnhsdY3wypuIKSp59iCbGzmg4EimlNZKrZqD575L06ceIG5h9ApTx3eVUX_TEHRfJXYSh98o9NlIxYungB9LJhqjvNI-DC_HLS7e1i1sa3hbwUMjCBnDyu21kT8kMga5pELMkgal1y2uTfpqFoBAhxMWYuLYw_AC3xy0V9QQ10b8w0b6rxhWpnoTCSYmYl5sobuzI5IMlITT7WFzVvquoxT-ETqHVRlzeyopYwv_U6A5ZCxTF7_Oe9WbWnG2cKaiOauOPuX-weqLXtG_Wev2UfPdyOWOXX4BUWq53w)
+
 This type of permissions check is used in cases where the gateway splits up a query which has a call to the course-service at the top level and further queries the returned courses' data from other services. Example:
 
 ```graphql
@@ -51,8 +54,10 @@ In this case, the gateway knows the course-affiliation for each media record, so
 **TODO:** Discuss what happens if a query requests a sub-field which the user has permission to view for some courses but not for others. Should it just be omitted from the query response for the courses where the permission is missing?
 
 
-
 ### Backtracking Permissions Check
+
+![](/images/authorization-backtracking.png)
+[Edit Diagram (Image and this link have to be updated manually after editing)](https://mermaid.live/edit#pako:eNqFVE1rAjEQ_SshpxaUUr0txUsLUtpCW-ltLzEZNegm20lWEfG_d7IfumtW64IkmZ33Zua97IFLq4An3MFvAUbCixZLFFlqGP2E9BbZjwOs9rlAr6XOhfFsKjzsxD4OfIDSYga41RLi6LM1Hoy_ES_QwdXwG-zlxop1Fan-Q33DyaQuKGFTFPnq650twbMsFMMQpEXlnuY4me-ZVqfu9JaSzq2EJ0TqAwJtN3NGxjAs5wPe7oEVxM-0WVjMhNfWXKDH82ifEEd3JAn7rtBZDphp5wjRMQIPbIeyn1f1OGD1anRajY9lf8KBYtb8V1WfDt2zsrKWGLcLk1VuWdppPTpGrB11G9rWIbE2GtO8ScGgLvtEvdUbWEKpIXESR0i6c_cXDF2DNLthXzO-QHMJX6Up6MHrK7ZXvRL3cB4STeS8aUbSouix_IUSkRErknLw13jam3Efaax_x5ftG1X3VNue_FVaLsKMnd5cJAILg27fIJeTfSDCqDP4gGdUvtCKvk2H8FbK_QoySHlCSyVwnfLUHOk9UXg72xvJE48FDHiRK8Kov2M8WYiNg-MfmnC8dg)
 
 This type of permissions check is used if data is queried directly (i.e. a top-level query to course-specific data). Example:
 
