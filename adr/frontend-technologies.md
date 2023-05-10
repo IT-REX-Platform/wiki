@@ -34,3 +34,9 @@ The reasons why we decided against Svelte is, for one the small ecosystem and co
 
 Another frontend framework that was considered is Vue. It was first released in 2014 and is a "lightweight version of Angular", according to its creator. It provides similar features like React and Svelte, with Routing, component centered code or Reactivity.
 It was only shortly considered as only minimal knowledge from prior usage was available in the inital frontend team.
+
+# Design decision
+
+For the general design, we decided to follow the design ideas of the product owners (PO): The PO send us some example designs and mockups, which used mainly blue and violet colors for the color schema. 
+
+For the basic components, we agreed on the usage of Material UI (MUI). Basic components are for example buttons, switches or icons.
