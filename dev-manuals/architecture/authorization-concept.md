@@ -7,7 +7,7 @@ This document outlines the authorization concept used to ensure that graphql que
 * There exist global permissions (permissions for creating new courses etc.), which are not specific to a certain course
 * Also for each user, there exist course-specific permissions (permissions view the course, to modify the course, upload material etc.)
 * There are different permission levels ("roles", not to be confused with the concept in Keycloak also called roles) both on the global and on the course scale. E.g. a lecturer of a course has write-permissions in that course, but not in other courses; A student assigned to a course has read permissions only for that course. Permissions cannot be set fine-grained per user, only a role with a predefined set of permissions (either globally or on a course-specific level) can be assigned to a user
-* We assume there are no additional hierarchical permission concepts other than global permissions and course-specific permissions. This means that it is not possible for example for a user to only have permissions for some contents of a course. You either have permissions for everything that's part of the course, or you do not. (Of course this limitation does not impede on the ability of services to implement specific limitations on access to course content which is not dependent on user permissions but instead on other rules, e.g. a quiz which can only be accessed by students before a specific date has passed)
+* We assume there are no additional hierarchical permission concepts other than global permissions and course-specific permissions. This means that it is not possible for example for a user to only have permissions for some contents of a course. You either have permissions for everything that's part of the course, or you do not. (Of course this limitation does not impede on the ability of services to implement specific limitations on access to course content which is not dependent on independent user permissions but instead on other rules, e.g. a quiz which can only be accessed by students before a specific date has passed)
 
 ## Keycloak
 
@@ -51,8 +51,26 @@ courses {
 
 In this case, the gateway knows the course-affiliation for each media record, so it can simply pass a field {"authorized": "student" } to all subsequent services (the media service, in our example). Then these services know that they don't have to check themselves if the user is authorized to view the course this content is affiliated with.
 
-**TODO:** Discuss what happens if a query requests a sub-field which the user has permission to view for some courses but not for others. Should it just be omitted from the query response for the courses where the permission is missing?
+### Handling GraphQL requests where the user only has permissions for some subitems
 
+Imagine a query like the following:
+
+```graphql
+courses {
+    title,
+    members {
+        name
+    }
+}
+```
+
+This query would list all courses a person have access to and also return the course name and all its members.
+
+However, only lecturers and tutors have access to the member information of a course. If the query above is sent by an account of a person who is a tutor for some courses, but only a regular student for others, then how should the response look like? The members obviously cannot be returned for courses where the user does not have the necessary permissions, but they should be returned for the courses where the user has the permission.
+
+**Such a case should be handled by services in the following way:**
+
+**For the courses where member information cannot be returned due to missing permissions, return null instead. Remember that the possibility of a null response needs to be considered in the GraphQL schema as well!**
 
 ### Backtracking Permissions Check
 
