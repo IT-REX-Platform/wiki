@@ -4,6 +4,13 @@ Developer Manuals
 .. toctree::
    :glob:
    :titlesonly:
+   :caption: API documentation
+
+   ./api-docs/**
+
+.. toctree::
+   :glob:
+   :titlesonly:
    :caption: Architecture
 
    ./architecture/**
