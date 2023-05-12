@@ -1,2 +1,3 @@
 make.bat
 Makefile
+$READTHEDOCS_OUTPUT/*
