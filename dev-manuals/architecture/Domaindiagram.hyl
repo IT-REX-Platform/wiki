@@ -1,0 +1,608 @@
+classDiagram {
+    class("User") {
+        private {
+            username:String
+            id:UUID
+            eMailAddress:String
+            firstName:String
+            lastName:String
+        }
+    } layout {
+        pos = apos(-458, -1424.1023300213014)
+    }
+
+    class("Course") { 
+        private {
+            courseId:UUID
+            courseTitle:String
+            courseDescription:String
+            startDate:DateTime
+            endDate:DateTime
+            publishState:Boolean
+        }
+    } layout {
+        pos = apos(-458, -1063.19908039927)
+    }
+
+    class("ITREX", abstract = true) { 
+        private {
+            rexName:String
+            rexId:UUID
+        }
+    } layout {
+        pos = apos(-1125.566085114402, -1092.3235415502431)
+    }
+
+    class("Activity") layout {
+        pos = apos(-1550, -1221.344235960998)
+    }
+
+    class("Repetition") layout {
+        pos = apos(-1550, -1130.2708046122298)
+    }
+
+    class("Progress") layout {
+        pos = apos(-1550, -1050.5815521820577)
+    }
+
+    class("Score") layout {
+        pos = apos(-1550, -956.9783032958237)
+    }
+
+    class("ITREXCharacteristics", abstract = true) {
+        public {
+            characteristicScore: Integer
+            calculateScore(): Integer
+        }
+    } layout {
+        pos = apos(-2017.4019872820902, -1091.496737500158)
+    }
+
+    class("Scoreboard") {
+        private {
+            scoreBoardType:ScoreBoardType
+        }
+    } layout {
+        pos = apos(-1550, -731.9489583588206)
+    }
+
+    class("Chapter") {
+        private {
+            chapterId:UUID
+            chapterTitle:String
+            chapterNumber:Integer
+            chapterDescription:String
+            startDate:DateTime
+            endDate:DateTime
+        }
+    } layout {
+        pos = apos(-458, -711.6358788017152)
+    }
+
+    class("Content", abstract = true) {
+        private {
+            contentId:UUID
+            contentName:String
+        } 
+        public {
+            rewardPoints:Integer
+            workedOn:Boolean
+        }
+    } layout {
+        pos = apos(-769.7185311528367, -401.32319522590603)
+    }
+
+    class("Tags") {
+        public {
+            tagName:String
+            tagId:UUID
+        }
+    } layout {
+        width = 162.8323985858668
+        pos = apos(-358.836872568747, -399.0546282035095)
+    }
+
+    class("Assessment") {
+        private {
+            type:AssessmentType
+        }
+        public {
+            skillPoints:Integer
+            calculateSkill():Integer
+        }
+    } layout {
+        pos = apos(-822.4143682516659, -99.2376776692858)
+    }
+
+    class("SelfAssessmentQuiz", abstract = true) {
+        private {
+            question:String
+        }
+    } layout {
+        pos = apos(-994.8402509584039, 111.8960562573321)
+    }
+
+    class("QuizPool") {
+        private {
+            amountQuizzes:Integer
+        }
+    } layout {
+        pos = apos(-1503, 108.37716069188848)
+    }
+
+    class("TurboQuiz") {
+        public {
+            time:Integer
+            mistakesAllowed:Integer
+            amountQuestions:Integer
+        }
+    } layout {
+        pos = apos(-1503, -99.2376776692858)
+    }
+
+    class("NumericalQuiz") {
+        private {
+            correctAnswer:Integer
+        }
+    } layout {
+        pos = apos(-1190.2373417326419, 324.88178213419405)
+    }
+
+    class("MultipleChoiceQuiz") {
+        private {
+            distractors:StringList
+            correctAnswers:StringList
+        }
+    } layout {
+        pos = apos(-788.4728908435592, 321)
+    }
+
+    class("Flashcards") {
+        private {
+            content:StringList
+        }
+    } layout {
+        pos = apos(-433.60791348165503, 112.97570292578035)
+    }
+
+    class("FlashcardPool") {
+        private {
+            amountFlashcards:Integer
+        }
+    } layout {
+        pos = apos(14.562079479715207, 112.97570292578035)
+    }
+
+    class("Assignment", abstract = true) {
+    } layout {
+        pos = apos(582.7862936703857, 110.89913658433574)
+    }
+
+    class("Exercise") {
+    } layout {
+        pos = apos(204.08270836398015, 331.3772513175171)
+    }
+
+    class("PhysicalTest") {
+    } layout {
+        pos = apos(587.575758213572, 332.67418140418283)
+    }
+
+    class("Game") {
+    } layout {
+        pos = apos(952.8585281227918, 334.1961429598015)
+    }
+
+    class("MediaContent", abstract = true) {
+    } layout {
+        pos = apos(122.4169169206041, -122.77048336685618)
+    }
+
+    class("Media") {
+        private{
+            mediaId:UUID
+            mediaName:String
+            mediaType:MediaType
+        }
+    } layout {
+        pos = apos(566.7569841311981, -125.69369610574104)
+    }
+
+    class("MediaPool") {
+        private{
+            amountMedia:Integer
+        }
+    } layout {
+        pos = apos(561.3988688389479, -495.40365127100665)
+    }
+
+    class("Feedback") {
+        public{
+            feedback:String
+            feedbackDecision():String
+        }
+    } layout {
+        pos = apos(130, -606.399814242709)
+    }
+
+    class("Hint") {
+        public{
+            hint:Sting
+        }
+    } layout {
+        pos = apos(130, -484.9059578819806)
+    }
+
+    class("SkillLevels", abstract = true) {
+        private{
+            scoreName:String
+            scoreId:UUID
+        }
+        public{
+            score:Integer
+            adjustScore():Integer
+        }
+    } layout {
+        pos = apos(-13.08882209250855, -966.5338324760176)
+    }
+
+    class("Remember") {
+    } layout {
+        pos = apos(449.6774267880833, -1125.7029833427523)
+    }
+
+    class("Understand") {
+    } layout {
+        pos = apos(450, -1021.7557827767215)
+    }
+
+    class("Apply") {
+    } layout {
+        pos = apos(450, -923.1189707533322)
+    }
+
+    class("Analyze") {
+    } layout {
+        pos = apos(450, -826.0381263039146)
+    }
+
+    class("ScoreBoardType", stereotypes = list("enumeration")) {
+        public {
+            Overall
+            Chapter
+            Week
+            CustomTimePeriod
+        }
+    } layout {
+        pos = apos(310.1503003037525, -1501.48503365413)
+    }
+
+    class("AssessmentType", stereotypes = list("enumeration")) {
+        public {
+            Remember
+            Understand
+            Apply
+            Analyze
+        }
+    } layout {
+        pos = apos(631.5912006939351, -1501.48503365413)
+    }
+
+    class("MediaType", stereotypes = list("enumeration")) {
+        public {
+            Audio
+            Video
+            Image
+            Presentation
+            Document
+            URL
+        }
+    } layout {
+        pos = apos(948.1366083627571, -1485.447218874692)
+    }
+
+    Course <--> User with {
+        over = start(0.6846009797366674).line(end(0.31638014931151265))
+        label("Student", 0.8560261308945406, -36.06709838394187, 0)
+        label("0..* {unique}", 0.9678424503015027, 65.08874892076044, 0)
+        label("0..* {unique}", 0.10904871574509635, 65.1218163636561, 0)
+        label(
+            "< participates",
+            0.5462117473072118,
+            17.644027396353476,
+            270.9301473755496
+        )
+    }
+
+    Course <--> User with {
+        over = start(0.8392360463406219).line(end(0.16155318178730288))
+        label("Lecturer", 0.856068184656968, -36.96502344720817, 0)
+        label("1", 0.962756407492642, 22.588783589714478, 0)
+        label("0..* {unique}", 0.10904871574509635, 65.1218163636561, 0)
+        label(
+            "< creates",
+            0.5462117473072118,
+            17.644027396353476,
+            270.9301473755496
+        )
+    }
+
+    User *-- ITREX with {
+        over = start(0.5).axisAligned(0.25, rpos(ITREX, -1.4787905488004096, -331.2446773597652)).line(end(0.75))
+        label("0..* {unique}", 0.9782827471766551, 50.105169682883556, 0)
+    }
+
+    ITREX *-- Activity with {
+        over = start(0.5692047350674531).line(end(0))
+        label("1", 0.9925672735252238, 20.056827793338332, 0)
+    }
+
+    ITREX *-- Repetition with {
+        over = start(0.5).line(end(0))
+        label("1", 0.9287525213367023, 21.90167669088802, 0)
+    }
+
+    ITREX *-- Progress with {
+        over = start(0.4307952649325469).line(end(0))
+        label("1", 0.8259746476586963, 26.712659253636783, 0)
+    }
+
+    ITREX *-- Score with {
+        over = start(0.36867545615633557).line(end(0))
+        label("1", 0.8071753422702701, 20.360611541070696, 0)
+    }
+
+    Course <--> ITREX with {
+        over = start(0.5493084544812035).line(end(0.9981516811215914))
+        label("0..* {unique}", 0.8598643096586815, 34.35558224961616, 0)
+        label("1", 0.06259112140208754, 32.38533589622317, 0)
+        label(
+            "< contains",
+            0.518828238502996,
+            29.22736231406564,
+            0.006763731206945067
+        )
+    }
+
+    list(Activity, Repetition, Progress, Score).forEach {
+        it extends ITREXCharacteristics with {
+            over = start(0.47356648586674055).axisAligned(-1, rpos(Repetition, -256.65141267197487, 39.24676704866296)).line(end(Position.Right))
+        }
+    }
+
+    Score <--> Scoreboard with {
+        over = start(0.24673150540364341).line(end(0.7535557614401106))
+        label("1", 0.846333452073119, 22.719775990858924, 0)
+        label("0..* {unique}", 0.10904871574509635, 65.1218163636561, 0)
+        label(
+            "contains >",
+            0.5462117473072118,
+            17.644027396353476,
+            270.9301473755496
+        )
+    }
+
+    Course *-- Scoreboard with {
+        over = start(0.4248668421459513).line(end(0))
+        label("1", 0.965759140796605, 31.005546968665204, 0)
+    }
+
+    Course *-- Chapter with {
+        over = start(0.2487208109221501).line(end(0.7532307819606446))
+        label("0..* {ordered}", 0.7942528038817465, 48.71801292660196, 0)
+    }
+
+    Course *-- TurboQuiz with {
+        over = start(0.3416239929410119).line(end(0.7532307819606446))
+        label("1", 0.990374925409574, 23.455539755368903, 0)
+    }
+
+    Content <--> Chapter with {
+        over = start(0.7485865570844752).axisAligned(0, rpos(Content, 5.430998619087654, -259.5865751803536)).line(end(0.4234185354384648))
+        label("1", 0.9514735295650606, -25.27982137745973, 0)
+        label("1..* {ordered}", 0.29717691526825096, 62.020764741093785, 0)
+        label(
+            "< contains",
+            0.8242048485714365,
+            -21.684219158430896,
+            0.3881522490298437
+        )
+    }
+
+    Content <--> ITREX with {
+        over = start(0.49817665899238894).axisAligned(0.5, rpos(ITREX, 0.056541185418055306, 692.040691561201)).line(end(0.25118726497803096))
+        label("1", 0.9922428211480778, 17.654679032619818, 0)
+        label("1", 0.07444858360008594, -5.511736935448425, 0)
+        label(
+            "< rewards",
+            0.21850755679510123,
+            21.83927813928358,
+            0.01631400935721672
+        )
+    }
+
+    TurboQuiz <--> QuizPool with {
+        over = start(0.25257628350334643).line(end(0.74904247770276))
+        label("2..* {unique}", 0.754647717853307, 62.48674606144018, 0)
+        label("1", 0.05786364904544391, 24.47051030340267, 0)
+        label(
+            "includes >",
+            0.45585151592115697,
+            -16.90045991033816,
+            269.6960589209408
+        )
+    }
+
+    SelfAssessmentQuiz <--> QuizPool with {
+        over = start(0.5040692907636326).line(end(0.0076511707453756315))
+        label("1", 0.852362656145731, -12.099030216976342, 0)
+        label("0..* {unique}", 0.2254819590450193, -11.36565630489677, 0)
+        label(
+            "contains >",
+            0.4813095822965063,
+            23.39431273042057,
+            359.99140978779224
+        )
+    }
+
+
+    list(NumericalQuiz, MultipleChoiceQuiz).forEach {
+        it extends SelfAssessmentQuiz with {
+            over = start(0.75).axisAligned(0, rpos(NumericalQuiz, 194.69281625607707, -108.18298836356777)).line(end(0.25))
+        }
+    }
+
+    Flashcards --* FlashcardPool with {
+        over = start(0.0075786117566244695).line(end(0.49451553842409657))
+        label("0..* {unique}", 0.40418475035504275, -21.932262703223614, 0)
+    }
+
+    list(Exercise, PhysicalTest, Game).forEach {
+        it extends Assignment with {
+            over = start(0.75).axisAligned(0, rpos(PhysicalTest, -0.15483851458021336, -124.88581295776144)).line(end(0.24694187579289928))
+        }
+    }
+
+    list(SelfAssessmentQuiz, Flashcards, Assignment).forEach {
+        it extends Assessment with {
+            over = start(0.75).axisAligned(0, rpos(SelfAssessmentQuiz, 176.1353132406008, -79.18095879901081)).line(end(0.24694187579289928))
+        }
+    }
+
+    MediaContent *-- Media with {
+        over = start(0.0075786117566244695).line(end(0.49451553842409657))
+        label("1..* {unique}", 0.5892943619733326, -20.972613147255146, 0)
+    }
+
+    list(Assessment, MediaContent).forEach {
+        it extends Content with {
+            over = start(0.75).axisAligned(0, rpos(Assessment, 57.44354253533493, -133.12557480250135)).line(end(0.24694187579289928))
+        }
+    }
+
+    MediaPool --> MediaContent with {
+        over = start(0.2376972565586063).line(end(0.7574320756070153))
+        label("0..* {unique}", 0.8483820632019239, -23.678835012911755, 0)
+        label("1", 0.01111961757087294, -4.539815220085379, 0)
+    }
+
+    Hint <--> MediaPool with {
+        over = start(0.0010419192866450656).line(end(0.45972255904886006))
+        label("1..* {ordered}", 0.8404572979124868, 22.168856497760505, 0)
+        label("1", 0.10370442281342943, 14.222342556821548, 0)
+        label(
+            "references >",
+            0.4921065998113762,
+            -25.962763372082964,
+            359.42352294790334
+        )
+    }
+
+    Feedback <--> MediaPool with {
+        over = start(0.0010419192866450656).axisAligned(0.25, rpos(MediaPool, 6.413188396580859, -110.26926688908968)).line(end(0.7556936132395506))
+        label("1..* {ordered}", 0.8699859364995082, -54.20906375570403, 0)
+        label("1", 0.11201126493879367, 3.8675003366743113, 0)
+        label(
+            "references >",
+            0.5973566246260558,
+            -23.544194671794457,
+            1.1749590268822345
+        )
+    }
+
+    list(Remember, Understand, Apply, Analyze).forEach {
+        it extends SkillLevels with {
+            over = start(0.5).axisAligned(0.6189208693148943, rpos(Apply, -292.6916444412782, -47.13798956843331)).line(end(0.9924771814415522))
+        }
+    }
+
+    SkillLevels --* User with {
+        over = start(0.740287485124375).axisAligned(0.6189208693148943, rpos(User, 432.6861303879296, 5.127221281706113)).line(end(0.011247086025902048))
+        label("0..* {unique}", 0.26690940072375663, 48.801894046146685, 0)
+    }
+
+    Chapter *-- Remember with {
+        over = start(0.022727094717831946).axisAligned(0.5772631128872312, rpos(Remember, 149.3895766701582, 427.3128968427974)).line(end(0.9801242568195385))
+        label("1", 0.8282767195946584, 11.454905802895293, 0)
+        label("1", 0.8860900898522267, 12.415081909290944, 0)
+        label("1", 0.9428722077107523, 14.725757470173537, 0)
+        label("1", 0.9975846408778818, 11.041507365873928, 0)
+    }
+
+    SkillLevels <--> Assessment with {
+        over = start(0.3608672285378796).axisAligned(0, rpos(SkillLevels, -132.3638865739613, 846.5137144601042)).line(end(0.9546889099562758))
+        label("1", 0.982718447946184, -2.9250058561386303, 0)
+        label("1..4", 0.2576960680399013, 23.784189298500323, 0)
+        label(
+            "adjusts >",
+            0.9120305081171125,
+            28.601832410252893,
+            359.43764331953946
+        )
+    }
+
+    Feedback <--> Assessment with {
+        over = start(0.48411237512231076).axisAligned(0.25, rpos(Feedback, -472.30281728285706, 525.3302803244696)).line(end(0.03734034327502093))
+        label("1", 0.9728901228654088, -2.874279218246355, 0)
+        label("1", 0.08980230264996138, 24.296254294227424, 0)
+        label(
+            "receives >",
+            0.8611778625723374,
+            23.477657346448883,
+            359.43764331953946
+        )
+    }
+
+    Hint <--> Assessment with {
+        over = start(0.42200662485962126).axisAligned(0.25, rpos(Hint, -303.43377900025894, 434.5099572145009)).line(end(0.10641000271982567))
+        label("1", 0.9814219039884382, -2.8996819686236757, 0)
+        label("1..4", 0.05577295713623291, -19.10647236490348, 0)
+        label(
+            "receives >",
+            0.9059717928234544,
+            21.92521767614505,
+            359.43764331953946
+        )
+    }
+
+    Feedback <--> SkillLevels with {
+        over = start(0.578658605577228).axisAligned(0.25, rpos(SkillLevels, -87.73551161408324, 330.76690749698884)).line(end(0.3236694568030566))
+        label("1..4", 0.9801262679445636, 18.382929222656827, 0)
+        label("1", 0.5434883733179371, 27.42157295770926, 0)
+        label(
+            "< analyzes",
+            0.9009602346609947,
+            24.74997300459271,
+            90.0032207859596
+        )
+    }
+
+    Content *-- Tags with {
+        over = start(0.022727094717831946).line(end(0.47501895782971815))
+        label("1..* {unique}", 0.6880522442807485, -23.216782987946857, 0)
+    }
+
+    Tags <--> Feedback with {
+        over = start(0.7494783791748757).axisAligned(0, rpos(Tags, 40.230317492049664, -171.61745862338486)).line(end(0.40328599228694356))
+        label("1", 0.9771210519599078, 4.173277646533597, 0)
+        label("1..* {unique}", 0.30445554540141373, -54.55587252238382, 0)
+        label(
+            "< uses",
+            0.7927380447695617,
+            -21.142544394171047,
+            359.9999998059949
+        )
+    }
+
+    Tags <--> Hint with {
+        over = start(0.9938470212907347).axisAligned(0.6238777464387436, rpos(Tags, 176.49022811432081, -94.60098740210117)).line(end(0.5385662869821116))
+        label("1..4", 0.9679513122135235, -31.367711972064267, 0)
+        label("1..* {unique}", 0.20842039448678915, 14.218425456237014, 0)
+        label(
+            "< uses",
+            0.7039309253594674,
+            -22.303696174880884,
+            359.9999998059949
+        )
+    }
+}
