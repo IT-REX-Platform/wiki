@@ -14,4 +14,16 @@ the chapters.
 - For example, if a chapter is deleted, the content microservice can delete all content of this chapter, when it receives
   the deletion event.
 
+## Dapr PubSub
+
+The deletion event should be published in a dapr pubsub topic named `resource-deletion` in the dapr pubsub component named `gits`.
+
+The event should pass an object with the following structure:
+
+```json
+{
+  "id": "<uuid of the resource object>",
+  "type": "<type of the resource object, e.g. course, chapter, media record, etc.>"
+}
+```
 
