@@ -19,8 +19,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Content dependency service" href="dependency-service.html" />
-    <link rel="prev" title="How to test the ReadTheDocs pages locally" href="../readthedocs/test-locally.html" /> 
+    <link rel="next" title="Flashcard service" href="flashcard-service.html" />
+    <link rel="prev" title="Content service" href="content-service.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,6 +46,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../user-manuals/index.html">User Manuals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Developer Manuals</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../architecture/README.html">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture/graphql.html">GraphQL schema</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../architecture/repository_structure.html">Repository structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../authentication/keycloak.html">Keycloak</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gamification/README.html">Gamification</a></li>
@@ -53,13 +54,20 @@
 <li class="toctree-l2"><a class="reference internal" href="../project-management/team.html">Team members and responsibilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../backend/coding-guidelines.html">Coding Guidelines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../backend/get-started.html">Get Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backend/testing.html">Backend testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../frontend/get-started.html">Get Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../frontend/testing.html">Frontend testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../readthedocs/add-folder.html">How to add a new folder to ReadTheDocs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../readthedocs/setup-locally.html">How to setup ReadTheDocs locally</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../readthedocs/test-locally.html">How to test the ReadTheDocs pages locally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content-service.html">Content service</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Course service</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dependency-service.html">Content dependency service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flashcard-service.html">Flashcard service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gateway-service.html">Gateway service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="media-service.html">Media service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quiz-service.html">Quiz service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reward-service.html">Reward service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skill-level-service.html">Skill level service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sonarqube/how-to-use-sonarqube.html">How to use sonarqube</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feature-testing/index.html">Feature Testing Overview</a></li>
 </ul>
@@ -94,21 +102,19 @@
              
   <section id="course-service">
 <h1>Course service<a class="headerlink" href="#course-service" title="Permalink to this heading"></a></h1>
-<p>The course service provides the information which courses are available as well as details about each course.
-It also allows the creation of new courses and editing of existing ones.<br />
-It provides information about which content is part of the course, which chapter the content is a part of, on which date the content will be unlocked and what content needs to be learned before unlocking some piece of content.<br />
-The course service only holds references to the actual course content, such as lecture videos, quizzes and flashcards.<br />
-Who has access to the course and the different roles such as lecturer, teaching assistent and student are not handled by the course service. For these functionalities the course service invokes keycloak.<br />
-Example of how a course might be structured:
-<img alt="course example" src="../../_images/course.png" /></p>
+<p>The course service provides the information which courses are available as well as information about the chapters of each course.
+It also allows the creation of new courses, editing and deleting of existing ones.
+It provides information about which chapters are part of the course and their order, but does not know which content is a part of these chapters.<br />
+Who has access to the course and the different roles such as lecturer, teaching assistent and student are not handled by the course service.
+For these functionalities the course service invokes keycloak.</p>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../readthedocs/test-locally.html" class="btn btn-neutral float-left" title="How to test the ReadTheDocs pages locally" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="dependency-service.html" class="btn btn-neutral float-right" title="Content dependency service" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="content-service.html" class="btn btn-neutral float-left" title="Content service" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="flashcard-service.html" class="btn btn-neutral float-right" title="Flashcard service" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

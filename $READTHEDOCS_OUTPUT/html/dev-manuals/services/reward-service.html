@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Feature Testing Overview &mdash; GITS - Gamified Intelligent Tutoring System  documentation</title>
+  <title>Reward service &mdash; GITS - Gamified Intelligent Tutoring System  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Lecturer-Interface: Example" href="lecturer/lecturer-interface-01-example.html" />
-    <link rel="prev" title="How to use sonarqube" href="../sonarqube/how-to-use-sonarqube.html" /> 
+    <link rel="next" title="Skill level service" href="skill-level-service.html" />
+    <link rel="prev" title="Quiz service" href="quiz-service.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -60,20 +60,16 @@
 <li class="toctree-l2"><a class="reference internal" href="../readthedocs/add-folder.html">How to add a new folder to ReadTheDocs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../readthedocs/setup-locally.html">How to setup ReadTheDocs locally</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../readthedocs/test-locally.html">How to test the ReadTheDocs pages locally</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../services/content-service.html">Content service</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../services/course-service.html">Course service</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../services/flashcard-service.html">Flashcard service</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../services/gateway-service.html">Gateway service</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../services/media-service.html">Media service</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../services/quiz-service.html">Quiz service</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../services/reward-service.html">Reward service</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../services/skill-level-service.html">Skill level service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content-service.html">Content service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="course-service.html">Course service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flashcard-service.html">Flashcard service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gateway-service.html">Gateway service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="media-service.html">Media service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quiz-service.html">Quiz service</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Reward service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skill-level-service.html">Skill level service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sonarqube/how-to-use-sonarqube.html">How to use sonarqube</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Feature Testing Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="lecturer/lecturer-interface-01-example.html">Lecturer-Interface: Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="student/student-interface-01-example.html">Student-Interface: Example</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../feature-testing/index.html">Feature Testing Overview</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../adr/index.html">Architecture Decision Records</a></li>
@@ -94,9 +90,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Developer Manuals</a></li>
-      <li class="breadcrumb-item active">Feature Testing Overview</li>
+      <li class="breadcrumb-item active">Reward service</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/dev-manuals/feature-testing/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/dev-manuals/services/reward-service.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -104,28 +100,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="feature-testing-overview">
-<h1>Feature Testing Overview<a class="headerlink" href="#feature-testing-overview" title="Permalink to this heading"></a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">How to test lecturer features</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="lecturer/lecturer-interface-01-example.html">Lecturer-Interface: Example</a></li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">How to test lecturer features</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="student/student-interface-01-example.html">Student-Interface: Example</a></li>
-</ul>
-</div>
+  <section id="reward-service">
+<h1>Reward service<a class="headerlink" href="#reward-service" title="Permalink to this heading"></a></h1>
+<p>This service handles the reward system of IT-REX.
+Depending on solved quizzes, watched lectures, repetition of content, flashcard learning, or any other activity of a student on the platform, this service calculates rewards and saves them in the 4 databases (Growth, Health, Fitness, and Power).
+These values will be presented visually to the student on the platform.
+The “power” value is a combined value and will be ranked on a scoreboard of students within a course.
+The service also provides an API to external services to get rewards in IT-REX (e.g an exercise in another plaeorm is solved and it will also contribute to the reward system of IT-REX).</p>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../sonarqube/how-to-use-sonarqube.html" class="btn btn-neutral float-left" title="How to use sonarqube" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="lecturer/lecturer-interface-01-example.html" class="btn btn-neutral float-right" title="Lecturer-Interface: Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="quiz-service.html" class="btn btn-neutral float-left" title="Quiz service" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="skill-level-service.html" class="btn btn-neutral float-right" title="Skill level service" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

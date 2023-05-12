@@ -46,6 +46,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../user-manuals/index.html">User Manuals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Developer Manuals</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../architecture/README.html">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture/graphql.html">GraphQL schema</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../architecture/repository_structure.html">Repository structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../authentication/keycloak.html">Keycloak</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gamification/README.html">Gamification</a></li>
@@ -57,15 +58,27 @@
 <li class="toctree-l4"><a class="reference internal" href="#special-style-rules">Special Style Rules</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to">How To…</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-validate-input">How to validate input?</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="get-started.html">Get Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">Backend testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../frontend/get-started.html">Get Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../frontend/testing.html">Frontend testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../readthedocs/add-folder.html">How to add a new folder to ReadTheDocs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../readthedocs/setup-locally.html">How to setup ReadTheDocs locally</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../readthedocs/test-locally.html">How to test the ReadTheDocs pages locally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/content-service.html">Content service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../services/course-service.html">Course service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/flashcard-service.html">Flashcard service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/gateway-service.html">Gateway service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../services/media-service.html">Media service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/quiz-service.html">Quiz service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/reward-service.html">Reward service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/skill-level-service.html">Skill level service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sonarqube/how-to-use-sonarqube.html">How to use sonarqube</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feature-testing/index.html">Feature Testing Overview</a></li>
 </ul>
@@ -133,6 +146,32 @@
 <ul class="simple">
 <li><p>If acronyms are used in class, variable, or other names, only the first letter of the acronym should be capitalized, all other letters must not be capitalized, e.g. <code class="docutils literal notranslate"><span class="pre">AbstractJsonToXmlConverter</span></code></p></li>
 </ul>
+</section>
+</section>
+<section id="how-to">
+<h2>How To…<a class="headerlink" href="#how-to" title="Permalink to this heading"></a></h2>
+<section id="how-to-validate-input">
+<h3>How to validate input?<a class="headerlink" href="#how-to-validate-input" title="Permalink to this heading"></a></h3>
+<section id="field-level-validation">
+<h4>Field level validation<a class="headerlink" href="#field-level-validation" title="Permalink to this heading"></a></h4>
+<p>To validate the input the microservice receives on the field level, we can use a set of predefined graphQL directives.
+Example:</p>
+<div class="highlight-graphql notranslate"><div class="highlight"><pre><span></span>input CreateCourseInput {
+    # Title of the course, max 255 characters
+    title: String! @NotBlank @Size(max: 255)
+    # Description of the course, max 3000 characters
+    description: String! @Size(max: 3000)
+   ...
+}
+</pre></div>
+</div>
+<p>This will automatically raise a graphQL error if for example the <code class="docutils literal notranslate"><span class="pre">title</span></code> in this example is blank.
+More information on these directives <a class="reference external" href="https://github.com/graphql-java/graphql-java-extended-validation/blob/master/README.md">here</a></p>
+</section>
+<section id="class-level-validation">
+<h4>Class level validation<a class="headerlink" href="#class-level-validation" title="Permalink to this heading"></a></h4>
+<p>To validate a input class on class level, e.g., to check if a start date is before an end date or there are no duplicate items in the db, write your custom validation code in the <code class="docutils literal notranslate"><span class="pre">validation</span></code> package and call it in the corresponding service class.</p>
+</section>
 </section>
 </section>
 </section>
