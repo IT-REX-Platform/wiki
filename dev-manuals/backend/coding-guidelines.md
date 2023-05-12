@@ -20,11 +20,17 @@ The detailed package structure is documented [here](https://github.com/IT-REX-Pl
 
 ## Style Guide
 
-We use the default Oracle Styleguide, i.e., the default settings of IntelliJ, as a base.
+### Java
 
-### Special Style Rules
+We use the default Oracle Styleguide, i.e., the default settings of IntelliJ, as a base. Also remember the Java naming conventions.
+
+#### Special Style Rules
 
 - If acronyms are used in class, variable, or other names, only the first letter of the acronym should be capitalized, all other letters must not be capitalized, e.g. `AbstractJsonToXmlConverter`
+
+### GraphQL
+
+Please regard the [GraphQL naming conventions](https://www.apollographql.com/docs/technotes/TN0002-schema-naming-conventions/)
 
 ## How To...
 
