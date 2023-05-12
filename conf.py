@@ -30,6 +30,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store',
 
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
+html_css_files = ['css/custom.css']
 
 # Generate HTML anchors (test#h1-title) for titles up to h4
 myst_heading_anchors = 4

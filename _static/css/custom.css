@@ -1,0 +1,10 @@
+th, td {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: lightslategray;
+    padding: 3px 7px 3px 7px;
+}
+th {
+    background-color: lightsteelblue;
+    border-bottom-width: 2px;
+}
