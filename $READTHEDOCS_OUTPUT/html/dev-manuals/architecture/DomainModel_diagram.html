@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Feature Testing Overview &mdash; GITS - Gamified Intelligent Tutoring System  documentation</title>
+  <title>Domain model &mdash; GITS - Gamified Intelligent Tutoring System  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Lecturer-Interface: Example" href="lecturer/lecturer-interface-01-example.html" />
-    <link rel="prev" title="How to use sonarqube" href="../sonarqube/how-to-use-sonarqube.html" /> 
+    <link rel="next" title="Architecture" href="README.html" />
+    <link rel="prev" title="Architecture model" href="Architecture_Diagram.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,9 +45,11 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../user-manuals/index.html">User Manuals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Developer Manuals</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../architecture/README.html">Architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../architecture/graphql.html">GraphQL schema</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../architecture/repository_structure.html">Repository structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Architecture_Diagram.html">Architecture model</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Domain model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphql.html">GraphQL schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repository_structure.html">Repository structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../authentication/keycloak.html">Keycloak</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gamification/README.html">Gamification</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../project-management/definition-of-done.html">Definition of Done</a></li>
@@ -69,11 +71,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../services/reward-service.html">Reward service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../services/skill-level-service.html">Skill level service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sonarqube/how-to-use-sonarqube.html">How to use sonarqube</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Feature Testing Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="lecturer/lecturer-interface-01-example.html">Lecturer-Interface: Example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="student/student-interface-01-example.html">Student-Interface: Example</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../feature-testing/index.html">Feature Testing Overview</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../adr/index.html">Architecture Decision Records</a></li>
@@ -94,9 +92,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Developer Manuals</a></li>
-      <li class="breadcrumb-item active">Feature Testing Overview</li>
+      <li class="breadcrumb-item active">Domain model</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/dev-manuals/feature-testing/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/dev-manuals/architecture/DomainModel_diagram.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -104,28 +102,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="feature-testing-overview">
-<h1>Feature Testing Overview<a class="headerlink" href="#feature-testing-overview" title="Permalink to this heading"></a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">How to test lecturer features</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="lecturer/lecturer-interface-01-example.html">Lecturer-Interface: Example</a></li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">How to test lecturer features</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="student/student-interface-01-example.html">Student-Interface: Example</a></li>
-</ul>
-</div>
+  <section id="domain-model">
+<h1>Domain model<a class="headerlink" href="#domain-model" title="Permalink to this heading"></a></h1>
+<p><img alt="DomainModel.png" src="../../_images/DomainModel.png" /></p>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../sonarqube/how-to-use-sonarqube.html" class="btn btn-neutral float-left" title="How to use sonarqube" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="lecturer/lecturer-interface-01-example.html" class="btn btn-neutral float-right" title="Lecturer-Interface: Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Architecture_Diagram.html" class="btn btn-neutral float-left" title="Architecture model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="README.html" class="btn btn-neutral float-right" title="Architecture" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

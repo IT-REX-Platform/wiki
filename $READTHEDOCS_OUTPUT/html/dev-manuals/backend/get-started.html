@@ -19,7 +19,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Get Started" href="../frontend/get-started.html" />
+    <link rel="next" title="Backend testing" href="testing.html" />
     <link rel="prev" title="Coding Guidelines" href="coding-guidelines.html" /> 
 </head>
 
@@ -46,6 +46,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../user-manuals/index.html">User Manuals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Developer Manuals</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../architecture/README.html">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../architecture/graphql.html">GraphQL schema</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../architecture/repository_structure.html">Repository structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../authentication/keycloak.html">Keycloak</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../gamification/README.html">Gamification</a></li>
@@ -53,32 +54,33 @@
 <li class="toctree-l2"><a class="reference internal" href="../project-management/team.html">Team members and responsibilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coding-guidelines.html">Coding Guidelines</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Get Started</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#java">Java</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#git">Git</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ide">IDE</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#gradle">Gradle</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker">Docker</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#database">Database</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#dapr">Dapr</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#clone-the-repository">Clone the repository</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#run-the-database">Run the database</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#database-configuration">Database configuration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#run-dapr">Run Dapr</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#run-microservice-without-dapr">Run microservice without Dapr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker-compose-configuration">Docker compose configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-microservice-without-dapr-in-development">Run microservice without Dapr (in development)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-the-microservice">Run the Microservice</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-scripts-for-dapr">Run scripts for dapr</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">Backend testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../frontend/get-started.html">Get Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../frontend/testing.html">Frontend testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../readthedocs/add-folder.html">How to add a new folder to ReadTheDocs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../readthedocs/setup-locally.html">How to setup ReadTheDocs locally</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../readthedocs/test-locally.html">How to test the ReadTheDocs pages locally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/content-service.html">Content service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../services/course-service.html">Course service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/flashcard-service.html">Flashcard service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/gateway-service.html">Gateway service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../services/media-service.html">Media service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/quiz-service.html">Quiz service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/reward-service.html">Reward service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/skill-level-service.html">Skill level service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sonarqube/how-to-use-sonarqube.html">How to use sonarqube</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../feature-testing/index.html">Feature Testing Overview</a></li>
 </ul>
@@ -113,42 +115,38 @@
              
   <section id="get-started">
 <h1>Get Started<a class="headerlink" href="#get-started" title="Permalink to this heading"></a></h1>
-<p>This will contain a description on how get started to work as a backend dev.</p>
+<p>This will contain a description on how get started to work as a backend dev.
+If you don’t want to develop and only run the service, there is docker compose file provided.</p>
 <section id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading"></a></h2>
-<section id="java">
-<h3>Java<a class="headerlink" href="#java" title="Permalink to this heading"></a></h3>
+<ul>
+<li><p>Java</p>
 <p>We use Java 17. You can download the JDK <a class="reference external" href="https://www.oracle.com/java/technologies/downloads/#java17">here</a>.</p>
-</section>
-<section id="git">
-<h3>Git<a class="headerlink" href="#git" title="Permalink to this heading"></a></h3>
-<p>We use Git as version control system. You can download it <a class="reference external" href="https://git-scm.com/downloads">here</a>. To be able to push and pull from GitHub, you will need to set up an SSH key. You can find a guide <a class="reference external" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh">here</a>.</p>
-</section>
-<section id="ide">
-<h3>IDE<a class="headerlink" href="#ide" title="Permalink to this heading"></a></h3>
+</li>
+<li><p>Git</p>
+<p>We use Git as version control system. You can download it <a class="reference external" href="https://git-scm.com/downloads">here</a>. To be able to push and pull from GitHub, you will need to set up an SSH key. You can find a guide [here]  (https://docs.github.com/en/authentication/connecting-to-github-with-ssh).</p>
+</li>
+<li><p>IDE</p>
 <p>We use IntelliJ IDEA as IDE. You can download it <a class="reference external" href="https://www.jetbrains.com/idea/download/">here</a>. As a student you can get a free license for the Ultimate Edition <a class="reference external" href="https://www.jetbrains.com/community/education/#students">here</a>.</p>
-</section>
-<section id="gradle">
-<h3>Gradle<a class="headerlink" href="#gradle" title="Permalink to this heading"></a></h3>
+</li>
+<li><p>Gradle</p>
 <p>We use Gradle as build tool. You can download it <a class="reference external" href="https://gradle.org/install/">here</a>.</p>
-</section>
-<section id="docker">
-<h3>Docker<a class="headerlink" href="#docker" title="Permalink to this heading"></a></h3>
+</li>
+<li><p>Docker</p>
 <p>We use Docker to run our microservices and the database. You can download it <a class="reference external" href="https://www.docker.com/products/docker-desktop">here</a>.</p>
-</section>
-<section id="database">
-<h3>Database<a class="headerlink" href="#database" title="Permalink to this heading"></a></h3>
+</li>
+<li><p>Database (optional)</p>
 <p>We use PostgreSQL as database. You can download it <a class="reference external" href="https://www.postgresql.org/download/">here</a> to run it locally.</p>
 <p>We recommend using PGAdmin locally to manage the databases. You can download it <a class="reference external" href="https://www.pgadmin.org">here</a> in case you didn’t already install it together with PostgresSQL.</p>
-<p>Alternatively, you can use the database in a Docker container. A guide on how to do this can be found <a class="reference external" href="https://www.baeldung.com/ops/postgresql-docker-setup">here</a>. We will provide a Docker Compose file for this in each microservice.</p>
+<p>Alternatively, you can use the database in a Docker container. We will provide a Docker Compose file for this in each microservice. See below for details.</p>
 <p>For Media Storage we use MinIO. How to set it up is explained here: <a class="reference external" href="https://min.io/docs/minio/container/index.html">here</a></p>
-</section>
-<section id="dapr">
-<h3>Dapr<a class="headerlink" href="#dapr" title="Permalink to this heading"></a></h3>
+</li>
+<li><p>Dapr</p>
 <p>We use Dapr as runtime for our microservices.
 To run locally, you can download it <a class="reference external" href="https://docs.dapr.io/getting-started/install-dapr-cli/">here</a>.</p>
 <p>We will however use Docker to run Dapr and provide a Docker Compose file for this in each microservice.</p>
-</section>
+</li>
+</ul>
 </section>
 <section id="setup">
 <h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading"></a></h2>
@@ -179,21 +177,43 @@ Click on optional settings enter the name and port of the container.</p>
 </ul>
 <p>Click run to start the container.</p>
 <p>See here if you prefer to use the command line: <a class="reference external" href="https://www.baeldung.com/ops/postgresql-docker-setup">here</a>.</p>
-<p><em>TODO: Docker Compose file</em></p>
 </section>
 <section id="database-configuration">
 <h3>Database configuration<a class="headerlink" href="#database-configuration" title="Permalink to this heading"></a></h3>
 <p>If you set the database up as described in “Run the database”, you only need to add the previously defined variables to the configuration.
 Enter the database configuration in <code class="docutils literal notranslate"><span class="pre">src/main/resources/application.properties</span></code>. You need to enter the database URL, username and password.</p>
 </section>
-<section id="run-dapr">
-<h3>Run Dapr<a class="headerlink" href="#run-dapr" title="Permalink to this heading"></a></h3>
-<p><em>TODO: Describe how to run Dapr with IDEA</em></p>
-<p><em>TODO: Provide script to run Dapr with Docker</em></p>
+<section id="docker-compose-configuration">
+<h3>Docker compose configuration<a class="headerlink" href="#docker-compose-configuration" title="Permalink to this heading"></a></h3>
+<p>In the docker-compose.yml change the environment variables of the database service, to match the ones in the application.properties.</p>
+<p>Change the expose and ports of both apps to the ones in application properties. The values in expose must match the first part of the ports values.</p>
+<p>For the database port only change the first value. It should look like this “XXXX:5432”,
+where XXXX is the port number of the microservice database.</p>
+<p>Change “templatedatabase” in the SPRING_DATASOURCE_URL to match the POSTGRES_DB value.</p>
 </section>
-<section id="run-microservice-without-dapr">
-<h3>Run microservice without Dapr<a class="headerlink" href="#run-microservice-without-dapr" title="Permalink to this heading"></a></h3>
-<p>Just run the main method of the spring application class with IDEA or run the command <code class="docutils literal notranslate"><span class="pre">gradle</span> <span class="pre">bootRun</span></code> in the command line.</p>
+<section id="run-microservice-without-dapr-in-development">
+<h3>Run microservice without Dapr (in development)<a class="headerlink" href="#run-microservice-without-dapr-in-development" title="Permalink to this heading"></a></h3>
+<p>For the usual developement process.
+Just run the main method of the spring application class with IDEA or run the command <code class="docutils literal notranslate"><span class="pre">gradle</span> <span class="pre">bootRun</span></code> in the command line.</p>
+<p>You can enable auto reload, where when you make changes in the code, the server will automatically reload the code. <a class="reference external" href="https://dev.to/imanuel/auto-reload-springboot-in-intellij-idea-1l65">Here</a> is a short guide how to enable it.</p>
+</section>
+<section id="run-the-microservice">
+<h3>Run the Microservice<a class="headerlink" href="#run-the-microservice" title="Permalink to this heading"></a></h3>
+<p>If you want to test the microservice, you can use docker compose. You can also use the built.in Docker support of IntelliJ for starting and stopping the docker containers. You can also use the command line:</p>
+<p>To build and start the microservice including the database use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">compose</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
+</pre></div>
+</div>
+<p>More info <a class="reference external" href="https://docs.docker.com/engine/reference/commandline/compose_up/">here</a></p>
+<p>To stop the containers and removes containers, networks, volumes, and images created by up.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">compose</span> <span class="n">down</span>
+</pre></div>
+</div>
+<p>More info <a class="reference external" href="https://docs.docker.com/engine/reference/commandline/compose_down/">here</a></p>
+</section>
+<section id="run-scripts-for-dapr">
+<h3>Run scripts for dapr<a class="headerlink" href="#run-scripts-for-dapr" title="Permalink to this heading"></a></h3>
+<p>There exist run scripts for windows (dapr-run.cmd) and bash (dapr-run.sh) if you want to run the service outside docker but with dapr.</p>
 </section>
 </section>
 </section>
@@ -203,7 +223,7 @@ Enter the database configuration in <code class="docutils literal notranslate"><
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="coding-guidelines.html" class="btn btn-neutral float-left" title="Coding Guidelines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../frontend/get-started.html" class="btn btn-neutral float-right" title="Get Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="testing.html" class="btn btn-neutral float-right" title="Backend testing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
