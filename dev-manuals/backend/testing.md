@@ -89,10 +89,12 @@ public class ChapterServiceTest {
 
 ## Integration/API testing
 
-As our microservices are rather small, we do API testing instead of what is usually referred as integration testing.
+As our microservices are rather small, we do API testing instead of what is usually referred to as integration testing.
 This means that we test the graphQL API of the microservices instead of interaction of classes in the microservice.
 Having integration tests in addition to unit tests and API tests would be redundant, as the API tests already test
 the interaction of the classes and the database.
+
+Of course, if it makes sense to have integration tests in addition in some cases, we can always add them.
 
 ### What to test
 
@@ -110,9 +112,10 @@ It starts the spring application context and requires the database to be running
 Each test can use a `GraphQlTester` as a method parameter. The `GraphQlTester` provides methods to execute graphQL
 queries and mutations and to assert the result.
 
-Before the tests, the database is cleared. Each test should set up the test data that is required for the test.
-If a test creates test data that is not deleted by the test, the test must be annotated with `@DirtiesContext` to
-ensure that the test data is deleted before the next test.
+Before the tests, the database is cleared. It is therefore necessary that aach test sets up the test data that 
+is required for the test.
+All test data is deleted after the test, so that the tests are independent of each other.
+This is done with the `ClearDatabase` extension that is automatically registered by the `GraphQlApiTest` annotation.
 
 ### Example
 
@@ -121,7 +124,6 @@ ensure that the test data is deleted before the next test.
 public class Test {
 
     @Test
-    @DirtiesContext
     public void testCreateCourse(GraphQlTester tester) {
         String query = """
                 mutation {
