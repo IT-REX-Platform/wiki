@@ -101,8 +101,8 @@ Of course, if it makes sense to have integration tests in addition in some cases
 We test the graphQL API of the microservices. This means that we test the graphQL queries and mutations that are
 exposed by the microservice. As in unit tests, think of all special cases and exceptional paths that should be tested.
 
-If a functionality is tests in detail in a unit test, we do not have to test it again in that much detail in an API
-test. But in case of doubt, we prefer to have more tests than less.
+If a functionality is tests in detail in a unit test, it might be acceptable to not test it again in that much detail in an API
+test. However, even if your unit tests test the complete functionality, an integration test might be necessary to test the database related aspects like database constraints. So in case of doubt, it is better to have an API test that tests the same functionality again.
 
 ### How to test
 
