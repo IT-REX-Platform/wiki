@@ -65,7 +65,7 @@ input CourseFilter {
 The `StringFilter`, `DateTimeFilter`, and more filter objects are defined in the common graphQL schema, included in the
 template microservice.
 They allow field-level filtering, for example, filtering by a range of dates.
-By providng the `and`, `or`, and `not` fields, filters can be combined allowing for more complex filtering.
+By providing the `and`, `or`, and `not` fields, filters can be combined allowing for more complex filtering.
 
 For example, a query for filtering the currently active courses that are published, have a title or description
 containing "math" looks like this:
