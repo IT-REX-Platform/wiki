@@ -9,49 +9,53 @@ This document outlines the authorization concept used to ensure that graphql que
 * There are different permission levels ("roles", not to be confused with the concept in Keycloak also called roles) both on the global and on the course scale. E.g. a lecturer of a course has write-permissions in that course, but not in other courses; A student assigned to a course has read permissions only for that course. Permissions cannot be set fine-grained per user, only a role with a predefined set of permissions (either globally or on a course-specific level) can be assigned to a user
 * We assume there are no additional hierarchical permission concepts other than global permissions and course-specific permissions. This means that it is not possible for example for a user to only have permissions for some contents of a course. You either have permissions for everything that's part of the course, or you do not. (Of course this limitation does not impede on the ability of services to implement specific limitations on access to course content which is not dependent on independent user permissions but instead on other rules, e.g. a quiz which can only be accessed by students before a specific date has passed)
 
-## Keycloak
+## Basic Components
+### Keycloak
 
-Keycloak is used for user authentication. Keycloak is also used in the authorization concept to store the global and course-specific role of each user.
+Keycloak is used for user authentication.
 
-### Keycloak User-Service
+### UserService
 
-Other services shall not directly interact with Keycloak. Instead, a service is placed between Keycloak and the rest of the system's infrastructure. This service abstracts away Keycloak-specific quirks and provides a simple interface for other services to create users, add users to courses, grant or revoke roles of users, etc.
+* Saves course membership information for every user
+* Could be used in the future for saving user-specific settings
 
-## Authorization-Related Inter-Service-Communiction
+### Course Service
 
-As GraphQL allows creating complex nested hierarchical queries and mutations, and as we are using GraphQL Mesh to split up queries to multiple services, ensuring proper authorization for all parts of a query is of paramount importance. At the same time, many unnecessary calls by services to check for permissions which have already been checked previously at some "upstream" location of the query hierarchy, should be avoided as this can potentially put a lot of strain on the infrastructure when querying a large dataset.
+* The CourseService provides an endpoint which can be queried with the id of a resource and which returns the id of the course it is associated with and a boolean to indicate if that course is available depending on the course properties `published`, `startDate`, `endDate`
+* Used by other services to find out if a resource should be accessible by a user
 
-## Querying Course-Specific Permissions
+<details>
+<summary>Reasoning for putting the Resource Lookup into the CourseService</summary>
 
-**Course-specific permissions should in almost all cases NOT be requested from the Keycloak User-Service directly.**
+Originally it was planned to have the resource<->course lookup in its own service. However, it was noticed that a resource's availability for a user is not just dependent on if the user has access to the course, but also on if the course is currently published and available. This would have required another request by a service to the CourseService to retrieve this information.
 
-Instead, the course service should, for a course query, also return a user's permission level for that course, if a user auth token was provided in the graphql request context. If other services want to get a user's permissions for a specific course, they should request this information from the course service.
+For this reason the resource<->course lookup was consolidated into the CourseService, which can then provide an endpoint for other services to return all necessary information regarding a resource's availability to a user. 
 
-Considering this, there are two specific dataflow cases which could be identified:
+</details>
 
-### Gateway-Managed Permissions Check
+## Basic Authorization Concept
 
-![](/images/authorization-gateway.png)
-[Edit Diagram (Image and this link have to be updated manually after editing)](https://mermaid.live/edit#pako:eNqdlM1uAiEUhV_lhlVNbB_ANG5q0jSNm5ruZnOFO0qcAQuMzdT47oX50WEYk6YujFzgO5xzkTPjWhBbMEtfFSlOK4k7g2WmwH-QO23g05Jpx0c0TnJ5ROXgFR19Y51OvOjKWNqQOUlO6XSgdZOAdjh83prlwzvVvNB4mE2BlSPl7pLXJCRGs-13kHhcLrsDL-AjWLUOsCigDHtAChvEdd7UeGPAXiOQJ78z9tsNPDVyG7M7DnhsdY3wypuIKSp59iCbGzmg4EimlNZKrZqD575L06ceIG5h9ApTx3eVUX_TEHRfJXYSh98o9NlIxYungB9LJhqjvNI-DC_HLS7e1i1sa3hbwUMjCBnDyu21kT8kMga5pELMkgal1y2uTfpqFoBAhxMWYuLYw_AC3xy0V9QQ10b8w0b6rxhWpnoTCSYmYl5sobuzI5IMlITT7WFzVvquoxT-ETqHVRlzeyopYwv_U6A5ZCxTF7_Oe9WbWnG2cKaiOauOPuX-weqLXtG_Wev2UfPdyOWOXX4BUWq53w)
+![](/images/authorization-backtracking.png)
+[Edit Diagram (Image and this link have to be updated manually after editing)](https://mermaid.live/edit#pako:eNp1VMGO2yAQ_ZURl14SVd3erCqXVlpV7R7aVXvyZQyTDYoNLmCvrCj_XsA4i03WBwtm4M2bN8NcGNeCWMUs_RtIcfom8cVgVyvwH3KnDfyxZOZ9j8ZJLntUDh7R0StOpeOJhMRnMqPkVHq_6sFYetf9gybeajyXnsBidW3-B_P-cEhsKng02J9-_YQXctAFJl8aczDEtREWmgmkuKUmR3_pLY_ZnrYecqFSwV9spQhnBx8MnD6T2oCsaS-7fU7sN7nBKBhnLKkVSHXU8wVBd5C2fDIBIpqRNCZKPIoaMu2oa8jYk-wjvOliqA3bQsrMcI9ziPHBwga7oL6C3bLPu-KtSiZ0nXWB-evHnDFgoweXIgc3jihbbFpKydpNTmXX5RZPYNV4IbUYGfB4lK30CCIBAyoBKZr3uCnSChQ8ObjEnvouPu0grR5uq8_XDadNry-irMz7Qpsk-iXn4MPl24f1dgmc1eLOM1vpcafKN4XnFxPl8arE5Ar8Uu6l1KlT8xrbXitLBUa6wXasI192KfwYuoRTNXMn6qhmlV8KNOea1erqz-Hg9POkOKucGWjHhj48yzSyWHXE1nqrp-bH1tM81-J4u_4H3LW6Pw)
 
-This type of permissions check is used in cases where the gateway splits up a query which has a call to the course-service at the top level and further queries the returned courses' data from other services. Example:
+1. The Gateway firstly validates the user token sent by the user
+2. The Gateway retrieves course membership information of the user from the UserService
+3. The Gateway passes course membership information of the user to the in its request to other services using the GraphQL Context
+4. The service of which a resource is requested (in the example the MediaService) requests the course the resource is associated with from the CourseService
+5. The service checks if the affiliated course is available using the information returned by the CourseService and it checks whether the user has access to the affiliated course using the membership info passed by the Gateway
 
-```graphql
-courses {
-    mediaRecords {
-        name,
-        type
-    }
-}
-```
+### Retrieving Permissions for a Resource in a Service
 
-1. The GraphlQL Mesh Gateway would split this query up into a call to the course service, which requests for each course the ids of the media records which are part of this course.
-2. Then, the gateway would send a query to the media service, passing the media record ids it collected and requesting back the data for each of them. 
-3. Lastly, the gateway would construct the response to the graphql query by merging the two responses it got from the two services (replacing the media record ids it got from the course service with the actual media record data it got from the media service).
+In detail, to retrieve permissions for a resource a service wants to return, the following needs to be done by the service:
 
-In this case, the gateway knows the course-affiliation for each media record, so it can simply pass a field {"authorized": "student" } to all subsequent services (the media service, in our example). Then these services know that they don't have to check themselves if the user is authorized to view the course this content is affiliated with.
+1. The course it is associated with needs to be retrieved
+    * For this, the CourseService provides an endpoint which can be queried with the ids of multiple resources and which returns the ids of the courses they are associated with and a boolean to indicate if that course is available depending on the course properties `published`, `startDate`, `endDate`
+2. Check if the `available` boolean for the course the resource is associated with is true
+3. Retrieve the courses the user has membership access to from the GraphQL context
+4. Check if the user has the necessary membership access to the course the resource is associated with
+5. Only return the resource if the aforementioned conditions are met
 
-### Handling GraphQL requests where the user only has permissions for some subitems
+## Handling GraphQL requests where the user only has permissions for some subitems
 
 Imagine a query like the following:
 
@@ -70,24 +74,35 @@ However, only lecturers and tutors have access to the member information of a co
 
 **Such a case should be handled by services in the following way:**
 
-**For the courses where member information cannot be returned due to missing permissions, return null instead. Remember that the possibility of a null response needs to be considered in the GraphQL schema as well!**
+For the courses where some information cannot be returned due to missing permissions, return null instead. Remember that the possibility of a null response needs to be considered in the GraphQL schema as well!
 
-### Backtracking Permissions Check
+<details>
+<summary>Reasoning for using null</summary>
 
-![](/images/authorization-backtracking.png)
-[Edit Diagram (Image and this link have to be updated manually after editing)](https://mermaid.live/edit#pako:eNqFVE1rAjEQ_SshpxaUUr0txUsLUtpCW-ltLzEZNegm20lWEfG_d7IfumtW64IkmZ33Zua97IFLq4An3MFvAUbCixZLFFlqGP2E9BbZjwOs9rlAr6XOhfFsKjzsxD4OfIDSYga41RLi6LM1Hoy_ES_QwdXwG-zlxop1Fan-Q33DyaQuKGFTFPnq650twbMsFMMQpEXlnuY4me-ZVqfu9JaSzq2EJ0TqAwJtN3NGxjAs5wPe7oEVxM-0WVjMhNfWXKDH82ifEEd3JAn7rtBZDphp5wjRMQIPbIeyn1f1OGD1anRajY9lf8KBYtb8V1WfDt2zsrKWGLcLk1VuWdppPTpGrB11G9rWIbE2GtO8ScGgLvtEvdUbWEKpIXESR0i6c_cXDF2DNLthXzO-QHMJX6Up6MHrK7ZXvRL3cB4STeS8aUbSouix_IUSkRErknLw13jam3Efaax_x5ftG1X3VNue_FVaLsKMnd5cJAILg27fIJeTfSDCqDP4gGdUvtCKvk2H8FbK_QoySHlCSyVwnfLUHOk9UXg72xvJE48FDHiRK8Kov2M8WYiNg-MfmnC8dg)
+We decided on returning null instead of throwing a GraphQL exception because if a service threw an exception each time it tries to return a resource for which the user does not have permissions, that would result in the frontend having to send 3 queries instead of 1: Firstly it would have to retrieve the user's permissions for the courses it wants data of, then it would have to query all the courses the user has "less" permissions for, and then it would have to query the courses the user has "more" permissions for.
 
-This type of permissions check is used if data is queried directly (i.e. a top-level query to course-specific data). Example:
+When returning null, the frontend can just query courses indiscriminatly and when processing the response it can just skip data values which are null which makes the implementation way easier.
+</details>
+
+
+## Skipping Permissions Check Under Some Circumstances (Possible Future Optimization)
+
+![](/images/authorization-gateway.png)
+[Edit Diagram (Image and this link have to be updated manually after editing)](https://mermaid.live/edit#pako:eNqVVM1uGyEQfpURlzZS0gdYVb4kUlVVuSRKTnsZw7hGZsEFdivH2ncPsBt7gW2l-GDBDPv9wMycGTeCWMMc_elJc3qQ-Nti12oIP-TeWHhxZKf9Ea2XXB5Re_iBnv7iqU78ohNXBg91JgI9kx0kpzp5b3rr6D9p7Un7f-YfSUjMstN_5LzbbGa1DTxFn87DGXgidGmVsOOyizBPxI0VDsZxvNyDHALC1fQUn7cB_8N0A6-opIhn-8AM3hxIFyD5BX3s7nKVvrcahglLGg1S78z0gaAVpFLP4qoTmpU0zJIm39-3dtNRtyXr9vKY4G2XqAq11aMtAmuaI8cXBwV2JT2DLdVntXB9M1QKcECpcKvo8n5mlzgL2SvllIXWpFfYleoCtda9LNKr8EuBbU_w8wG-Ss3VN2gZ9n5vrHwj0TLYSVLiprJRl30eWzMy80GoHVzxkEOWJpaddLWQGgPs3Bmf9lG35zKy5iEjrEzkeLmFufwLJBlRKpz5G3bLOgr1L0UYhed4qmV-Tx21rAlLgfbQslaP4Vzwap5PmrPG255uWX-M3T6PTdbsULkQDZRhdD5OszWN2PEdLqrnRQ)
+
+For a nested query like the following:
 
 ```graphql
-mediaRecords {
-    name,
-    type
+courses {
+    contents {
+        mediaRecords {
+            name,
+            type
+        }
+    }
 }
 ```
 
-In this case, there is no way to know if the user sending the query has access to each media record, even if we knew what courses the user has access to. This is because the media service does not know which course each media record is included by. Thus, the only way to determine permissions is by back-tracking through the data hierarchy until the course-level is reached (for course-specific data, course-level is top-level).
+an optimization could be performed by only checking for course permissions once (instead of all services checking access permission for their resources on their own), and passing an `authorized: yes` field to all following nested service queries, as authorization has aleady been ensured by the first query to the course service.
 
-Imagine a more complex scenario, where each course has multiple chapters, which each have multiple media records. To determine permissions of a specific media record, firstly we need to determine which chapter it is part of. Then, to find out if the user has access, we also need to find out what course the chapter is associated with. We have to go "up the chain" through the different levels, because a lower level does not have any information about its parent level.
-
-To facilitate this kind of hierarchical permissions check, each service should provide support for a standardized GraphQL query to determine permissions of multiple entries by id. If the service cannot determine permissions by itself, it should itself use this standardized query to call the next service in the hierarchy to determine permissions. This chain backtracks through the hierarchy until it reaches the course service, which is guaranteed to be able to determine permissions by itself.
+This optimization may be implemented in the future if necessary to improve performance, but for now the authorization flow will only support the basic concept, as most GraphQL queries by the frontend won't be nested over service boundaries, which means even with the basic concept there is no unnecessary overhead.
