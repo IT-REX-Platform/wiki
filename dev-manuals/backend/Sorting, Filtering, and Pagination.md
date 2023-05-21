@@ -137,7 +137,7 @@ public class CourseFilterSpecification {
 
 The specification class should be in the `persistence.specification` package of the microservice.
 
-The repositories of the microservice don't any new methods, but must extend the `JpaSpecificationExecutor` interface.
+The repositories of the microservice don't need to add any new methods, but must extend the `JpaSpecificationExecutor` interface.
 
 The whole implementation of the sorting, filtering, and pagination for the course microservice looks like this:
 
