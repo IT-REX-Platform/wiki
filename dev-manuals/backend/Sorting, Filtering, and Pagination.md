@@ -1,6 +1,6 @@
 # Sorting, Filtering, and Pagination
 
-Each query in the microservices and queries a collection of data should offer **sorting**, **filtering**, and **pagination**.
+Each query in the microservices that queries a collection of data should offer **sorting**, **filtering**, and **pagination**.
 In this document, we will explain how to implement these features in the backend and in the graphql schema.
 
 ## GraphQL Schema
