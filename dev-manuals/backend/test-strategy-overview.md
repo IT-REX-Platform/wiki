@@ -22,7 +22,7 @@ This test strategy is all about verification, meaning dynamic verification - kno
 
 ## Backend
 
-Description of how the different microservices will be tested, can be found [here](../testing.md).
+Description of how the different microservices will be tested, can be found [here](../backend/testing.md).
 
 ## Frontend
 
