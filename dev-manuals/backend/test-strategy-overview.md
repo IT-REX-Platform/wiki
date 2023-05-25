@@ -3,6 +3,7 @@
 Testing in general consists of 2 elements:
 - Verification: Are we building the product right?
 - Validation: Are we building the right product?
+
 This test strategy is all about verification, meaning dynamic verification - known as "tests" - and static code analysis.
 
 ## General
