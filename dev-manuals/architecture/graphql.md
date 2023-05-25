@@ -21,18 +21,16 @@ courses {
 }
 ```
 
-
-
 The courses data lives in the CourseService, the content data lives in the ContentService
 
-1. The GraphlQL Mesh Gateway would split this query up into a query to the course service, which would return for each course the ids of the contents which are part of this course.
-2. Then, the gateway would send a query to the ContentService, passing the content ids it collected in the first step and requesting back the data for each of them.
-3. Lastly, the gateway would construct the response to the graphql query by merging the two responses it got from the two services (replacing the content ids it got from the course service with the actual content data it got from the ContentService).
+1. The GraphlQL Mesh Gateway would split this query up into a query to the course service, which would return the basic data of the course.
+2. Then, the gateway would send a query to the ContentService, passing the course ids it collected in the first step and requesting a list of call contents which are associated with the passed course ids.
+3. Lastly, the gateway would construct the response to the graphql query by merging the two responses it got from the two services (placing the contents it got from the content service with into the appropriate course it got from the CourseService).
 
 **Main Takeaways**
-* Services need to provide GraphQL endpoints which allow the querying of items based on ids.
-* Batching needs to be performed. This means (for the above example) that instead of sending one request to the MediaService per course to get its media records, instead the API gateway batches all courses' media records' ids together and only sends one single query to the MediaService which then returns the media records the gateway needs at once.
-* To perform batching, the endpoints for querying items based on id need to support querying multiple items in a single request, i.e. the endpoints shouldn't just accept a single id and return a single item, but instead accept a list of ids and return a list of items
+* Services need to provide GraphQL endpoints which allow the querying of items based on their parents id.
+* Batching needs to be performed. This means (for the above example) that instead of sending one request to the ContentService per course to get its contents, instead the API gateway batches all courses' content requests together and only sends one single query to the ContentService which then returns the contents the gateway needs at once.
+* To perform batching, the endpoints for querying items based on parent id need to support querying multiple items in a single request, i.e. the endpoints shouldn't just accept a single id and return a single item (for a one-to-one relationship) or a list of items(for a many-to-one relationship), but instead accept a list of ids and return a list of sublists of items, i.e. for each passed parent id, a whole list is returned which contains all children of that id.
 
 ## Further Information/Guides For GraphQL Mesh
 
