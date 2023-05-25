@@ -2,7 +2,7 @@
 
 ## Tool-based code analysis
 
-- SonarQube
+For automatic code review, [SonarQube](https://docs.sonarqube.org/latest/) is used. [SonarCloud](https://www.sonarsource.com/products/sonarcloud/) is used to extend the CI/CD pipeline by performing continuous code inspections and giving hints about detected bugs, vulnerabilities and code smells.
 
 Open questions:
 - What rules should apply in SonarQube? E.g. should it be critical to have empty methods?
