@@ -7,7 +7,7 @@ xx32 -> database port
 
 Some services might use additonal ports, like the mediaservice.
 
-# Currently used Ports
+## Currently used Ports
 
 +--------------------------------------------------------+
 | Service            | Port | dapr | app-id              |
