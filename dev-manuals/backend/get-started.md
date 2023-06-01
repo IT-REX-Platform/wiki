@@ -117,6 +117,28 @@ docker compose down
 ```
 More info [here](https://docs.docker.com/engine/reference/commandline/compose_down/)
 
+### Running all Microservices
+
+Pull or move all projects into the same folder like this:
+GITS
+ - content_service
+ - course_service
+ - media_service
+ - user_service
+
+example structure:
+![img.png](../../images/example folder structure.png)
+
+Make sure the services are named exactly like this, the gits folder can have a different name.
+
+Place the docker compose build.sh, docker compose up.sh and docker compose down.sh into the GITS folder.
+
+docker compose build.sh will build the images.
+docker compose up.sh will start the containers (and build them if this hasn't happened before)
+docker compose down.sh will stop the containers and remove them.
+
+You need a Linux shell installed to run the scripts, which you should have if you installed git for windows.
+
 ### Run scripts for dapr
 
 There exist run scripts for windows (dapr-run.cmd) and bash (dapr-run.sh) if you want to run the service outside docker but with dapr.
