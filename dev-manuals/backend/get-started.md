@@ -119,19 +119,12 @@ More info [here](https://docs.docker.com/engine/reference/commandline/compose_do
 
 ### Running all Microservices
 
-Pull or move all projects into the same folder like this:
-GITS
- - content_service
- - course_service
- - media_service
- - user_service
+Clone the gits_backend with the following command:
+```
+git clone --recurse-submodules https://github.com/IT-REX-Platform/gits_backend.git
+```
 
-example structure:
-![img.png](../../images/example folder structure.png)
-
-Make sure the services are named exactly like this, the gits folder can have a different name.
-
-Place the docker compose build.sh, docker compose up.sh and docker compose down.sh into the GITS folder.
+Run the respective script.
 
 docker compose build.sh will build the images.
 docker compose up.sh will start the containers (and build them if this hasn't happened before)
