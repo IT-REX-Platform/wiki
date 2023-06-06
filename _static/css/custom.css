@@ -8,3 +8,30 @@ th {
     background-color: lightsteelblue;
     border-bottom-width: 2px;
 }
+
+/*
+ * Add a border around the "details" collapsibles.
+ */
+details {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: gray;
+    border-radius: 5px;
+}
+
+/*
+ * "Pointer" (finger) mouse cursor when hovering over collapsible
+ */
+summary {
+    cursor: pointer;
+}
+
+/**
+ * Add a margin under each section. This is necessary for sections which do not contain elements like a paragraph etc., because
+ * these sections would otherwise not have any margin under them, causing the next section to start immediately under it with no distance.
+ */
+section {
+    margin-bottom: 24px;
+}
