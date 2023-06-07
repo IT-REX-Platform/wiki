@@ -9,7 +9,7 @@ Welcome to GITS - Gamified Intelligent Tutoring System's documentation!
 .. TOC is sorted by importance: usage -> installation -> developer hints -> structure -> protocols
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 3
 
    user-manuals/index.rst
    dev-manuals/index.rst
