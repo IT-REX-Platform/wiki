@@ -5,9 +5,9 @@ Developer Manuals
    :glob:
    :maxdepth: 3
 
-   ./api-docs
-   ./architecture
-   ./authentication
+   ./api-docs/index
+   ./architecture/index
+   ./authentication/index
 
 .. toctree::
    :glob:
