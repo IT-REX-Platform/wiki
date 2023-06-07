@@ -3,24 +3,11 @@ Developer Manuals
 
 .. toctree::
    :glob:
-   :titlesonly:
-   :caption: API documentation
+   :maxdepth: 3
 
-   ./api-docs/**
-
-.. toctree::
-   :glob:
-   :titlesonly:
-   :caption: Architecture
-
-   ./architecture/**
-
-.. toctree::
-   :glob:
-   :titlesonly:
-   :caption: Authentication
-
-   ./authentication/**
+   ./api-docs
+   ./architecture
+   ./authentication
 
 .. toctree::
    :glob:
