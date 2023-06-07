@@ -1,0 +1,7 @@
+Gamification
+============
+
+.. toctree::
+   :glob:
+
+   *

@@ -1,0 +1,7 @@
+Services
+========
+
+.. toctree::
+   :glob:
+
+   *
