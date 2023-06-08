@@ -54,4 +54,7 @@ More information on these directives [here](https://github.com/graphql-java/grap
 
 #### Class level validation
 
-To validate a input class on class level, e.g., to check if a start date is before an end date or there are no duplicate items in the db, write your custom validation code in the `validation` package and call it in the corresponding service class.
+To validate an input class on class level, e.g., to check if a start date is before an end date or there are no duplicate items in the db, write your custom validation code in the `validation` package and call it in the corresponding service class.
+
+#### Naming of services
+Services follow the naming schema: "servicename_service". 
