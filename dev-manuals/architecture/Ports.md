@@ -29,6 +29,7 @@ Some services might use additonal ports, like the mediaservice.
 <td>Gateway</td>
 <td>1001</td>
 <td>no</td>
+<td></td>
 </tr>
 <tr>
 <td>Course Service  </td>
@@ -40,11 +41,13 @@ Some services might use additonal ports, like the mediaservice.
 <td>Course Service </td>
 <td>2001</td>
 <td>no</td>
+<td></td>
 </tr>
 <tr>
 <td>Course Service DB </td>
 <td>2032</td>
 <td>no</td>
+<td></td>
 </tr>
 <tr>
 <td>Media Service</td>
@@ -56,21 +59,25 @@ Some services might use additonal ports, like the mediaservice.
 <td>Media service</td>
 <td>3001</td>
 <td>no</td>
+<td></td>
 </tr>
 <tr>
 <td>Media Service DB</td>
 <td>3032</td>
 <td>no</td>
+<td></td>
 </tr>
 <tr>
 <td>MinIO</td>
 <td>9000</td>
 <td>no</td>
+<td></td>
 </tr>
 <tr>
 <td>MinIO console </td>
 <td>9090</td>
 <td>no</td>
+<td></td>
 </tr>
 <tr>
 <td>Content Service</td>
@@ -82,11 +89,13 @@ Some services might use additonal ports, like the mediaservice.
 <td>Content Service</td>
 <td>4001</td>
 <td>no</td>
+<td></td>
 </tr>
 <tr>
 <td>Content Service DB</td>
 <td>4032</td>
 <td>no</td>
+<td></td>
 </tr>
 <tr>
 <td>User Service </td>
@@ -98,6 +107,7 @@ Some services might use additonal ports, like the mediaservice.
 <td>User Service </td>
 <td>5001</td>
 <td>no</td>
+<td></td>
 </tr>
 <tr>
 <td>User Service DB </td>
