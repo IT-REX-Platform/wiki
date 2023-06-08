@@ -5,7 +5,8 @@ For structuring our microservices we had three options
 - Having separate repositories for both front-end and each microservice
 - Having one parent repository and sub-repositories for both frontend and each microservice
 
-Decision: **Separate repositories**
+Decision: **Separate repositories** for developement
+**Parent repository** with sub-modules to enable easy startup of all services with Docker.
 
 We decided to use separate repositories for the front-end and each microservice for the following reasons:
 
