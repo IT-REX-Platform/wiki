@@ -104,6 +104,11 @@ You can enable auto reload, where when you make changes in the code, the server 
 ### Run the Microservice
 If you want to test the microservice, you can use docker compose. You can also use the built.in Docker support of IntelliJ for starting and stopping the docker containers. You can also use the command line:
 
+A new network must be created 
+```
+docker network create -d bridge dapr-network
+```
+
 To build and start the microservice including the database use:
 ```
 docker compose up -d
