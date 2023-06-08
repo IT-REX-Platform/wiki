@@ -104,6 +104,11 @@ You can enable auto reload, where when you make changes in the code, the server 
 ### Run the Microservice
 If you want to test the microservice, you can use docker compose. You can also use the built.in Docker support of IntelliJ for starting and stopping the docker containers. You can also use the command line:
 
+A new network must be created 
+```
+docker network create -d bridge dapr-network
+```
+
 To build and start the microservice including the database use:
 ```
 docker compose up -d
@@ -116,6 +121,21 @@ To stop the containers and removes containers, networks, volumes, and images cre
 docker compose down
 ```
 More info [here](https://docs.docker.com/engine/reference/commandline/compose_down/)
+
+### Running all Microservices
+
+Clone the gits_backend with the following command:
+```
+git clone --recurse-submodules https://github.com/IT-REX-Platform/gits_backend.git
+```
+
+Run the respective script.
+
+docker compose build.sh will build the images.
+docker compose up.sh will start the containers (and build them if this hasn't happened before)
+docker compose down.sh will stop the containers and remove them.
+
+You need a Linux shell installed to run the scripts, which you should have if you installed git for windows.
 
 ### Run scripts for dapr
 
