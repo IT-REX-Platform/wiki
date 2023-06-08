@@ -9,38 +9,101 @@ Some services might use additonal ports, like the mediaservice.
 
 ## Currently used Ports
 
-+--------------------------------------------------------+
-| Service            | Port | dapr | app-id              |
-+========================================================+
-| Gateway            | 1000 | yes  | api-gateway-service |
-+--------------------------------------------------------+
-| Gateway            | 1001 | no   |                     |
-+--------------------------------------------------------+
-| Course Service     | 2000 | yes  |  course_service     |
-+--------------------------------------------------------+
-| Course Service     | 2001 | no   |                     |
-+--------------------------------------------------------+
-| Course Service DB  | 2032 | no   |                     |
-+--------------------------------------------------------+
-| Media Service      | 3000 | yes  |  media_service      |
-+--------------------------------------------------------+
-| Media service      | 3001 | no   |                     |
-+--------------------------------------------------------+
-| Media Service DB   | 3032 | no   |                     |
-+--------------------------------------------------------+
-| MinIO              | 9000 | no   |                     |
-+--------------------------------------------------------+
-| MinIO console      | 9090 | no   |                     |
-+--------------------------------------------------------+
-| Content Service    | 4000 | yes  |  content_service    |
-+--------------------------------------------------------+
-| Content Service    | 4001 | no   |                     |
-+--------------------------------------------------------+
-| Content Service DB | 4032 | no   |                     |
-+--------------------------------------------------------+
-| User Service       | 5000 | yes  |  content_service    |
-+--------------------------------------------------------+
-| User Service       | 5001 | no   |                     |
-+--------------------------------------------------------+
-| User Service DB    | 5032 | no   |                     |
-+--------------------------------------------------------+
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Port</th>
+<th>dapr</th>
+<th>app-id </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gateway</td>
+<td>1000</td>
+<td>yes</td>
+<td>api-gateway-service</td>
+</tr>
+<tr>
+<td>Gateway</td>
+<td>1001</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Course Service  </td>
+<td>2000</td>
+<td>yes</td>
+<td>course_service</td>
+</tr>
+<tr>
+<td>Course Service </td>
+<td>2001</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Course Service DB </td>
+<td>2032</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Media Service</td>
+<td>3000</td>
+<td>yes</td>
+<td>media_service</td>
+</tr>
+<tr>
+<td>Media service</td>
+<td>3001</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Media Service DB</td>
+<td>3032</td>
+<td>no</td>
+</tr>
+<tr>
+<td>MinIO</td>
+<td>9000</td>
+<td>no</td>
+</tr>
+<tr>
+<td>MinIO console </td>
+<td>9090</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Content Service</td>
+<td>4000</td>
+<td>yes</td>
+<td>content_service</td>
+</tr>
+<tr>
+<td>Content Service</td>
+<td>4001</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Content Service DB</td>
+<td>4032</td>
+<td>no</td>
+</tr>
+<tr>
+<td>User Service </td>
+<td>5000</td>
+<td>yes</td>
+<td>content_service</td>
+</tr>
+<tr>
+<td>User Service </td>
+<td>5001</td>
+<td>no</td>
+</tr>
+<tr>
+<td>User Service DB </td>
+<td>5032</td>
+<td>no</td>
+<td></td>
+</tr>
+</tbody>
+</table>
