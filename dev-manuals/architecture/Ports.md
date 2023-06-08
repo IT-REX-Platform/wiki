@@ -114,7 +114,6 @@ Some services might use additonal ports, like the mediaservice.
 <td>5032</td>
 <td>no</td>
 <td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
