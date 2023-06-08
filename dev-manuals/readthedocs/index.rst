@@ -1,0 +1,7 @@
+ReadTheDocs
+===========
+
+.. toctree::
+   :glob:
+
+   *

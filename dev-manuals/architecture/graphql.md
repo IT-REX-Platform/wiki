@@ -4,9 +4,7 @@ While the backend is split up into many microservices with their own internal AP
 
 To facilitate this, [GraphQL Mesh](https://the-guild.dev/graphql/mesh) is used in an API gateway which splits up a GraphQL query into subqueries and sends them to the different microservices. It then merges the responses of the different microservices back together to respond to the query it received.
 
-## Unified GraphQL schema
-
-The unified schema file of the system (WIP) can be found in the [API-Gateway repository](https://github.com/IT-REX-Platform/graphql_gateway). 
+More information on the gateway can be found [here](../services/gateway-service.md).
 
 ## GraphQL Mesh Concept
 
@@ -34,6 +32,6 @@ The courses data lives in the CourseService, the content data lives in the Conte
 
 ## Further Information/Guides For GraphQL Mesh
 
-[GraphQL Mesh Basics](https://the-guild.dev/graphql/mesh/docs/getting-started/your-first-mesh-gateway)
-[Combining Multiple API Endpoints with GraphQL Mesh](https://the-guild.dev/graphql/mesh/docs/getting-started/combine-multiple-sources)
-[Batching with GraphQL Mesh](https://the-guild.dev/graphql/mesh/docs/guides/batching)
+* [GraphQL Mesh Basics](https://the-guild.dev/graphql/mesh/docs/getting-started/your-first-mesh-gateway)
+* [Combining Multiple API Endpoints with GraphQL Mesh](https://the-guild.dev/graphql/mesh/docs/getting-started/combine-multiple-sources)
+* [Batching with GraphQL Mesh](https://the-guild.dev/graphql/mesh/docs/guides/batching)
