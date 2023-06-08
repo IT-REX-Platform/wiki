@@ -8,6 +8,7 @@ For structuring our microservices we had three options
 Decision: 
 - **Separate repositories** for developement
 - **Parent repository** with sub-modules to enable easy startup of all services with Docker.
+  - [GITS backend](https://github.com/IT-REX-Platform/gits_backend) 
 
 We decided to use separate repositories for the front-end and each microservice for the following reasons:
 
