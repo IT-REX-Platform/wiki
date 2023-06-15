@@ -3,6 +3,8 @@
 To add a new service create a new repository from the template-microservice using the Use this template button. 
 The name should be <servicename>_service and the visibility should be public.
 Once the repository has been created go to the repository settings and add the "Enpro-SS2023-Developers" team to the collaborators. 
+Make the main branch protected with the following settings:
+![branch-protection-rules](../../images/branch-protection-rules.png)
 Change the License to MIT.
 
 The following files need to be changed:
