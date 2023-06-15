@@ -32,3 +32,5 @@ After the service has been created and updated you need to do the following:
   - Unselect automatic analysis
   - choose GitHub actions, only the first step needs to be completed
 - Add SONAR_TOKEN to the secrets on GitHub
+
+- Add the new Ports to the wiki architecture ports.
