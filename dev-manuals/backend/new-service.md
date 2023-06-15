@@ -30,7 +30,7 @@ After the service has been created and updated you need to do the following:
   - They must be the same as the ones defined in the docker compose file.
 
 - Add the repository to sonarcloud. You need admin permissions in sonarcloud to successfully complete this part
-  - Follow the instructions for extra configuration. Click Configure analysis in cour CI ![](/images/sonarcloud_instructions_1.png)
+  - Follow the instructions for extra configuration. Click Configure analysis in cour CI ![](/images/sonarcloud-instructions-1.png)
   - Unselect automatic analysis
   - choose GitHub actions, only the first step needs to be completed
 - Add SONAR_TOKEN to the secrets on GitHub
