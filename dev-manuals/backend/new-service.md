@@ -4,7 +4,7 @@ To add a new service create a new repository from the template-microservice usin
 The name should be <servicename>_service and the visibility should be public.
 Once the repository has been created go to the repository settings and add the "Enpro-SS2023-Developers" team to the collaborators. 
 Make the main branch protected with the following settings:
-![branch-protection-rules](../../images/branch-protection-rules.png)
+![](/images/branch-protection-rules.png)
 Change the License to MIT.
 
 The following files need to be changed:
@@ -30,7 +30,7 @@ After the service has been created and updated you need to do the following:
   - They must be the same as the ones defined in the docker compose file.
 
 - Add the repository to sonarcloud. You need admin permissions in sonarcloud to successfully complete this part
-  - Follow the instructions for extra configuration. Click Configure analysis in cour CI ![sonarcloud instructions 1](../../images/sonarcloud%20instructions%201.png)
+  - Follow the instructions for extra configuration. Click Configure analysis in cour CI ![](/images/sonarcloud%20instructions%201.png)
   - Unselect automatic analysis
   - choose GitHub actions, only the first step needs to be completed
 - Add SONAR_TOKEN to the secrets on GitHub
