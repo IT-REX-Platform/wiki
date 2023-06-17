@@ -23,12 +23,6 @@ The following files need to be changed:
 
 After the service has been created and updated you need to do the following:
 
-- Add the following secrets to the repository on GitHub
-  - SPRING_DATASOURCE_URL
-  - SPRING_DATASOURCE_USERNAME
-  - SPRING_DATASOURCE_PASSWORD
-  - They must be the same as the ones defined in the docker compose file.
-
 - Add the repository to sonarcloud. You need admin permissions in sonarcloud to successfully complete this part
   - Follow the instructions for extra configuration. Click Configure analysis in cour CI ![](/images/sonarcloud-instructions-1.png)
   - Unselect automatic analysis

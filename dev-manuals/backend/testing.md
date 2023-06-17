@@ -106,6 +106,17 @@ test. However, even if your unit tests test the complete functionality, an integ
 
 ### How to test
 
+The tests are run in a testcontainer. We provide the `GitsPostgresSqlContainer` for easy setup.
+This requires the addition of the following line:
+```
+ @ClassRule
+    public static PostgreSQLContainer<GitsPostgresSqlContainer> postgreSQLContainer = GitsPostgresSqlContainer.getInstance();
+```
+and adding the following annotation to the class :
+```
+    @ActiveProfiles("test")
+```
+
 We provide the `GraphQlApiTest` annotation that sets up the test environment for API tests. 
 It starts the spring application context and requires the database to be running. 
 
@@ -117,11 +128,16 @@ is required for the test.
 All test data is deleted after the test, so that the tests are independent of each other.
 This is done with the `ClearDatabase` extension that is automatically registered by the `GraphQlApiTest` annotation.
 
+
 ### Example
 
 ```java
 @GraphQlApiTest
+@ActiveProfiles("test")
 public class Test {
+    
+ @ClassRule
+    public static PostgreSQLContainer<GitsPostgresSqlContainer> postgreSQLContainer = GitsPostgresSqlContainer.getInstance();
 
     @Test
     public void testCreateCourse(GraphQlTester tester) {
