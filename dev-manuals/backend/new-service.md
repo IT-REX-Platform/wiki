@@ -17,6 +17,7 @@ The following files need to be changed:
 - Update the application.properties file in the src/main/resources folder (check the TODOS in the file)
 - Update the application-prod.properties
 - Update the application-dev.properties
+- Update the application-test.properties
 - Update the docker-compose.yml 
 
 - Define the GraphQL schema in the src/main/resources/schema.graphqls file

@@ -109,12 +109,13 @@ test. However, even if your unit tests test the complete functionality, an integ
 The tests are run in a testcontainer. We provide the `GitsPostgresSqlContainer` for easy setup.
 This requires the addition of the following line:
 ```
- @ClassRule
+    @Container
     public static PostgreSQLContainer<GitsPostgresSqlContainer> postgreSQLContainer = GitsPostgresSqlContainer.getInstance();
 ```
-and adding the following annotation to the class :
+and adding the following annotations to the class :
 ```
     @ActiveProfiles("test")
+    @Testcontainers
 ```
 
 We provide the `GraphQlApiTest` annotation that sets up the test environment for API tests. 
@@ -134,9 +135,10 @@ This is done with the `ClearDatabase` extension that is automatically registered
 ```java
 @GraphQlApiTest
 @ActiveProfiles("test")
+@Testcontainers
 public class Test {
-    
- @ClassRule
+
+    @Container
     public static PostgreSQLContainer<GitsPostgresSqlContainer> postgreSQLContainer = GitsPostgresSqlContainer.getInstance();
 
     @Test
