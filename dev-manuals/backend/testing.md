@@ -112,11 +112,6 @@ This requires the addition of the following line:
     @Container
     public static PostgreSQLContainer<GitsPostgresSqlContainer> postgreSQLContainer = GitsPostgresSqlContainer.getInstance();
 ```
-and adding the following annotations to the class :
-```
-    @ActiveProfiles("test")
-    @Testcontainers
-```
 
 We provide the `GraphQlApiTest` annotation that sets up the test environment for API tests. 
 It starts the spring application context and requires the database to be running. 
@@ -134,8 +129,6 @@ This is done with the `ClearDatabase` extension that is automatically registered
 
 ```java
 @GraphQlApiTest
-@ActiveProfiles("test")
-@Testcontainers
 public class Test {
 
     @Container
