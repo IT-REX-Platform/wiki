@@ -15,19 +15,14 @@ The following files need to be changed:
 - Change the name of the template package to the name of the service
 - Remove the package-info.java files in the src/main/java folder (or update with the microservice specific information)
 - Update the application.properties file in the src/main/resources folder (check the TODOS in the file)
-- Update the application-prod.properties
-- Update the application-dev.properties
+- Update the application-prod.properties in the src/main/resources folder (check the TODOS in the file)
+- Update the application-dev.properties in the src/main/resources folder (check the TODOS in the file)
+- Update the application.properties in the src/test/resources folder (check the TODOS in the file)
 - Update the docker-compose.yml 
 
 - Define the GraphQL schema in the src/main/resources/schema.graphqls file
 
 After the service has been created and updated you need to do the following:
-
-- Add the following secrets to the repository on GitHub
-  - SPRING_DATASOURCE_URL
-  - SPRING_DATASOURCE_USERNAME
-  - SPRING_DATASOURCE_PASSWORD
-  - They must be the same as the ones defined in the docker compose file.
 
 - Add the repository to sonarcloud. You need admin permissions in sonarcloud to successfully complete this part
   - Follow the instructions for extra configuration. Click Configure analysis in cour CI ![](/images/sonarcloud-instructions-1.png)
