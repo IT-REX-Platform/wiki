@@ -12,6 +12,13 @@ The dapr java-sdk and dapr java-sdk springboot integration provide an easy way t
 
 Dapr allows categorization of events using "topics". Messages can be published to a specific topic and subscribers can subscribe to a topic to be executed when a new message is published to that topic.
 
+### Include Necessary Libraries
+Include the dapr sdk libraries in `build.gradle`
+```java
+implementation 'io.dapr:dapr-sdk:1.9.0' // Dapr's core SDK with all features, except Actors.
+implementation 'io.dapr:dapr-sdk-springboot:1.9.0' // Dapr's SDK integration with SpringBoot
+```
+
 ### Subscribe to a Topic
 
 Create a class which is annotated with `@RestController`. Like a regular rest controller, it will contain methods which map to different endpoints. (These rest endpoints will be invoked by dapr automatically when a new message for the event is published)
