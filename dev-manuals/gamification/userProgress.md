@@ -44,3 +44,32 @@ For each user, the progress data is a log in which each entry contains the follo
 - Whether the content was learned successfully or not
 - Whether a hint was used or not
 - The learning interval of the content
+- Correctness score between 0 and 1, i.e., how many questions were answered correctly in a quiz
+- Time to complete the content in milliseconds
+
+## Content specific progress data
+
+Some content types may require additional information about the user progress. For example, a quiz may have a field for
+the current question, so that the user can pause the quiz and resume later. Each single flashcard stores the time it was
+last learned, to determine when it should be learned again within a flashcard set.
+
+## Implementation details
+
+To log progress data, the specific services provide a mutation to log that the user learned content, for example the
+flashcard service. The specific service then calculates the progress data as defined above and then publishes an event.
+The content service listens to this event and stores the progress data in its database. Other services might also listen
+to this event, for example the reward service. The topic of the content service mutation is `content-progressed` of the
+dapr pubsub component `gits`. The event data is structured like this:
+
+```json
+{
+   "userId": "<uuid of the user>",
+   "contentId": "<uuid of the content>",
+   "date": "<date when the content was learned>",
+   "success": "<boolean whether the content was learned successfully>",
+   "correctnessScore": "<float correctness score between 0 and 1>",
+   "hintUsed": "<boolean whether a hint was used>",
+   "learningInterval": "<learning interval of the content in milliseconds>",
+   "timeToComplete": "<time to complete the content in milliseconds>"
+}
+```
