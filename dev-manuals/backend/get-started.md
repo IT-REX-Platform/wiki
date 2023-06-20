@@ -131,9 +131,13 @@ git clone --recurse-submodules https://github.com/IT-REX-Platform/gits_backend.g
 
 Run the respective script.
 
-docker compose build.sh will build the images.
-docker compose up.sh will start the containers (and build them if this hasn't happened before)
-docker compose down.sh will stop the containers and remove them.
+You only need to run "docker compose up.sh" to set everything up.
+
+"docker compose build.sh" will build the images. This is only required if the services have changed and you want to rebuild them.
+
+"docker compose up.sh" will start the containers (and build them if this hasn't happened before)
+
+"docker compose down.sh" will stop the containers and remove them.
 
 You need a Linux shell installed to run the scripts, which you should have if you installed git for windows.
 
