@@ -12,8 +12,9 @@ This document outlines the authorization concept used to ensure that graphql que
 ## User Roles
 ### Global Roles
 Administrator: Has complete control over the application, including user management, course creation, and overall system configuration.
-Instructor: Can create and manage courses, upload course materials, create assessments, and grade student submissions.
-Learner: Registered users who can enroll in courses, access course content, participate in discussions, and complete assessments.
+Owner: This group of people have the right to create their own courses and edit them, as well as give chosen users the ability to edit the courses in ceratin ways. They can not edit/change courses, they have not created themselves or were given the right to. (Example: Lecturer)
+Moderator: Those people have all the rights Standard Users have + the right to edit course data for courses they were allowed to. Without the rights given by an admin or an owner, they can not change anything in a course they should not be able to. (Example: Tutors)
+Standard User: Has all the rights to access courses he is enrolled in, join courses he has the right to and work on his own progress in those courses. He can't change anything, unless it is his password, Username or other personal information. (Example: Student)
 
 ### Course-specific Roles
 Course Creator: Users with this role can create and design their own courses within the application. They have full control over the course content, assessments, and enrollment.
