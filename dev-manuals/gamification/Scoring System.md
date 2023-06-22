@@ -225,9 +225,9 @@ The growth score can not decrease.
 ### Strength
 
 > Strength is used to enforce a certain level of interaction between the students and aims at motivating them to
-> participate regularly in REX-Duels: By participating inREX-Duels, the IT-REX gets strength points that depict how a
+> participate regularly in REX-Duels: By participating in REX-Duels, the IT-REX gets strength points that depict how a
 > student’s knowledge level is compared to others. While both participants increase their IT-REX’ strength points in
-> aREX-Duel, the winner will gain significantly more strength points which aims at motivating students to prepare for
+> a REX-Duel, the winner will gain significantly more strength points which aims at motivating students to prepare for
 > REX-Duels by learning regularly
 
 <small><i>cited from the GITS paper</i></small>
