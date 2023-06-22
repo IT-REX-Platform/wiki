@@ -32,7 +32,7 @@ This section describes how the reward scores are increased and decreased dependi
 The health score represents how well the user is up-to-date with the content.
 It is decreased if the user is behind with the content and increased if the user learn new content that is due.
 
-![Health](images/health.PNG)
+![Health](images/health.png)
 
 <details>
 <summary><b>Detailed calculation</b></summary>
