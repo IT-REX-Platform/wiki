@@ -60,7 +60,7 @@ Examples:
 - If the user is 14 days behind to learn 1 content, the health score will be 47.5%.
 - The earliest the user can reach health 0% is 5 days behind (with 40 contents overdue)
 
-![Health plot](plots/health.png)
+![Health plot](plots/health.PNG)
 
 To regenerate health, the user has to progress through new content.
 If he does so, the health will regenerate by x% where x is the missing health to 100% divided by the number of contents
