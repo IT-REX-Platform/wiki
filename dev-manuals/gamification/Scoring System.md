@@ -264,7 +264,6 @@ There are four categories of skills:
 - Apply
 - Analyze
 
-Each skill has a score between 0 and 100%.
 The scores are both calculated per chapter and per course.
 
 ![Skill level](images/skilllevel.PNG)
