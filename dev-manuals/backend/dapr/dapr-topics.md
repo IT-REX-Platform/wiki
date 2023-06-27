@@ -1,5 +1,11 @@
-# Dapr Service Topics
-Here we will cover all dapr topics currently available in the system. A description of the topic, it's interface descrpition, message description, involved services that publish to the topic, and services that subscribe to the topic.
+# Dapr Service Topic Overview
+Here we will describe all dapr topics currently available in the system.
+This includes
+1. a **description** of the topic,
+2. it's **interface** descrpition, 
+3. the content of the **messages**,
+4. services that **publish** to the topic,
+5. and services that **subscribe** to the topic.
 
 ## Topic: Resource Association
 This topic is used to update Course-Resource Associations in the Course Service.
@@ -57,8 +63,8 @@ PubSub-Name
 
 ### Involved Services:
 publishers
-: - media service
-  - flashcard service
+: - Media Service
+  - Flashcard Service
 
 Subscribers
 : - Content service
