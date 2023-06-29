@@ -93,40 +93,8 @@ The fitness score represents how well the user repeats old content.
 It is calculated similar to the health score, but only considers content that is due for repetition
 and also takes into account the correctness score of each content.
 
-<details><summary><b>Spaced repetition</b></summary>
-
-To understand how the fitness score is calculated, we first need to understand how the spaced repetition works.
-
-- Each content that the user progressed at least once has a **date when it was last learned**.
-- Additionally, we assign a **learning interval** to each content.
-  This is the number of days after which the content should be repeated.
-- When the content is progressed the first time, the learning interval will be one day.
-- **For each successful repetition, the learning interval will get longer.**
-- For each unsuccessful repetition, the time between learning sessions will be reduced to a shorter interval in the
-  table below.
-
-This way, content that is difficult for the user will be repeated more often than content that is easy for the user.
-
-The exact learning intervals might be configurable, for now we propose the following:
-
-| Times repeated correctly | Learning interval in days |
-|--------------------------|---------------------------|
-| 0                        | 1                         |
-| 1                        | 3                         |
-| 2                        | 7                         |
-| 3                        | 14                        |
-| 4                        | 30                        |
-| 5                        | 60                        |
-| 6                        | 120                       |
-
-Spaced repetition will only be applied to assessments and not to lectures.
-The student probably does not want to watch the same lecture video again and again.
-Also for some types of assessments, repeating the content after just one day might be too early.
-Therefore, we consider to make the base learning interval configurable for each content.
-
-Using the date when the content was last learned and the learning interval, we can calculate the next repetition date.
-At any time we can calculate the list of contents that are due for repetition, which is possibly empty.
-</details>
+To understand how the fitness score is calculated, we recommend to
+read [the spaced repetition page](spaced-repetition.md) first.
 
 ![Fitness](images/fitness.PNG)
 
