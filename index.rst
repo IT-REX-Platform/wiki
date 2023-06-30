@@ -14,6 +14,7 @@ Welcome to GITS - Gamified Intelligent Tutoring System's documentation!
    user-manuals/index.rst
    dev-manuals/index.rst
    adr/index.rst
+   features/index.rst
 
 
 .. Indices and tables
