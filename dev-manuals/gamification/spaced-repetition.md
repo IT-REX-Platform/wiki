@@ -10,7 +10,7 @@ How does it work in GITS?
 - When the content is progressed the first time, the learning interval will be one day.
 - In each content a different initial learning interval can be configured.
 - **For each successful repetition, the learning interval will get at most doubled.**
-    - The new learning interval will be doubled if not hints were used and the correctness score is 100%.
+    - The new learning interval will be doubled if no hints were used and the correctness score is 100%.
     - Otherwise, for each **hint** used, the learning interval will be increased by 10%, but not less than the previous
       learning interval.
     - The additional learning interval will be multiplied by the correctness score.
