@@ -2,8 +2,9 @@
 
 ## Authentication
 
-Authentication is completely done by the graphql gateway. A user JWT token passed by the client in the form of an HTTP 
-"authorization" header is validated and access to GraphQL endpoints is by default only granted when the token is valid.
+When implementing a service, don't worry about authentication. Authentication is completely done by the graphql gateway.
+A user JWT token passed by the client in the form of an HTTP "authorization" header is validated and access to GraphQL
+endpoints is by default only granted when the token is valid.
 
 If you want some field of your GraphQL schema to be accessible completely without any authentication, add the
 `@skipAuth` directive to it. This will skip the authentication check for this field.
@@ -36,3 +37,12 @@ public class RequestHeaderUserInterceptor implements WebGraphQlInterceptor {
     }
 }
 ```
+
+You can then use this context data in your `Controller` classes like in the following example:
+```java
+@QueryMapping
+public UserProgressData userProgressData(MediaContent content, @ContextValue LoggedInUser currentUser) {
+    return userProgressDataService.getUserProgressData(currentUser.getId(), content.getId());
+}
+```
+As you can see, the value is automatically injected into the `currentUser` parameter.
