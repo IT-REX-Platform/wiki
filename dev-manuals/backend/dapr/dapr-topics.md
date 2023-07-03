@@ -20,6 +20,8 @@ This topic is used by the Course Service to inform Course-dependant Services of 
 <dd>course-changes</dd>
 <dt>PubSub-Name</dt>
 <dd>gits</dd>
+<dt>Java class</dt>
+<dd><a href="https://github.com/IT-REX-Platform/gits-common/blob/main/src/main/java/de/unistuttgart/iste/gits/common/event/CourseChangeEvent.java">CourseChangeEvent</a></dd>
 </dl>
 
 ### Involved Services
@@ -37,25 +39,10 @@ This topic is used by the Course Service to inform Course-dependant Services of 
 
 ### Message Content
 
-#### Course ID
-
-<dl>
-<dt>Type</dt>
-<dd>UUID</dd>
-<dt>Description</dt>
-<dd>Identifier of a Course Entity</dd>
-</dl>
-
-#### Operation
-
-<dl>
-<dt>Type</dt>
-<dd>Enum</dd>
-<dt>Description</dt>
-<dd>Describes which type of <b><i>CRUD</i></b> operation was applied to the Course.</dd>
-<dt>Available Operations are</dt>
-<dd><i>CREATE, DELETE</i></dd>
-</dl>
+| Field     | Type | Description                                                                                               |
+|-----------|------|-----------------------------------------------------------------------------------------------------------|
+| courseId  | UUID | Identifier of a Course Entity                                                                             |
+| operation | Enum | Describes which type of CRUD operation was applied to the Course. Available Operations are CREATE, DELETE |
 
 ## Topic: Chapter Changes
 
@@ -68,6 +55,8 @@ This topic is used by the Course Service to inform Chapter-dependant Services of
 <dd>chapter-changes</dd>
 <dt>PubSub-Name</dt>
 <dd>gits</dd>
+<dt>Java class</dt>
+<dd><a href="https://github.com/IT-REX-Platform/gits-common/blob/main/src/main/java/de/unistuttgart/iste/gits/common/event/ChapterChangeEvent.java"> ChapterChangeEvent</a></dd>
 </dl>
 
 ### Involved Services
@@ -85,27 +74,10 @@ This topic is used by the Course Service to inform Chapter-dependant Services of
 
 ### Message Content
 
-#### Chapter IDs
-
-<dl>
-<dt>Type</dt>
-<dd>List</dd>
-<dt>Element-Type</dt>
-<dd>UUID</dd>
-<dt>Description</dt>
-<dd>A list of Chapter IDs. Each Content is linked to one Chapter ID. Each ID is represented as a UUID.</dd>
-</dl>
-
-#### Operation
-
-<dl>
-<dt>Type</dt>
-<dd>Enum</dd>
-<dt>Description</dt>
-<dd>Describes which type of <b><i>CRUD</i></b> operation was applied to the Chapter.</dd>
-<dt>Available Operations are</dt>
-<dd><i>DELETE</i></dd>
-</dl>
+| Field       | Type        | Description                                                                                        |
+|-------------|-------------|----------------------------------------------------------------------------------------------------|
+| Chapter IDs | List\<UUID> | A list of Chapter IDs. Each Content is linked to one Chapter ID. Each ID is represented as a UUID. |
+| Operation   | Enum        | Describes which type of CRUD operation was applied to the Chapter. Available Operation is DELETE.  |
 
 
 ## Topic: Resource Association
@@ -119,6 +91,8 @@ This topic is used to update Course-Resource Associations in the Course Service.
 <dd>resource-association</dd>
 <dt>PubSub-Name</dt>
 <dd>gits</dd>
+<dt>Java class</dt>
+<dd><a href="https://github.com/IT-REX-Platform/gits-common/blob/main/src/main/java/de/unistuttgart/iste/gits/common/event/CourseAssociationEvent.java"> CourseAssociationEvent</a></dd>
 </dl>
 
 ### Involved Services
@@ -136,36 +110,11 @@ This topic is used to update Course-Resource Associations in the Course Service.
 
 ### Message Content
 
-#### Chapter ID
-<dl>
-<dt>Type</dt>
-<dd>UUID</dd>
-<dt>Description</dt>
-<dd>Chapter ID of a Chater winthin a Course.</dd>
-</dl>
-
-
-#### Resource IDs
-
-<dl>
-<dt>Type</dt>
-<dd>List</dd>
-<dt>Element-Type</dt>
-<dd>UUID</dd>
-<dt>Description</dt>
-<dd>A list of Resource IDs. A resource can be any Content, Media, Flashcard etc. The IDs are each represented as a UUID.</dd>
-</dl>
-
-#### Operation
-
-<dl>
-<dt>Type</dt>
-<dd>Enum</dd>
-<dt>Description</dt>
-<dd>Describes which type of <b><i>CRUD</i></b> operation is to be applied to the Course-Resource-Associations.</dd>
-<dt>Available Operations are</dt>
-<dd><i>CREATE, UPDATE, DELETE</i></dd>
-</dl>
+| Field        | Type        | Description                                                                                                                                   |
+|--------------|-------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| Chapter ID   | UUID        | Chapter ID of a Chapter within a Course                                                                                                       |
+| Resource IDs | List\<UUID> | A list of Resource IDs. A resource can be any Content, Media, Flashcard, etc. The IDs are each represented as a UUID.                         |
+| Operation    | Enum        | Describes which type of CRUD operation is to be applied to the Course-Resource-Associations. Available Operations are CREATE, UPDATE, DELETE. |
 
 ## Topic: Resource Update
 
@@ -178,6 +127,8 @@ This topic is used by any service that provides content to the application. This
 <dd>resource-update</dd>
 <dt>PubSub-Name</dt>
 <dd>gits</dd>
+<dt>Java class</dt>
+<dd><a href="https://github.com/IT-REX-Platform/gits-common/blob/main/src/main/java/de/unistuttgart/iste/gits/common/event/ResourceUpdateEvent.java"> ResourceUpdateEvent</a></dd>
 </dl>
 
 ### Involved Services
@@ -196,36 +147,11 @@ This topic is used by any service that provides content to the application. This
 
 ### Message Content
 
-#### Entity ID
-
-<dl>
-<dt>Type</dt>
-<dd>UUID</dd>
-<dt>Description</dt>
-<dd>Identifier of a Resource Entity such as Media or a Flashcard.</dd>
-</dl>
-
-#### Content IDs
-
-<dl>
-<dt>Type</dt>
-<dd>List</dd>
-<dt>Element-Type</dt>
-<dd>UUID</dd>
-<dt>Description</dt>
-<dd>A list of Content IDs. A resource can be part of one or multiple Contents. The Content IDs are each represented as a UUID.</dd>
-</dl>
-
-#### Operation
-
-<dl>
-<dt>Type</dt>
-<dd>Enum</dd>
-<dt>Description</dt>
-<dd>Describes which type of <b><i>CRUD</i></b> operation was applied to the Resource</dd>
-<dt>Available Operations are</dt>
-<dd><i>CREATE, UPDATE, DELETE</i></dd>
-</dl>
+| Field        | Type        | Description                                                                                                                                   |
+|--------------|-------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| Chapter ID   | UUID        | Chapter ID of a Chapter within a Course                                                                                                       |
+| Resource IDs | List\<UUID> | A list of Resource IDs. A resource can be any Content, Media, Flashcard, etc. The IDs are each represented as a UUID.                         |
+| Operation    | Enum        | Describes which type of CRUD operation is to be applied to the Course-Resource-Associations. Available Operations are CREATE, UPDATE, DELETE. |
 
 ## Topic: Content Changes
 
@@ -238,6 +164,8 @@ This topic is used by the Content Service to inform Content-dependant Services o
 <dd>content-changes</dd>
 <dt>PubSub-Name</dt>
 <dd>gits</dd>
+<dt>Java class</dt>
+<dd><a href="https://github.com/IT-REX-Platform/gits-common/blob/main/src/main/java/de/unistuttgart/iste/gits/common/event/ContentChangeEvent.java"> ContentChangeEvent </a></dd>
 </dl>
 
 ### Involved Services
@@ -256,25 +184,49 @@ This topic is used by the Content Service to inform Content-dependant Services o
 
 ### Message Content
 
+| Field       | Type        | Description                                                                                                                |
+|-------------|-------------|----------------------------------------------------------------------------------------------------------------------------|
+| Content IDs | List\<UUID> | A list of Content IDs. A resource can be part of one or multiple Contents. The Content IDs are each represented as a UUID. |
+| Operation   | Enum        | Describes which type of CRUD operation was applied to the Content. Available Operations are UPDATE, DELETE                 |
 
-#### Content IDs
+## Topic: User progress
 
-<dl>
-<dt>Type</dt>
-<dd>List</dd>
-<dt>Element-Type</dt>
-<dd>UUID</dd>
-<dt>Description</dt>
-<dd>A list of Content IDs. A resource can be part of one or multiple Contents. The Content IDs are each represented as a UUID.</dd>
-</dl>
+This topic is used to communicate that a certain content has been completed by a user.
 
-#### Operation
+### Interface Description
 
 <dl>
-<dt>Type</dt>
-<dd>Enum</dd>
-<dt>Description</dt>
-<dd>Describes which type of <b><i>CRUD</i></b> operation was applied to the Content.</dd>
-<dt>Available Operations are</dt>
-<dd><i>UPDATE, DELETE</i></dd>
+<dt>Name</dt>
+<dd>content-progressed</dd>
+<dt>PubSub-Name</dt>
+<dd>gits</dd>
+<dt>Java class</dt>
+<dd><a href="https://github.com/IT-REX-Platform/gits-common/blob/main/src/main/java/de/unistuttgart/iste/gits/common/event/UserProgressLogEvent.java">UserProgressLogEvent</a> </dd>
 </dl>
+
+### Involved Services
+
+<dl>
+<dt>Publishers</dt>
+<dd><ul>
+<li>Media service</li>
+<li>Flashcard service</li>
+</ul></dd>
+<dt>Subscribers</dt>
+<dd><ul>
+<li>Content service</li>
+<li>Reward Service</li>
+<li>Skilllevel Service</li>
+</ul></dd>
+</dl>
+
+### Message Content
+
+| Field          | Type    | Description                                                     |
+|----------------|---------|-----------------------------------------------------------------|
+| userId         | UUID    | The ID of the user associated with the progress log event.      |
+| contentId      | UUID    | The ID of the content associated with the progress log event.   |
+| success        | boolean | Indicates whether the user's progress was successful or not.    |
+| correctness    | double  | The level of correctness achieved by the user.                  |
+| hintsUsed      | int     | The number of hints used by the user.                           |
+| timeToComplete | Integer | The time taken by the user to complete the progress (optional). |
