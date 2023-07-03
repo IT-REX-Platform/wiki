@@ -9,6 +9,18 @@ This includes
 4. services that **publish** to the topic,
 5. and services that **subscribe** to the topic.
 
+## Events by service
+
+| Service            | Subscribes to                                                                                                                              | Publishes                                                                                        |
+|--------------------|--------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
+| Course service     | [resource-association](#topic-resource-association)<br>                                                                                    | [course-changes](#topic-course-changes) <br>[chapter-changes](#topic-chapter-changes)            |
+| User Service       | [course-changes](#topic-course-changes)                                                                                                    |                                                                                                  |
+| Content Service    | [chapter-changes](#topic-chapter-changes)<br>[content-progressed](#topic-content-progressed)<br> [resource-update](#topic-resource-update) | [resource-association](#topic-resource-association)<br>[content-changes](#topic-content-changes) |
+| Media Service      | [content-changes](#topic-content-changes)                                                                                                  | [resource-update](#topic-resource-update)<br>[content-progressed](#topic-content-progressed)     |
+| Flashcard Service  | [content-changes](#topic-content-changes)                                                                                                  | [resource-update](#topic-resource-update)    <br>[content-progressed](#topic-content-progressed) |
+| Reward Service     | [content-progressed](#topic-content-progressed)                                                                                            |                                                                                                  |
+| Skilllevel Service | [content-progressed](#topic-content-progressed)                                                                                            |                                                                                                  |
+
 ## Topic: Course Changes
 
 This topic is used by the Course Service to inform Course-dependant Services of changes done to a Course Entity.
@@ -189,7 +201,7 @@ This topic is used by the Content Service to inform Content-dependant Services o
 | Content IDs | List\<UUID> | A list of Content IDs. A resource can be part of one or multiple Contents. The Content IDs are each represented as a UUID. |
 | Operation   | Enum        | Describes which type of CRUD operation was applied to the Content. Available Operations are UPDATE, DELETE                 |
 
-## Topic: User progress
+## Topic: Content Progressed
 
 This topic is used to communicate that a certain content has been completed by a user.
 
