@@ -9,6 +9,19 @@ This document outlines the authorization concept used to ensure that graphql que
 * There are different permission levels ("roles", not to be confused with the concept in Keycloak also called roles) both on the global and on the course scale. E.g. a lecturer of a course has write-permissions in that course, but not in other courses; A student assigned to a course has read permissions only for that course. Permissions cannot be set fine-grained per user, only a role with a predefined set of permissions (either globally or on a course-specific level) can be assigned to a user
 * We assume there are no additional hierarchical permission concepts other than global permissions and course-specific permissions. This means that it is not possible for example for a user to only have permissions for some contents of a course. You either have permissions for everything that's part of the course, or you do not. (Of course this limitation does not impede on the ability of services to implement specific limitations on access to course content which is not dependent on independent user permissions but instead on other rules, e.g. a quiz which can only be accessed by students before a specific date has passed)
 
+## User Roles
+### Global Roles
+Administrator: Has complete control over the application, including user management, course creation, and overall system configuration.
+Owner: This group of people have the right to create their own courses and edit them, as well as give chosen users the ability to edit the courses in ceratin ways. They can not edit/change courses, they have not created themselves or were given the right to. (Example: Lecturer)
+Moderator: Those people have all the rights Standard Users have + the right to edit course data for courses they were allowed to. Without the rights given by an admin or an owner, they can not change anything in a course they should not be able to. (Example: Tutors)
+Standard User: Has all the rights to access courses he is enrolled in, join courses he has the right to and work on his own progress in those courses. He can't change anything, unless it is his password, Username or other personal information. (Example: Student)
+
+### Course-specific Roles
+Course Creator: Users with this role can create and design their own courses within the application. They have full control over the course content, assessments, and enrollment.
+Teaching Assistant: Assists the instructor in managing the course, grading assignments, and answering student questions.
+Course Member: Enrolled in a specific course. Can access course content, participate in discussions, and complete assessments.
+
+
 ## Basic Components
 ### Keycloak
 

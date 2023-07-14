@@ -2,7 +2,7 @@
 
 ## Overview
 
-The system needs to know which contents and chapters a user has already completed so that in can be displayed in the
+The system needs to know which contents and chapters a user has already completed so that it can be displayed in the
 frontend. This document describes how this data is stored and updated.
 
 ## Purpose of progress data
