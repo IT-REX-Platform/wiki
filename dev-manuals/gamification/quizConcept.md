@@ -9,48 +9,10 @@ In GITS, we have multiple types of quizzes:
 - **Self-assessment**: The user has to answer questions with free text. The user can then compare their answers with the
   correct answers and assess if they answered correctly, similar to flashcards.
 
-## Multiple choice quiz
+However, a single quiz will not have just one type of question. For example, a quiz may have multiple choice questions,
+then a cloze question and then a self-assessment question.
 
-### Structure of the questions
-
-Each question has a list of answers. Each answer has a text and a boolean whether it is correct or not.
-Additionally, each question has a hint, which is shown to the user if they request it.
-
-```graphql
-type Question {
-    """
-    Unique identifier of the question.
-    """
-    id: UUID!
-    """
-    Text of the question, can be markdown.
-    """
-    text: String!
-    """
-    List of answers.
-    """
-    answers: [Answer!]!
-    """
-    How many answers the user has to select.
-    """
-    numberOfCorrectAnswers: Int!
-    """
-    Optional hint for the question, can be markdown.
-    """
-    hint: String
-}
-
-type Answer {
-    """
-    Text of the answer, can be markdown.
-    """
-    text: String!
-    """
-    Whether the answer is correct or not.
-    """
-    correct: Boolean!
-}
-```
+## The general interface
 
 ### Structure of the quiz
 
@@ -59,50 +21,122 @@ The threshold is the number of questions the user has to answer correctly to pas
 
 ```graphql
 
-type MultipleChoiceQuiz {
-    """
-    Identifier of the quiz, same as the identifier of the assessment.
-    """
-    assessmentId: UUID!
-    """
-    List of questions.
-    """
-    questions: [Question!]!
-    """
-    Threshold of the quiz, i.e., how many questions the user has to answer correctly to pass the quiz.
-    """
-    threshold: Int!
+type Quiz {
+  """
+  Identifier of the quiz, same as the identifier of the assessment.
+  """
+  assessmentId: UUID!
+  """
+  List of questions.
+  """
+  questions: [Question!]!
+  """
+  Threshold of the quiz, i.e., how many questions the user has to answer correctly to pass the quiz.
+  """
+  threshold: Int!
 }
 ```
 
-### Content type
+### Question interface
 
-Multiple choice quizzes are a subclass of Assessment.
-There will be a new content type "MULTIPLE_CHOICE_QUIZ".
+The questions are generic superclass of all question types.
 
 ```graphql
-type MultipleChoiceAssessment {
-    multipleChoiceQuiz: MultipleChoiceQuiz!
+interface Question {
+  """
+  Unique identifier of the question.
+  """
+  id: UUID!
 
-    # inherited fields
-    """
-    Assessment metadata
-    """
-    assessmentMetadata: AssessmentMetadata!
-    """
-    ID of the content
-    """
-    id: UUID!
-    """
-    Metadata of the content
-    """
-    metadata: ContentMetadata!
+  """
+  Type of the question.
+  """
+  type: QuestionType!
 
-    """
-    Progress data of the content for the current user.
-    """
-    userProgressData: UserProgressData!
-    """
+  """
+  Optional hint for the question, can be markdown.
+  """
+  hint: String
+}
+
+enum QuestionType {
+  MULTIPLE_CHOICE
+  CLOZE
+  SELF_ASSESSMENT
+}
+```
+
+### Structure of the questions
+
+We focus first on multiple choice questions.
+Each question has a list of answers. Each answer has a text and a boolean whether it is correct or not.
+Additionally, each question has a hint, which is shown to the user if they request it.
+
+```graphql
+type MultipleChoiceQuestion implements Question {
+  """
+  Unique identifier of the question.
+  """
+  id: UUID!
+  """
+  Text of the question, can be markdown.
+  """
+  text: String!
+  """
+  List of answers.
+  """
+  answers: [MultipleChoiceAnswer!]!
+  """
+  How many answers the user has to select.
+  """
+  numberOfCorrectAnswers: Int!
+  """
+  Optional hint for the question, can be markdown.
+  """
+  hint: String
+}
+
+type MultipleChoiceAnswer {
+  """
+  Text of the answer, can be markdown.
+  """
+  text: String!
+  """
+  Whether the answer is correct or not.
+  """
+  correct: Boolean!
+}
+```
+
+
+### Content type
+
+Quizzes are a subclass of Assessment.
+There will be a new content type "QUIZ".
+
+```graphql
+type QuizAssessment {
+  quiz: Quiz!
+
+  # inherited fields
+  """
+  Assessment metadata
+  """
+  assessmentMetadata: AssessmentMetadata!
+  """
+  ID of the content
+  """
+  id: UUID!
+  """
+  Metadata of the content
+  """
+  metadata: ContentMetadata!
+
+  """
+  Progress data of the content for the current user.
+  """
+  userProgressData: UserProgressData!
+  """
     Progress data of the specified user.
     """
     progressDataForUser(userId: UUID!): UserProgressData!
@@ -117,86 +151,86 @@ This has the disadvantage that the user can't continue a quiz where they left of
 Also, they could technically stop the quiz if they see that they are going to fail and start it again.
 However, we start with the simpler approach and see if this is a problem in the future.
 
-To log that a multiple choice quiz is completed, we provide the following mutation:
+To log that a quiz is completed, we provide the following mutation:
 
 ```graphql
 
 type Mutation {
-    """
-    Log that a multiple choice quiz is completed.
-    """
-    logMultipleChoiceQuizCompleted(input: MultipleChoiceQuizCompletedInput!): MultipleChoiceQuiz!
+  """
+  Log that a multiple choice quiz is completed.
+  """
+  logQuizCompleted(input: QuizCompletedInput!): Quiz!
 }
 
-input MultipleChoiceQuizCompletedInput {
-    """
-    ID of the multiple choice quiz.
-    """
-    multipleChoiceQuizId: UUID!
+input QuizCompletedInput {
+  """
+  ID of the quiz.
+  """
+  quizId: UUID!
 
-    """
-    Number of questions the user answered correctly.
-    """
-    numberOfCorrectAnswers: Int!
+  """
+  Number of questions the user answered correctly.
+  """
+  numberOfCorrectAnswers: Int!
 
-    """
-    Number of hints the user requested.
-    """
-    numberOfHintsUsed: Int!
+  """
+  Number of hints the user requested.
+  """
+  numberOfHintsUsed: Int!
 }
 ```
 
-### Querying multiple choice quizzes
+### Querying quizzes
 
-We provide the following queries to get multiple choice quizzes:
+We provide the following queries to get quizzes:
 
 ```graphql
 type Query {
-    """
-    Get multiple choice quiz by assessment ID.
-    """
-    multipleChoiceQuizByAssessmentId(id: UUID!): MultipleChoiceQuiz!
-    """
-    Get all multiple choice quizzes.
-    """
-    multipleChoiceQuizzes: [MultipleChoiceQuiz!]!
+  """
+  Get quiz by assessment ID.
+  """
+  quizByAssessmentId(id: UUID!): Quiz!
+  """
+  Get all quizzes.
+  """
+  quizzes: [Quiz!]!
 }
 ```
 
-### Creating multiple choice quizzes
+### Creating quizzes
 
-We provide the following mutations to create multiple choice quizzes:
+We provide the following mutations to create quizzes:
 
 ```graphql
 type Mutation {
-    """
-    Create a multiple choice quiz.
-    """
-    createMultipleChoiceQuiz(input: CreateMultipleChoiceQuizInput!): MultipleChoiceQuiz!
+  """
+  Create a quiz.
+  """
+  createQuiz(input: CreateQuizInput!): Quiz!
 
-    """
-    Update a multiple choice quiz.
-    """
-    updateMultipleChoiceQuiz(input: UpdateMultipleChoiceQuizInput!): MultipleChoiceQuiz!
+  """
+  Update a quiz.
+  """
+  updateQuiz(input: UpdateQuizInput!): Quiz!
 
-    """
-    Delete a multiple choice quiz.
-    """
-    deleteMultipleChoiceQuiz(id: UUID!): UUID!
+  """
+  Delete a quiz.
+  """
+  deleteQuiz(id: UUID!): UUID!
 }
 
-input CreateMultipleChoiceQuizInput {
-    """
-    Assessment ID of the quiz.
-    """
-    assessmentId: UUID!
-    """
-    List of questions.
-    """
-    questions: [QuestionInput!]!
-    """
-    Threshold of the quiz, i.e., how many questions the user has to answer correctly to pass the quiz.
-    """
+input CreateQuizInput {
+  """
+  Assessment ID of the quiz.
+  """
+  assessmentId: UUID!
+  """
+  List of questions.
+  """
+  questions: [QuestionInput!]!
+  """
+  Threshold of the quiz, i.e., how many questions the user has to answer correctly to pass the quiz.
+  """
     threshold: Int!
 }
 
@@ -205,28 +239,28 @@ input QuestionInput {
     Text of the question, can be markdown.
     """
     text: String!
-    """
-    List of answers.
-    """
-    answers: [AnswerInput!]!
-    """
-    Optional hint for the question, can be markdown.
-    """
-    hint: String
+  """
+  List of answers.
+  """
+  answers: [AnswerInput!]!
+  """
+  Optional hint for the question, can be markdown.
+  """
+  hint: String
 }
 
-input UpdateMultipleChoiceQuizInput {
-    """
-    Assessment ID of the quiz.
-    """
-    assessmentId: UUID!
-    """
-    List of questions.
-    """
-    questions: [QuestionInput!]!
-    """
-    Threshold of the quiz, i.e., how many questions the user has to answer correctly to pass the quiz.
-    """
+input UpdateQuizInput {
+  """
+  Assessment ID of the quiz.
+  """
+  assessmentId: UUID!
+  """
+  List of questions.
+  """
+  questions: [QuestionInput!]!
+  """
+  Threshold of the quiz, i.e., how many questions the user has to answer correctly to pass the quiz.
+  """
     threshold: Int!
 }
 ```
