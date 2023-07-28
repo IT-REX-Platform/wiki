@@ -232,6 +232,31 @@ There are four categories of skills:
 - Apply
 - Analyze
 
+![Taxonomy's Level](images/taxonomy'level.png)
+<small><i>cited from the GITS paper</i></small>
+### Remember
+
+> In skill level assessment, "Remember" represents the lowest level of cognitive skills.
+> When a user demonstrates a skill level of "Remember" after an assessment, it means they are able to recall or recognize previously learned information.
+> Users at this level can remember facts, definitions, or concepts presented in the assessment. Their understanding might be limited to basic memorization, and they can identify key terms, dates, or events.
+
+### Understand
+
+> "Understand" is the next level of cognitive skills in skill level assessment.
+> If a user's skill level is classified as "Understand" after an assessment, it means they can comprehend the meaning and significance of the information presented in the assessment.
+> Users at this level can explain ideas or concepts in their own words and demonstrate an understanding of how different pieces of information relate to one another.
+
+### Apply
+> Moving up the cognitive skill ladder, "Apply" represents a higher level of skill in skill level assessment.
+> When a user has an "Apply" skill level after an assessment, it means they can use their knowledge and understanding to solve problems or apply the concepts they have learned to real-world situations.
+> Users at this level can demonstrate practical application and use their learning in new contexts, going beyond simple regurgitation of information.
+
+### Analyse
+
+> "Analyze" is the highest level of cognitive skills in skill level assessment.
+> If a user's skill level is categorized as "Analyze" after an assessment, it means they have the ability to break down complex information into its component parts, identify patterns, relationships, and underlying principles.
+> Users at this level can critically evaluate information and draw conclusions based on evidence and reasoning.
+
 The scores are both calculated per chapter and per course.
 
 ![Skill level](images/skilllevel.PNG)
