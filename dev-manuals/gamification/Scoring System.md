@@ -234,24 +234,27 @@ There are four categories of skills:
 
 ![Taxonomy's Level](images/taxonomy'level.png)
 <small><i>cited from the GITS paper</i></small>
-### Remember
+
+### Skill Types
+
+#### Remember
 
 > In skill level assessment, "Remember" represents the lowest level of cognitive skills.
 > When a user demonstrates a skill level of "Remember" after an assessment, it means they are able to recall or recognize previously learned information.
 > Users at this level can remember facts, definitions, or concepts presented in the assessment. Their understanding might be limited to basic memorization, and they can identify key terms, dates, or events.
 
-### Understand
+#### Understand
 
 > "Understand" is the next level of cognitive skills in skill level assessment.
 > If a user's skill level is classified as "Understand" after an assessment, it means they can comprehend the meaning and significance of the information presented in the assessment.
 > Users at this level can explain ideas or concepts in their own words and demonstrate an understanding of how different pieces of information relate to one another.
 
-### Apply
+#### Apply
 > Moving up the cognitive skill ladder, "Apply" represents a higher level of skill in skill level assessment.
 > When a user has an "Apply" skill level after an assessment, it means they can use their knowledge and understanding to solve problems or apply the concepts they have learned to real-world situations.
 > Users at this level can demonstrate practical application and use their learning in new contexts, going beyond simple regurgitation of information.
 
-### Analyse
+#### Analyse
 
 > "Analyze" is the highest level of cognitive skills in skill level assessment.
 > If a user's skill level is categorized as "Analyze" after an assessment, it means they have the ability to break down complex information into its component parts, identify patterns, relationships, and underlying principles.
@@ -266,20 +269,22 @@ The scores are both calculated per chapter and per course.
 In this section we will explain how the skill level score is calculated.
 For each skill category the calculation is the same, which skill category is used is configured in the assessment.
 
-Initially, each skill has a score of 0%.
-Each assessment has score points for each skill that are defined by the course creator.
-For each skill category, a total number of skill points can be calculated by summing up the score points of all
-assessments.
-**The maximum number of skill points per skill category is this sum times 4**, because we want to encourage the students
-to do assessments at least four times to **strengten the long term memory**.
+* In each skill type of a course (remember, understand, apply, analyze) a user can have a level/rank ranging from 0 to 1000
+  - 0 means the user has not aquired any skills in the topic(s) of the course yet
+  - 1000 means the user has achieved all aquirable skills of the course.
+* The 1000 levels of each skill type are split up equally between all chapters of the course 
+  - This means the lecturer ideally has to decide beforehand how many chapters their course will have
+  - Otherwise the students' skill levels will change when the lecturer adds a new chapter after the student has already started learning, which is not ideal
+  - For example, in a course with 20 chapters the student can reach a level of 20 in each chapter which then adds up to 1000 if the student reaches level 20 in all chapters
+  - If the number of chapters in the course does not allow for an integer division of the 1000 levels, the levels are rounded to the nearest integer only in the UI (levels are stored as decimals internally!)
+* Each assessment has a set amount of skill points for a skill type that the student will gain upon successful completion
+* The skill points for each assessment within a chapter define their relative contribution to the student reaching that chapter's maximum skill level
 
-The skill level score is then calculated by dividing the score points the student has achieved by the total number of
-skill points.
-So the difference between skill points and skill level score is that *skill points are absolute* and the *skill level
-score is relative* to the total number of skill points.
+**ATTENTION**: The logic defined above results in two assignments with the same amount of skill points that are located in two different chapters not necessarily having to contribute the same amount of levels to their respective chapters' skill levels.
 
-Each time a student works on new content or content that is due for repetition, the skill points are updated.
-The skill points are not modified if the student repeats content that is not due yet for repetition.
+* Each time a student works on new content or content that is due for repetition, their skill levels are updated.
+* For content which needs to be repeated the student can only reach the full amount of skill points when the student has repeated the content the necessary amount of times
+* To prevent users "binge repeating" an assessment, the skill points are not modified if the student repeats content that is not due yet for repetition.
 
 The student receives as many skill points as defined in the assessment,
 but with the following modifiers:
