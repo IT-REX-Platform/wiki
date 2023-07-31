@@ -269,14 +269,14 @@ The scores are both calculated per chapter and per course.
 In this section we will explain how the skill level score is calculated.
 For each skill category the calculation is the same, which skill category is used is configured in the assessment.
 
-* In each skill type of a course (remember, understand, apply, analyze) a user can have a level/rank ranging from 0 to 1000
+* In each skill type of a course (remember, understand, apply, analyze) a user can have a level/rank ranging from 0 to 100
   - 0 means the user has not aquired any skills in the topic(s) of the course yet
-  - 1000 means the user has achieved all aquirable skills of the course.
-* The 1000 levels of each skill type are split up equally between all chapters of the course 
+  - 100 means the user has achieved all aquirable skills of the course.
+* The 100 levels of each skill type are split up equally between all chapters of the course 
   - This means the lecturer ideally has to decide beforehand how many chapters their course will have
   - Otherwise the students' skill levels will change when the lecturer adds a new chapter after the student has already started learning, which is not ideal
-  - For example, in a course with 20 chapters the student can reach a level of 20 in each chapter which then adds up to 1000 if the student reaches level 20 in all chapters
-  - If the number of chapters in the course does not allow for an integer division of the 1000 levels, the levels are rounded to the nearest integer only in the UI (levels are stored as decimals internally!)
+  - For example, in a course with 20 chapters the student can reach a level of 20 in each chapter which then adds up to 100 if the student reaches level 20 in all chapters
+  - The decimal digits of the student's level are displayed as an XP bar next to the level
 * Each assessment has a set amount of skill points for a skill type that the student will gain upon successful completion
 * The skill points for each assessment within a chapter define their relative contribution to the student reaching that chapter's maximum skill level
 
@@ -296,7 +296,7 @@ but with the following modifiers:
   the time the student took to progress the content, but not more than 150% and not less than 50%.
 - The exact modifiers values need to be fine-tuned
 
-The modifiers are applied multiplicative, so if a student does an assessment the second time, uses a hint and has a
+The modifiers are applied multiplicatively, so if a student does an assessment the second time, uses a hint and has a
 correctness of 50%, he will receive 0.6 * 0.9 * 0.5 = 27% of the skill points of the assessment.
 
 Additionally, an additive penalty of -100% of the skill points of the assessment is applied if the student does not
