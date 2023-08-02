@@ -1,0 +1,7 @@
+API Design
+==========
+
+.. toctree::
+   :glob:
+
+   *
