@@ -14,7 +14,7 @@ For example:
 ![835c9266-f231-422a-92f5-ce67999eacdf]
 ```
 
-# API Design
+## API Design
 
 In the GraphQL API provided to the frontend, the `MediaMarkdown` type is used to represent MediaMarkdown text. The type has the following fields:
 
