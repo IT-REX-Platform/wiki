@@ -69,13 +69,13 @@ Some services might use additonal ports, like the mediaservice.
 </tr>
 <tr>
 <td>MinIO</td>
-<td>9000</td>
+<td>3010</td>
 <td>no</td>
 <td></td>
 </tr>
 <tr>
 <td>MinIO console </td>
-<td>9090</td>
+<td>3011</td>
 <td>no</td>
 <td></td>
 </tr>
