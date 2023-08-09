@@ -17,6 +17,19 @@ For example:
 [[media/835c9266-f231-422a-92f5-ce67999eacdf]]
 ```
 
+Valid Syntax of a ResourceMarkdown link is defined by the following regular expression:
+
+```regex
+\[\[[a-zA-Z]+/[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}\]\]
+```
+
+Explanation:
+* `\[\[` matches the opening `[[`
+* `[a-zA-Z]+` matches the resource type name, which may only contain letters. Currently, only `media` is supported
+* `\/` matches the `/` between the resource type name and the resource UUID
+* `[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}` matches a UUID
+* `\]\]` matches the closing `]]`
+
 ## API Design
 
 In the GraphQL API provided to the frontend, the `ResourceMarkdown` type is used to represent ResourceMarkdown text. The type has the following fields:
