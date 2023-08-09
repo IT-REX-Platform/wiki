@@ -6,18 +6,22 @@ To facilitate this, Markdown with a custom syntax on top is used, which is to be
 
 ## Custom Syntax
 
-In the current stage of implementation, ResourceMarkdown only supports linking/embedding of MediaRecords.
+### Resource Link
 
-The following custom syntax can be used in the ResourceMarkdown text to include a media record:
+The following custom syntax can be used in the ResourceMarkdown text to link to/embed a resource:
 
 ```
-[[media/<UUID_of_media_record>]]
+[[<resource_type>/<UUID_of_media_record>]]
 
 For example:
 [[media/835c9266-f231-422a-92f5-ce67999eacdf]]
 ```
 
-Valid Syntax of a ResourceMarkdown link is defined by the following regular expression:
+Where
+* `<resource_type>` is the type of the resource, e.g. `media`. This is case-sensitive. Only [supported resource types](#currently-supported-resource-types) can be used here.
+* `<UUID_of_media_record>` is the UUID of the resource to link/embed
+
+Valid syntax of a resource link is defined by the following regular expression:
 
 ```regex
 \[\[[a-zA-Z]+/[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}\]\]
@@ -25,14 +29,17 @@ Valid Syntax of a ResourceMarkdown link is defined by the following regular expr
 
 Explanation:
 * `\[\[` matches the opening `[[`
-* `[a-zA-Z]+` matches the resource type name, which may only contain letters. Currently, only `media` is supported
+* `[a-zA-Z]+` matches the resource type name, which may only contain letters
 * `\/` matches the `/` between the resource type name and the resource UUID
 * `[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}` matches a UUID
 * `\]\]` matches the closing `]]`
 
-## API Design
+## Currently Supported Resource Types
+Currently the only supported resource type is `media`. This means that only media records can be linked/embedded in ResourceMarkdown text.
 
-In the GraphQL API provided to the frontend, the `ResourceMarkdown` type is used to represent ResourceMarkdown text. The type has the following fields:
+## GraphQL API Design
+
+In the GraphQL API provided by the backend, the `ResourceMarkdown` type is used to represent ResourceMarkdown text. The type has the following fields:
 
 ```graphql
 type ResourceMarkdown {
@@ -43,20 +50,20 @@ type ResourceMarkdown {
     """
     Ids of MediaRecords referenced in the ResourceMarkdown text in order.
     """
-    mediaRecordIds: [UUID!]!
+    referencedMediaRecordIds: [UUID!]!
     """
     Resolved MediaRecords referenced in the ResourceMarkdown text in order.
     A MediaRecord might be NULL if the referenced MediaRecord no longer exists. 
     """
-    mediaRecords: [MediaRecord]!
+    referencedMediaRecords: [MediaRecord]!
 }
 ```
 
-- The `mediaRecordIds` field shall be filled by the service providing the ResourceMarkdown data. It shall be filled with the IDs of the MediaRecords referenced in the ResourceMarkdown text in order of appearance. Utility code to filter ResourceMarkdown text for MediaRecord IDs is provided in the `gits-common` repo. For performance reasons, it is recommended to search for the IDs in the text only once and store this in a database.
+- The `referencedMediaRecordIds` field shall be filled by the service providing the ResourceMarkdown data. It shall be filled with the IDs of the MediaRecords referenced in the ResourceMarkdown text in order of appearance. Utility code to filter ResourceMarkdown text for MediaRecord IDs is provided in the `gits-common` repo. For performance reasons, it is recommended to search for the IDs in the text only once and store this in a database.
 
-- The `mediaRecords` field is automatically resolved by the gateway using the IDs provided in the `mediaRecordIds` field and need not be provided by the service providing the ResourceMarkdown text.
+- The `referencedMediaRecords` field is automatically resolved by the gateway using the IDs provided in the `referencedMediaRecordIds` field and need not be populated by the service providing the ResourceMarkdown text.
 
-## Places of Usage in the System
+## Places of Usage of ResourceMarkdown in GITS
 
 **Please expand this list when you use ResourceMarkdown in a new place in the system**
 
