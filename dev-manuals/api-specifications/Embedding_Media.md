@@ -1,4 +1,4 @@
-# Assignment Text Formatting & Embedding Media
+# ResourceMarkdown (Embedding Resources in Text)
 
 Texts in assignments, e.g. text on flashcards or quiz text should be able to be formatted e.g. with bold text. Media uploaded in the system should also be able to be included in the text of assignments.
 
