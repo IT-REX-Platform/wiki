@@ -24,14 +24,14 @@ Where
 Valid syntax of a resource link is defined by the following regular expression:
 
 ```regex
-\[\[[a-zA-Z]+/[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}\]\]
+\[\[[a-zA-Z]+/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\]\]
 ```
 
 Explanation:
 * `\[\[` matches the opening `[[`
 * `[a-zA-Z]+` matches the resource type name, which may only contain letters
 * `\/` matches the `/` between the resource type name and the resource UUID
-* `[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}` matches a UUID
+* `[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}` matches a UUID
 * `\]\]` matches the closing `]]`
 
 ## Currently Supported Resource Types
