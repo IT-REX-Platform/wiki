@@ -11,10 +11,10 @@ In the current stage of implementation, ResourceMarkdown only supports linking/e
 The following custom syntax can be used in the ResourceMarkdown text to include a media record:
 
 ```
-![media/<UUID_of_media_record>]
+[[media/<UUID_of_media_record>]]
 
 For example:
-![media/835c9266-f231-422a-92f5-ce67999eacdf]
+[[media/835c9266-f231-422a-92f5-ce67999eacdf]]
 ```
 
 ## API Design
