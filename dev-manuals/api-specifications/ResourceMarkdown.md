@@ -69,7 +69,7 @@ type ResourceMarkdown {
 
 Mark with *(planned)* when ResourceMarkdown is not implemented for this part of the system but implementation is planned
 
-- Flashcards (planned)
+- Flashcards
 - Quizzes (planned)
 - Hints (planned)
 - Feedback (planned)
