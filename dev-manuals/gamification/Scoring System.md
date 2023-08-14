@@ -267,20 +267,17 @@ The scores are both calculated per chapter and per course.
 ### Calculation of the Skill Level Score
 
 In this section we will explain how the skill level score is calculated.
-For each skill category the calculation is the same, which skill category is used is configured in the assessment.
+For each skill category the calculation is the same, the skill category in which points are gained is configured per assessment.
 
-* In each skill type of a course (remember, understand, apply, analyze) a user can have a level/rank ranging from 0 to 100
-  - 0 means the user has not aquired any skills in the topic(s) of the course yet
-  - 100 means the user has achieved all aquirable skills of the course.
-* The 100 levels of each skill type are split up equally between all chapters of the course 
-  - This means the lecturer ideally has to decide beforehand how many chapters their course will have
-  - Otherwise the students' skill levels will change when the lecturer adds a new chapter after the student has already started learning, which is not ideal
-  - For example, in a course with 20 chapters the student can reach a level of 20 in each chapter which then adds up to 100 if the student reaches level 20 in all chapters
-  - The decimal digits of the student's level are displayed as an XP bar next to the level
+* For each skill type (remember, understand, apply, analyze) in each chapter (that contains at least 1 assignment) of a course a user can have a level/rank ranging from 0 to 10
+  - 0 means the user has not aquired any skills in the topic(s) of the chapter yet
+  - 10 means the user has achieved all aquirable skills of the chapter.
 * Each assessment has a set amount of skill points for a skill type that the student will gain upon successful completion
 * The skill points for each assessment within a chapter define their relative contribution to the student reaching that chapter's maximum skill level
 
 **ATTENTION**: The logic defined above results in two assignments with the same amount of skill points that are located in two different chapters not necessarily having to contribute the same amount of levels to their respective chapters' skill levels.
+
+E.g. if a chapter has 2 assignments with 1 skill point each, each assignment will contribute 5 levels to the skill level. If another chapter has 1 assignment with 2 skill points and another with 1 skill point, the 1 point assessment will contribute 3.3 levels to the skill level.
 
 ### Assessments' Rewarded Skill Points Calculation
 
