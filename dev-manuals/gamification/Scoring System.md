@@ -254,7 +254,7 @@ There are four categories of skills:
 > When a user has an "Apply" skill level after an assessment, it means they can use their knowledge and understanding to solve problems or apply the concepts they have learned to real-world situations.
 > Users at this level can demonstrate practical application and use their learning in new contexts, going beyond simple regurgitation of information.
 
-#### Analyse
+#### Analyze
 
 > "Analyze" is the highest level of cognitive skills in skill level assessment.
 > If a user's skill level is categorized as "Analyze" after an assessment, it means they have the ability to break down complex information into its component parts, identify patterns, relationships, and underlying principles.
@@ -264,23 +264,22 @@ The scores are both calculated per chapter and per course.
 
 ![Skill level](images/skilllevel.PNG)
 
-### Calculation of the skill level score
+### Calculation of the Skill Level Score
 
 In this section we will explain how the skill level score is calculated.
-For each skill category the calculation is the same, which skill category is used is configured in the assessment.
+For each skill category the calculation is the same, the skill category in which points are gained is configured per assessment.
 
-* In each skill type of a course (remember, understand, apply, analyze) a user can have a level/rank ranging from 0 to 100
-  - 0 means the user has not aquired any skills in the topic(s) of the course yet
-  - 100 means the user has achieved all aquirable skills of the course.
-* The 100 levels of each skill type are split up equally between all chapters of the course 
-  - This means the lecturer ideally has to decide beforehand how many chapters their course will have
-  - Otherwise the students' skill levels will change when the lecturer adds a new chapter after the student has already started learning, which is not ideal
-  - For example, in a course with 20 chapters the student can reach a level of 20 in each chapter which then adds up to 100 if the student reaches level 20 in all chapters
-  - The decimal digits of the student's level are displayed as an XP bar next to the level
+* For each skill type (remember, understand, apply, analyze) in each chapter (that contains at least 1 assignment) of a course a user can have a level/rank ranging from 0 to 10
+  - 0 means the user has not aquired any skills in the topic(s) of the chapter yet
+  - 10 means the user has achieved all aquirable skills of the chapter.
 * Each assessment has a set amount of skill points for a skill type that the student will gain upon successful completion
 * The skill points for each assessment within a chapter define their relative contribution to the student reaching that chapter's maximum skill level
 
 **ATTENTION**: The logic defined above results in two assignments with the same amount of skill points that are located in two different chapters not necessarily having to contribute the same amount of levels to their respective chapters' skill levels.
+
+E.g. if a chapter has 2 assignments with 1 skill point each, each assignment will contribute 5 levels to the skill level. If another chapter has 1 assignment with 2 skill points and another with 1 skill point, the 1 point assessment will contribute 3.3 levels to the skill level.
+
+### Assessments' Rewarded Skill Points Calculation
 
 * Each time a student works on new content or content that is due for repetition, their skill levels are updated.
 * For content which needs to be repeated the student can only reach the full amount of skill points when the student has repeated the content the necessary amount of times
@@ -289,27 +288,10 @@ For each skill category the calculation is the same, which skill category is use
 The student receives as many skill points as defined in the assessment,
 but with the following modifiers:
 
-- -10% for each hint used, but not more than -40%
-- multiplied by the correctness
-- +10% for 100% correctness to give a bonus for knowing all answers
-- if the assessment was timed, the time is also taken into account by multiplying the score by the time limit divided by
-  the time the student took to progress the content, but not more than 150% and not less than 50%.
-- The exact modifiers values need to be fine-tuned
+* -10% for each hint used, but no more than -40%
+* Multiplied by the correctness
+* Multiplied by the current repetition relative to the required no. of repetitions
+* If the assessment was timed, -5% for each 1% over the time limit, but if more than 10% over the time limit, the student receives 0 skill points
+* "Passing" the assessment (i.e. by reaching a minimum correctness or similar) is not required to receive skill points. This is to show the student their progress even if they are not yet able to solve the assessment satisfactorily
 
-The modifiers are applied multiplicatively, so if a student does an assessment the second time, uses a hint and has a
-correctness of 50%, he will receive 0.6 * 0.9 * 0.5 = 27% of the skill points of the assessment.
-
-Additionally, an additive penalty of -100% of the skill points of the assessment is applied if the student does not
-solve it correctly.
-For example, if he fulfilled an assessment with 50% correctness but the assessment requires 60% correctness to be
-considered successful,
-50% of the skill points of the assessment are subtracted from the total skill points of the student.
-
-This way, if a student already knows everything of a chapter perfectly, he will receive approximately 25% of the total
-skill points of the chapter, not considering any bonuses.
-Thus, without repetition, the student will never reach 100% of the skill points of a chapter.
-At least three repetitions are necessary to reach 100% of the skill points of a chapter.
-This only happens if the student has a very high correctness and does not use any hints.
-In practice, the student will likely need more repetitions to reach 100% of the skill points of a chapter.
-
-The user cannot gain more than 100% of the skill points of a chapter.
+The modifiers are applied multiplicatively, so if a student does an assessment the second of three required times, has a correctness of 60%, used one hint, and was 5% over the time limit, they will receive (2 / 3) * 0.6 * 0.9 * 0.75 = 0.27 = 27% of the full skill points of the assignment.
