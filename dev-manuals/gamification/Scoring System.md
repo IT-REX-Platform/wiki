@@ -260,8 +260,6 @@ There are four categories of skills:
 > If a user's skill level is categorized as "Analyze" after an assessment, it means they have the ability to break down complex information into its component parts, identify patterns, relationships, and underlying principles.
 > Users at this level can critically evaluate information and draw conclusions based on evidence and reasoning.
 
-The scores are both calculated per chapter and per course.
-
 ![Skill level](images/skilllevel.PNG)
 
 ### Calculation of the Skill Level Score
