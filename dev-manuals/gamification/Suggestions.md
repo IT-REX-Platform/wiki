@@ -7,13 +7,37 @@ For example, if a student has 2 courses where he should repeat the flashcard, th
 We differentiate between the suggestions inside a course and the suggestions between courses.
 
 ### In-course suggestions
-The first one can be simple. The item that was neglected the longest or does replenish the most amount of health/fitness will be suggested. 
-This means we have 2 options:
-1. The content items that is longest overdue, will be suggested
-2. The content that replenishes the most amount of health or fitness will be suggested
 
-The problem is: what happens if 2 or more items have the same time they are overdue or the some replenishing effect?
-For this we can also include the reward score of the contents in question.
+A content can be a suggested content, if
+- the chapter is unlocked for the user
+- the content is unlocked for the user, i.e, he completed the required predecessors of the learning path aka section
+
+We will suggest the contents that or overdue the longest, either for repetition or for learning the first time. In case of multiple contents being overdue for the same amount of days,
+- new contents will be favored over contents to repeat
+- contents rewarding more reward points will be favored 
+
+It will also be possible to filter for suggestions that match a certain skill type, resulting in the following query:
+
+```graphql
+extent type Course {
+  suggestedContents(limit: Int!, skillTypes: [SkillType!]! = [REMEMBER, UNDERSTAND, APPLY, ANALYSE]): [Suggestion!]!
+}
+
+type Suggestion {
+  content: Content!
+  type: SuggestionType!
+}
+
+enum SuggestionType {
+  NEW_CONTENT
+  REPETITION
+}
+```
+In the future, suggestion might also be dedependent on the recent content that was done, in order to suggest *related* content.
+
+#### Implementation note
+As chapters are handled in the course service, the Gateway has to resolve all currently active chapter ids of a course first and the content service has to 
+accept chapter ids as a parameter.
 
 ### Homepage suggestions
 The second system is a little more complicated. We have to figure out which course needs the attention the most. 
@@ -27,12 +51,6 @@ If the score should be the same for 2 or more items, a destinction by preference
 For example, if a student has the same work to do for 2 courses and the scores between both scores for the courses are the same, than the course that has been marked as *favored* is suggested first.
 
 ## Possibile implementation
-### In-course suggestions
-To implement the in-course suggestion system we can simply compare 1 of the 2 options to determine what is suggested first. To resolve the conflict, between items that have the same *overdue* score or *replenishing* score, we can use the formula related to the chosen option.
-
-Formula: $rewardScore * daysOverdue$
-
-or
 
 $rewardScore * replenishingEffect$
 ### Homepage suggestions
