@@ -18,7 +18,8 @@ This includes
 | Content Service    | [chapter-changes](#topic-chapter-changes)<br>[content-progressed](#topic-content-progressed)<br> [resource-update](#topic-resource-update) | [resource-association](#topic-resource-association)<br>[content-changes](#topic-content-changes) |
 | Media Service      | [content-changes](#topic-content-changes)                                                                                                  | [resource-update](#topic-resource-update)<br>[content-progressed](#topic-content-progressed)     |
 | Flashcard Service  | [content-changes](#topic-content-changes)                                                                                                  | [resource-update](#topic-resource-update)    <br>[content-progressed](#topic-content-progressed) |
-| Reward Service     | [content-progressed](#topic-content-progressed)                                                                                            |                                                                                                  |
+| Quiz Service       | [content-changes](#topic-content-changes)                                                                                                  | [content-progressed](#topic-content-progressed)                                                  |
+| Reward Service     | [content-progressed](#topic-content-progressed)<br>[course-changes](#topic-course-changes)                                                 |                                                                                                  |
 | Skilllevel Service | [content-progressed](#topic-content-progressed)                                                                                            |                                                                                                  |
 
 ## Topic: Course Changes
@@ -46,6 +47,7 @@ This topic is used by the Course Service to inform Course-dependant Services of 
 <dt>Subscribers</dt>
 <dd><ul>
 <li>User Service</li>
+<li>Reward Service</li>
 </ul></dd>
 </dl>
 
@@ -191,6 +193,7 @@ This topic is used by the Content Service to inform Content-dependant Services o
 <dd><ul>
 <li>Media Service</li>
 <li>Flashcard Service</li>
+<li>Quiz service</li>
 </ul></dd>
 </dl>
 
@@ -223,6 +226,7 @@ This topic is used to communicate that a certain content has been completed by a
 <dd><ul>
 <li>Media service</li>
 <li>Flashcard service</li>
+<li>Quiz service</li>
 </ul></dd>
 <dt>Subscribers</dt>
 <dd><ul>
