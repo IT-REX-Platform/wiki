@@ -15,12 +15,12 @@ This includes
 |--------------------|--------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
 | Course service     | [resource-association](#topic-resource-association)<br>                                                                                    | [course-changes](#topic-course-changes) <br>[chapter-changes](#topic-chapter-changes)            |
 | User Service       | [course-changes](#topic-course-changes)                                                                                                    |                                                                                                  |
-| Content Service    | [chapter-changes](#topic-chapter-changes)<br>[content-progressed](#topic-content-progressed)<br> [resource-update](#topic-resource-update) | [resource-association](#topic-resource-association)<br>[content-changes](#topic-content-changes) |
+| Content Service    | [chapter-changes](#topic-chapter-changes)<br>[content-progressed](#topic-content-progressed)<br> [resource-update](#topic-resource-update) | [resource-association](#topic-resource-association)<br>[content-changes](#topic-content-changes)<br>[user-progress-updated](#topic-user-progress-updated) |
 | Media Service      | [content-changes](#topic-content-changes)                                                                                                  | [resource-update](#topic-resource-update)<br>[content-progressed](#topic-content-progressed)     |
 | Flashcard Service  | [content-changes](#topic-content-changes)                                                                                                  | [resource-update](#topic-resource-update)    <br>[content-progressed](#topic-content-progressed) |
 | Quiz Service       | [content-changes](#topic-content-changes)                                                                                                  | [content-progressed](#topic-content-progressed)                                                  |
-| Reward Service     | [content-progressed](#topic-content-progressed)<br>[course-changes](#topic-course-changes)                                                 |                                                                                                  |
-| Skilllevel Service | [content-progressed](#topic-content-progressed)                                                                                            |                                                                                                  |
+| Reward Service     | [user-progress-updated](#topic-user-progress-updated)<br>[course-changes](#topic-course-changes)                                           |                                                                                                  |
+| Skilllevel Service | [user-progress-updated](#topic-user-progress-updated)                                                                                      |                                                                                                  |
 
 ## Topic: Course Changes
 
@@ -233,6 +233,48 @@ This topic is used to communicate that a certain content has been completed by a
 <li>Content service</li>
 <li>Reward Service</li>
 <li>Skilllevel Service</li>
+</ul></dd>
+</dl>
+
+### Message Content
+
+| Field          | Type    | Description                                                     |
+|----------------|---------|-----------------------------------------------------------------|
+| userId         | UUID    | The ID of the user associated with the progress log event.      |
+| contentId      | UUID    | The ID of the content associated with the progress log event.   |
+| success        | boolean | Indicates whether the user's progress was successful or not.    |
+| correctness    | double  | The level of correctness achieved by the user.                  |
+| hintsUsed      | int     | The number of hints used by the user.                           |
+| timeToComplete | Integer | The time taken by the user to complete the progress (optional). |
+
+## Topic: User Progress Updated
+
+This topic is used to communicate that a certain content has been completed by a user.
+This differs from the topic "content-progressed" in that it is published after the content service processed the event and updated the user progress data.
+
+### Interface Description
+
+<dl>
+<dt>Name</dt>
+<dd>user-progress-updated</dd>
+<dt>PubSub-Name</dt>
+<dd>gits</dd>
+<dt>Java class</dt>
+<dd><a href="https://github.com/IT-REX-Platform/gits-common/blob/main/src/main/java/de/unistuttgart/iste/gits/common/event/UserProgressLogEvent.java">UserProgressLogEvent</a> </dd>
+</dl>
+
+### Involved Services
+
+<dl>
+<dt>Publishers</dt>
+<dd><ul>
+<li>Content service</li>
+
+</ul></dd>
+<dt>Subscribers</dt>
+<dd><ul>
+<li>Reward service</li>
+<li>Skilllevel service</li>
 </ul></dd>
 </dl>
 
