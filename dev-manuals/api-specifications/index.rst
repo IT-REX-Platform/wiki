@@ -1,5 +1,5 @@
 API Specifications
-==========
+==================
 
 .. toctree::
    :glob:
