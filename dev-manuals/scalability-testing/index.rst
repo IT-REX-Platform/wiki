@@ -1,4 +1,4 @@
-Gamification
+Scalability Testing
 ============
 
 .. toctree::
