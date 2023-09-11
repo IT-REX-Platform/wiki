@@ -25,7 +25,7 @@
 |                  |               Hamcrest               |    2.+     | Framework for writing matchers in test assertions.                                       | [Hamcrest ](https://hamcrest.org/JavaHamcrest/)                                                                                                            |
 |                  |      Testcontainers PostgreSQL       |   1.18.3   | Docker-based PostgreSQL container for integration testing.                               | [Testcontainers PostgreSQL ](https://testcontainers.com/guides/getting-started-with-testcontainers-for-java/)                                              |
 |                  |     Testcontainers Junit Jupiter     |   1.18.3   | Integration between Testcontainers and Junit Jupiter for testing.                        | [Testcontainers Junit Jupiter](https://java.testcontainers.org/test_framework_integration/junit_5/)                                                        |
-
+|                  |               JSR 305                |   3.0.2    | Removes a Gradle warning about an unknown annotation.                                    | [JSR 305 ](https://jcp.org/en/jsr/detail?id=305)                                                                                                           |
 <div style="text-align: right;">
 
 <small>**All Services** include skill level, quiz service, content, and course service.</small>
@@ -34,14 +34,6 @@
 | Service           |  Library  | Version | Purpose                                                                 | Library Link                                                                        |
 |:------------------|:---------:|:-------:|:------------------------------------------------------------------------|:------------------------------------------------------------------------------------|
 | **Media Service** | Minio SDK |  8.5.2  | Provides a client for interacting with the Minio object storage server. | [Minio SDK](https://min.io/docs/minio/linux/developers/minio-drivers.html#java-sdk) |
-
-| Service             |   Library   | Version | Purpose                                               | Library Link                                              |
-|:--------------------|:-----------:|:-------:|:------------------------------------------------------|:----------------------------------------------------------|
-| **Content Service** | H2 Database |         | In-memory database for local development and testing. | [H2 Database ](https://www.h2database.com/html/main.html) |
-
-| Service            | Library | Version | Purpose                                               | Library Link                                     |
-|:-------------------|:-------:|:-------:|:------------------------------------------------------|:-------------------------------------------------|
-| **Course Service** | JSR 305 |  3.0.2  | Removes a Gradle warning about an unknown annotation. | [JSR 305 ](https://jcp.org/en/jsr/detail?id=305) |
 
 | Service                                    |     Library     | Version | Purpose                            | Library Link |
 |:-------------------------------------------|:---------------:|:-------:|:-----------------------------------|:-------------|
