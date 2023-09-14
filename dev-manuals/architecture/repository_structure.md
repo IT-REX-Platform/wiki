@@ -21,7 +21,6 @@ We decided to use separate repositories for the front-end and each microservice 
 ## Challenges and solutions of having different repositories
 
 - Shared code: If there is any shared code between microservices, repositories will have other repositories as dependencies. This is possible with gradle. Shared code should hopefully be minimal. (see below)
-- Sharing the graphQL schema: The frontend and the API gateway require the same schema file. Manually copying it when changed would be cumbersome. We will set up a GitHub action that will automatically create a pull request in the front-end repository if the backend make changes in the schema file.
 
 ## Shared code
 

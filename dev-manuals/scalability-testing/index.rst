@@ -1,5 +1,5 @@
 Scalability Testing
-============
+===================
 
 .. toctree::
    :glob:

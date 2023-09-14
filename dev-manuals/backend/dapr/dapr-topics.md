@@ -20,7 +20,7 @@ This includes
 | Flashcard Service  | [content-changes](#topic-content-changes)                                                                                                  | [resource-update](#topic-resource-update)    <br>[content-progressed](#topic-content-progressed) |
 | Quiz Service       | [content-changes](#topic-content-changes)                                                                                                  | [content-progressed](#topic-content-progressed)                                                  |
 | Reward Service     | [user-progress-updated](#topic-user-progress-updated)<br>[course-changes](#topic-course-changes)                                           |                                                                                                  |
-| Skilllevel Service | [user-progress-updated](#topic-user-progress-updated)                                                                                      |                                                                                                  |
+| Skilllevel Service | [user-progress-updated](#topic-user-progress-updated)<br>[chapter-changes](#topic-chapter-changes)                                                                                        |                                                                                                  |
 
 ## Topic: Course Changes
 
