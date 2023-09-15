@@ -7,4 +7,5 @@ While the server is running, you can run the command
 graphql-markdown http://localhost:{port}/graphql > {outputfile}
 ```
 
-The generated file then should be moved in this wiki in this folder.
+We provide a script to generate the API docs in each microservice, where the resulting documentation can be found in the `api.md` file.
+
