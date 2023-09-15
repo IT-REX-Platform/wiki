@@ -1,7 +1,0 @@
-SonarQube
-=========
-
-.. toctree::
-   :glob:
-
-   *
