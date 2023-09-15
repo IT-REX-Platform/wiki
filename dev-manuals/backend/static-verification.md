@@ -9,7 +9,7 @@ This one exception is related to our testing library for testing the GraphQL API
 As it is not as common as e.g. JUnit, Sonar does not recognize it as a testing framework and assumes we have no assertions in the API tests.
 We disabled that rule.
 
-# How to use sonarqube
+## How to use sonarqube
 
 The Sonarqube can be reached under: https://sonarcloud.io/organizations/it-rex-platform/projects
 
