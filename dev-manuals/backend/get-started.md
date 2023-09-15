@@ -15,7 +15,7 @@ If you don't want to develop and only run the service, there is docker compose f
   
 - IDE
 
-  We use IntelliJ IDEA as IDE. You can download it [here](https://www.jetbrains.com/idea/download/). As a student you can get a free license for the Ultimate Edition [here](https://www.jetbrains.com/community/education/#students).
+  We use IntelliJ IDEA as IDE. You can download it [here](https://www.jetbrains.com/idea/download/). As a student you can get a free license for the Ultimate Edition [here](https://www.jetbrains.com/community/education/#students). You can enable auto reload, where when you make changes in the code, the server will automatically reload the code. [Here](https://dev.to/imanuel/auto-reload-springboot-in-intellij-idea-1l65) is a short guide how to enable it.
   
 - Gradle
 
@@ -24,123 +24,32 @@ If you don't want to develop and only run the service, there is docker compose f
 - Docker
 
   We use Docker to run our microservices and the database. You can download it [here](https://www.docker.com/products/docker-desktop).
-  
-- Database (optional)
 
-  We use PostgreSQL as database. You can download it [here](https://www.postgresql.org/download/) to run it locally. 
+# Setting Up the Dev Environment
+## Cloning
 
-  We recommend using PGAdmin locally to manage the databases. You can download it [here](https://www.pgadmin.org) in case you didn't already install it together with PostgresSQL.
+This repository uses git submodules to be able to retrieve the repositories of all services into this repository when cloning. To do this, do the following:
 
-  Alternatively, you can use the database in a Docker container. We will provide a Docker Compose file for this in each microservice. See below for details.
+1. As with any repo, clone it using `git clone https://github.com/IT-Rex-Platform/gits_backend.git`
+2. Move into the repository (`cd gits_backend`)
+3. Initialize the submodules using `git submodule init`
+4. Pull the submodules using `git submodule update`
 
-  For Media Storage we use MinIO. How to set it up is explained here: [here](https://min.io/docs/minio/container/index.html)
+## Deployment
 
-- Dapr
+The local deployment of the backend is done in a few simple steps:
+1. Start docker (desktop)
+2. Create a network for the dapr sidecars to communicate: `docker network create dapr-network`
+3. Execute the .bat or .sh file found under ./gits_backend/compose.bat using `compose.bat up --build` (re-builds the containers) or `compose.bat up` (starts the containers without re-building if they already exist). 
 
-  We use Dapr as runtime for our microservices.
-  To run locally, you can download it [here](https://docs.dapr.io/getting-started/install-dapr-cli/).
+# Debugging Services
 
-  We will however use Docker to run Dapr and provide a Docker Compose file for this in each microservice. 
+To facilitate easy debugging of services, the docker containers are set up to expose all important ports to the host machine. This can easily be seen in Docker Desktop. Port mappings can also be found [on the wiki](https://gits-enpro.readthedocs.io/en/latest/dev-manuals/architecture/Ports.html).
 
-## Setup
+This makes it possible for you to start a service in your favorite IDE (where you can set breakpoints etc.) and for that service to hook into the rest of the system.
 
-### Clone the repository
+## Some Hints/Limitations
 
-To clone the repository,  you can use IntelliJ IDEA to clone the repository via `File > New > Project from Version Control...`.
-
-Alternatively, you can use the command line:
-
-```bash
-git clone {repository-url}
-```
-
-Then you can open the project in IntelliJ IDEA via `File > Open...`.
-
-### Run the database
-
-Run the database locally or in a Docker container.
-
-We recommend to run the databases in a Docker container, as you can easily add new instances for different microservices. 
-The recommended way to do so is to use Docker Desktop. 
-
-Use the search bar at the top to search for "postgres", select images. The first result should be the correct image.
-Press pull to download the image to your machine.
-
-Go to "Images" press the run button next on the postgres image.
-Click on optional settings enter the name and port of the container. 
-
-* Under Volumes select a folder to persist the data, for when the container stops running.
-* Under environment variables enter POSTGRES_USER as the variable and a username as the value.
-* Add another environment variable and enter POSTGRES_PASSWORD as the variable and a password as the value.
-* Add a third variable and enter POSTGRES_DB as the variable and a the database name as the value. 
-* This will automatically create a new Database in the docker container.
-
-Click run to start the container.
-
-See here if you prefer to use the command line: [here](https://www.baeldung.com/ops/postgresql-docker-setup).
-
-### Database configuration
-
-If you set the database up as described in "Run the database", you only need to add the previously defined variables to the configuration.
-Enter the database configuration in `src/main/resources/application.properties`. You need to enter the database URL, username and password.
-
-### Docker compose configuration
-In the docker-compose.yml change the environment variables of the database service, to match the ones in the application.properties.
-
-Change the expose and ports of both apps to the ones in application properties. The values in expose must match the first part of the ports values.
-
-For the database port only change the first value. It should look like this "XXXX:5432",
-where XXXX is the port number of the microservice database.
-
-Change "templatedatabase" in the SPRING_DATASOURCE_URL to match the POSTGRES_DB value.
-
-### Run microservice without Dapr (in development)
-
-For the usual developement process.
-Just run the main method of the spring application class with IDEA or run the command `gradle bootRun` in the command line.
-
-You can enable auto reload, where when you make changes in the code, the server will automatically reload the code. [Here](https://dev.to/imanuel/auto-reload-springboot-in-intellij-idea-1l65) is a short guide how to enable it.
-
-### Run the Microservice
-If you want to test the microservice, you can use docker compose. You can also use the built.in Docker support of IntelliJ for starting and stopping the docker containers. You can also use the command line:
-
-A new network must be created 
-```
-docker network create -d bridge dapr-network
-```
-
-To build and start the microservice including the database use:
-```
-docker compose up -d
-```
-
-More info [here](https://docs.docker.com/engine/reference/commandline/compose_up/)
-
-To stop the containers and removes containers, networks, volumes, and images created by up.
-```
-docker compose down
-```
-More info [here](https://docs.docker.com/engine/reference/commandline/compose_down/)
-
-### Running all Microservices
-
-Clone the gits_backend with the following command:
-```
-git clone --recurse-submodules https://github.com/IT-REX-Platform/gits_backend.git
-```
-
-Run the respective script.
-
-You only need to run "docker compose up.sh" to set everything up.
-
-"docker compose build.sh" will build the images. This is only required if the services have changed and you want to rebuild them.
-
-"docker compose up.sh" will start the containers (and build them if this hasn't happened before)
-
-"docker compose down.sh" will stop the containers and remove them.
-
-You need a Linux shell installed to run the scripts, which you should have if you installed git for windows.
-
-### Run scripts for dapr
-
-There exist run scripts for windows (dapr-run.cmd) and bash (dapr-run.sh) if you want to run the service outside docker but with dapr.
+* Firstly, start the whole backend as described above. Then you can stop the docker container of the service you want to debug (the database container needs to continue running!). You can then start the service you wish to debug on your host machine
+* Make sure when you execute the service you wish to debug that it is being run in the "dev" profile. In IntelliJ the profile can be set in the "Run Configurations". Alternatively the profile can be set in the application.properties file
+* Dapr PubSub Events do not work when debugging in this way
