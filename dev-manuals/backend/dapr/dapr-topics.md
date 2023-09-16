@@ -4,7 +4,7 @@ Here we will describe all dapr topics currently available in the system.
 This includes
 
 1. a **description** of the topic,
-2. it's **interface** descrpition,
+2. Its **interface** description,
 3. the content of the **messages**,
 4. services that **publish** to the topic,
 5. and services that **subscribe** to the topic.
@@ -250,7 +250,7 @@ This topic is used to communicate that a certain content has been completed by a
 ## Topic: User Progress Updated
 
 This topic is used to communicate that a certain content has been completed by a user.
-This differs from the topic "content-progressed" in that it is published after the content service processed the event and updated the user progress data.
+This differs from the topic "content-progressed" in that it is published after the content service processes the event and updates the user progress data.
 
 ### Interface Description
 
