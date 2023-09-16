@@ -42,13 +42,15 @@ The local deployment of the backend is done in a few simple steps:
 2. Create a network for the dapr sidecars to communicate: `docker network create dapr-network`
 3. Execute the .bat or .sh file found under ./gits_backend/compose.bat using `compose.bat up --build` (re-builds the containers) or `compose.bat up` (starts the containers without re-building if they already exist). 
 
+# Some Hints/Common Issues
+## Error Unsupported class file major version 64 when compiling
+Try to manually force gradle to use JDK 17 in the IntelliJ settings.
+
 # Debugging Services
 
 To facilitate easy debugging of services, the docker containers are set up to expose all important ports to the host machine. This can easily be seen in Docker Desktop. Port mappings can also be found [on the wiki](https://gits-enpro.readthedocs.io/en/latest/dev-manuals/architecture/Ports.html).
 
 This makes it possible for you to start a service in your favorite IDE (where you can set breakpoints etc.) and for that service to hook into the rest of the system.
-
-## Some Hints/Limitations
 
 * Firstly, start the whole backend as described above. Then you can stop the docker container of the service you want to debug (the database container needs to continue running!). You can then start the service you wish to debug on your host machine
 * Make sure when you execute the service you wish to debug that it is being run in the "dev" profile. In IntelliJ the profile can be set in the "Run Configurations". Alternatively the profile can be set in the application.properties file
