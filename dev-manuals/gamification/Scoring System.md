@@ -3,7 +3,7 @@
 ## Two System Approach
 
 GITS has two scoring systems: The skill level system and the reward system. The skill level system is used to determine
-how well a user knows a content.
+how well a user knows a piece of content.
 The reward system is used to motivate the user to learn new content and repeat old content.
 
 ## The reward system
@@ -30,7 +30,7 @@ This section describes how the reward scores are increased and decreased dependi
 <small><i>cited from the GITS paper</i></small>
 
 The health score represents how well the user is up-to-date with the content.
-It is decreased if the user is behind with the content and increased if the user learn new content that is due.
+It is decreased if the user is behind with the content and increased whenever the user learns new content that is due.
 
 ![Health](images/health.png)
 
@@ -55,18 +55,18 @@ This results in the following formula:
 
 Examples:
 
-- If the user is 7 days behind to learn 2 contents, the health score will be 100 - 7 - 6 - 5 - 4 - 3 - 2 - 1 = 72%.
-- If the user is 7 days behind to learn 4 contents, the health score will be 100 - 14 - 12 - 10 - 8 - 6 - 4 - 2 = 44%.
-- If the user is 14 days behind to learn 1 content, the health score will be 47.5%.
+- If the user is 7 days behind in learning 2 contents, the health score will be 100 - 7 - 6 - 5 - 4 - 3 - 2 - 1 = 72%.
+- If the user is 7 days behind in learning 4 contents, the health score will be 100 - 14 - 12 - 10 - 8 - 6 - 4 - 2 = 44%.
+- If the user is 14 days behind in learning 1 content, the health score will be 47.5%.
 - The earliest the user can reach health 0% is 5 days behind (with 40 contents overdue)
 
 ![Health plot](plots/health.png)
 
 To regenerate health, the user has to progress through new content.
 If he does so, the health will regenerate by x% where x is the missing health to 100% divided by the number of contents
-the user is behind (before they progressed the new content).
+the user is behind (the newly progressed content is included in this calculation).
 
-For example if the user has 70% health and has to learn 2 contents to be up-to-date again, he will regenerate 15%
+For example, if the user has 70% health and has to learn 2 contents to be up-to-date again, he will regenerate 15%
 health (100 - 70 / 2) when he progresses through one content. If he progresses through both contents, he will regenerate
 30% health (100 - 70 / 1) and will be back to 100% health.
 
@@ -90,11 +90,10 @@ health (100 - 70 / 2) when he progresses through one content. If he progresses t
 <small><i>cited from the GITS paper</i></small>
 
 The fitness score represents how well the user repeats old content.
-It is calculated similar to the health score, but only considers content that is due for repetition
+It is calculated similarly to the health score but only considers content that is due for repetition
 and also takes into account the correctness score of each content.
 
-To understand how the fitness score is calculated, we recommend to
-read [the spaced repetition page](spaced-repetition.md) first.
+To understand how the fitness score is calculated, we recommend reading [the spaced repetition page](spaced-repetition.md) first.
 
 ![Fitness](images/fitness.PNG)
 
@@ -115,7 +114,7 @@ The fitness score is calculated in the following way:
 - The maximum decrease per day is capped at 20%.
 
 This way, the fitness score will decrease more if the user has a lot of content to repeat and the correctness is low. If
-the user has contents to repeat with high correctness, the fitness score will decrease more slowly.
+the user has content to repeat with high correctness, the fitness score will decrease more slowly.
 
 This results in the following formula:
 
@@ -128,7 +127,7 @@ Examples:
 - If the user gets 10 contents to repeat with a correctness of 95% at the current date, the fitness will be ~96%.
 - After seven days, the fitness will be ~37%.
 - If the correctness of those contents had been 50%, the fitness after one day would be ~83% and 0% after just six days.
-- If a user has one content due by 30 days with a correctness of 99%, the fitness score would be reduced to around 51%.
+- If a user has one content overdue by 30 days with correctness of 99%, the fitness score would be reduced to around 51%.
 
 Plots:
 
@@ -139,12 +138,12 @@ Plots:
 To regenerate fitness, the user has to repeat old content.
 If the user repeats a content that he is not due according to the spaced repetition algorithm, the fitness will
 regenerate by 1% if he repeats it correctly.
-This way, the user is encouraged to repeat content he is already good at, because it will regenerate his fitness score,
+This way, the user is encouraged to repeat content he is already good at because it will regenerate his fitness score,
 even though slowly.
-We want to keep it that low, because we don't want the user to repeat content that he is already good at too often.
+We want to keep it that low because we don't want the user to repeat content that he is already good at too often.
 Also, the user will not gain fitness if he repeats content more than once a day.
 
-If the user repeats a content that he is due for according to the spaced repetition algorithm, the fitness will
+If the user repeats content that he is due for according to the spaced repetition algorithm, the fitness will
 regenerate by the following formula:
 
 ```
@@ -185,7 +184,7 @@ The total growth score that can be achieved is the sum of all growth reward scor
 The progress bar is then calculated by dividing the current growth score by the total growth score.
 We purposely do not constrain the growth score between 0 and 100% because we want to give the course creators the
 freedom to decide how much growth a content should give.
-If a content has a reward score of 100.000, the user might feel more rewarded than if the content only has a reward
+If content has a reward score of *100.000*, the user might feel more rewarded than if the content only has a reward
 score of 10, even though both might be 10% of the total achievable growth score.
 
 The growth score can not decrease.
@@ -204,7 +203,7 @@ The growth score can not decrease.
 
 For now, we focus on scores that are not based on the competition with other students, but only on the progress of the
 user.
-But this score will likely have no upper limit, so that the user can always improve his strength score by competing with
+But this score will likely have no upper limit so that the user can always improve his strength score by competing with
 other students.
 This score will also not decrease.
 
@@ -264,31 +263,31 @@ There are four categories of skills:
 
 ### Calculation of the Skill Level Score
 
-In this section we will explain how the skill level score is calculated.
-For each skill category the calculation is the same, the skill category in which points are gained is configured per assessment.
+In this section, we will explain how the skill level score is calculated.
+For each skill category, the calculation is the same, the skill category in which points are gained is configured per assessment.
 
 * For each skill type (remember, understand, apply, analyze) in each chapter (that contains at least 1 assignment) of a course a user can have a level/rank ranging from 0 to 10
-  - 0 means the user has not aquired any skills in the topic(s) of the chapter yet
-  - 10 means the user has achieved all aquirable skills of the chapter.
+  - 0 means the user has not acquired any skills in the topic(s) of the chapter yet
+  - 10 means the user has achieved all the acquirable skills of the chapter.
 * Each assessment has a set amount of skill points for a skill type that the student will gain upon successful completion
 * The skill points for each assessment within a chapter define their relative contribution to the student reaching that chapter's maximum skill level
 
 **ATTENTION**: The logic defined above results in two assignments with the same amount of skill points that are located in two different chapters not necessarily having to contribute the same amount of levels to their respective chapters' skill levels.
 
-E.g. if a chapter has 2 assignments with 1 skill point each, each assignment will contribute 5 levels to the skill level. If another chapter has 1 assignment with 2 skill points and another with 1 skill point, the 1 point assessment will contribute 3.3 levels to the skill level.
+E.g. if a chapter has 2 assignments with 1 skill point each, each assignment will contribute 5 levels to the skill level. If another chapter has 1 assignment with 2 skill points and another with 1 skill point, the 1-point assessment will contribute 3.3 levels to the skill level.
 
 ### Assessments' Rewarded Skill Points Calculation
 
 * Each time a student works on new content or content that is due for repetition, their skill levels are updated.
-* For content which needs to be repeated the student can only reach the full amount of skill points when the student has repeated the content the necessary amount of times
-* To prevent users "binge repeating" an assessment, the skill points are not modified if the student repeats content that is not due yet for repetition.
+* For content that needs to be repeated, the student can only reach the full amount of skill points when the student has repeated the content the necessary amount of times
+* To prevent users from "binge repeating" an assessment, the skill points are not modified if the student repeats content that is not due yet for repetition.
 
 The student receives as many skill points as defined in the assessment,
 but with the following modifiers:
 
 * -10% for each hint used, but no more than -40%
 * Multiplied by the correctness
-* Multiplied by the current repetition relative to the required no. of repetitions
+* Multiplied by the current repetition relative to the required number of repetitions
 * If the assessment was timed, -5% for each 1% over the time limit, but if more than 10% over the time limit, the student receives 0 skill points
 * "Passing" the assessment (i.e. by reaching a minimum correctness or similar) is not required to receive skill points. This is to show the student their progress even if they are not yet able to solve the assessment satisfactorily
 
