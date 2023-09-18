@@ -1,11 +1,17 @@
 # Skill level service
+In our application, we can find two different scoring systems: The [reward system](./reward-service.md) and the skill level system.
+This service handles the skill level system of IT-REX.
+The general idea of skill levels is to motivate students to learn repeatedly. Four different skill types are implemented according to the Bloomberg taxonomy:
+- Remember
+- Understand
+- Apply
+- Analyze
+For more information on how all these skill level scores are calculated and the description of the different skill types we recommend reading our [documentation on the scoring system](../gamification/Scoring%20System.md).
+This service offers GraphQL endpoints to query the current skill level scores of a user.
+We also use skill types in the [content service](./content-service.md) to make content suggestions to the user based on selected skill types.
 
-This service handles the analysis of the students.
-This is the central part of the “intelligent tutor”.
-The system analyses the student with the “Bloom taxonomy” so it evaluates their ability to remember, understand, apply, and analyze.
-Each taxonomy is a “skill” and exists for every chapter of a course independently.
-The calculated skill level is a score between 0-100.
-Depending on solved quizzes, repetition of content, flashcard learning, or any other activity of a student on the platform, this service calculates the skill level of the student.
-The service provides an API to external services to get skill level improvements in IT-REX (e.g an exercise in another platform is solved and it will also contribute to the skill level system of IT-REX). 
-It is also possible for lecturers and tutors to provide manual input into the skill level system for physical exercises and assignments.
-The service acts as an analyzer of the individual learning paths of the student. Depending on the score and progress of the student in the course, it suggests content to continue and to improve.
+## Score calculation and information gathering
+Calculations of the skill level of a user are triggered via a user progress event message.
+A user progress event is triggered each time a user progresses content. This is forwarded from the [content service](./content-service.md). After receiving such an event the skill level service will request all contents for the chapter of the content, for which user progress was made. This is because skill level scores are calculated on a chapter level.
+
+A more technical description of the reward service and its GraphQL endpoints can be found in our [Github Repository README](https://github.com/IT-REX-Platform/skilllevel_service#readme).
