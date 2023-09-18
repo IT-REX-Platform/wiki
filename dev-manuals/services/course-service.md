@@ -5,4 +5,4 @@ Chapters can be further populated with content and structuring elements. These a
 Access to courses and underlying content is restricted by course memberships. Course memberships are not handled in this service but in a separate service, the [user service](./user-service.md).
 Authorization of GraphQL endpoints for the course service is handled by our [GraphQL Gateway](./gateway-service.md).
 
-A more technical description of the course service and its Endpoints can be found in our [Github Repository README](https://github.com/IT-REX-Platform/course_service#readme)
+A more technical description of the course service and its endpoints can be found in our [Github Repository README](https://github.com/IT-REX-Platform/course_service#readme).

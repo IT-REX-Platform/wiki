@@ -5,6 +5,8 @@ The core responsibility of the content service is handling all operations relate
 Next to creating, modifying, and deleting content, this service also provides ways of structuring content and tracking the progress of users on content. The content entities stored in this service represent an abstraction of actual content. This means no actual data such as media files can be found in this service. Rather content entities in this service reference the actual content located in other services.
 Content can be structured by adding them into stages, which can be ordered in sections. A [chapter](./course-service.md) can contain one or multiple sections. For further information on how and for what these sections and stages are used, we recommend reading our concept on [non-linear curriculum](../gamification/nonlinear-curriculum.md).
 
+A more technical description of the content service and its GraphQL endpoints can be found in our [Github Repository README](https://github.com/IT-REX-Platform/content_service#readme).
+
 ## Content types
 Currently, our system supports two different types of content: 
 1. **Media Content**
@@ -16,8 +18,9 @@ Currently, our system supports two different types of content:
 Other than the type of content and a user's progress on this content, the content service does not contain any more information on the exact content of content entities. The exact content is stored in the corresponding services. These services link their content to the content entities in the content service. 
 
 ## Tracking of user progress on content
-For each user, progress on individual content can be tracked. Progress can be queried from this service, with options for aggregating progress. Currently, this service offers endpoints to provide progress information on single content entities, aggregated progress on stages and aggregated progress for a whole chapter.
+For each user, progress on individual content can be tracked. Progress can be queried from this service, with options for aggregating progress. Currently, this service offers GraphQL endpoints to provide progress information on single content entities, aggregated progress on stages and aggregated progress for a whole chapter.
 The logging of new progress in content is done in the underlying services [media service](./media-service.md), [quiz service](./quiz-service.md), and [flashcard service](./flashcard-service.md). These notify the content service of any changes and new user progress via event messages. The content service collects this information and in case of meaningful progress, notifies the [reward service](./reward-service.md) and the [skill-level service](./skill-level-service.md) via a different event message.
+For more information on user progress tracking in our application we recommend reading our [documentation on user progress](../gamification/userProgress.md).
 
 ## Content Suggestions
 Next to offering information on a user's progress for content, the content service also provides an option of suggesting content for an individual user. We recommend reading our [suggestion concept](../gamification/Suggestions.md) for more information on content suggestions. Our current implementation of suggestions is done in the following way:
