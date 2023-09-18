@@ -3,53 +3,8 @@
 Whenever data is deleted, all dependent object need to be updated or removed. In a distributed system, data is spread out over different components (in our case different services) making the deletion of data more challenging and expensive. 
 
 ## Data Dependencies
-
-```mermaid
-flowchart LR
-  subgraph course-service
-    Course == contains ==> Chapter
-  end
-  subgraph content-service
-    Section -- contains --> Stages
-    Stages -- contains --> Content
-    Content --- Media-Content
-    Content --- Assessment
-    User-Progress-Data -.- Content
-  end
-  Chapter -. contains .-> Content
-  Chapter -. contains .-> Section
-
-  subgraph media-service
-    mediaRecord --contains--> media-files
-  end
-  Media-Content -.represents.- mediaRecord
-
-  subgraph quiz-service
-    Quiz
-  end
-  Assessment -.represents.- Quiz
-
-  subgraph flashcards
-    FlashcardSet --contains--> Flashcard
-  end
-  Assessment -.represents.- FlashcardSet
-
-  subgraph reward-service
-    Reward-score
-  end
-  Reward-score -.evaluates.- User-Progress-Data
-
-  subgraph skill-level-service
-    Skill-level-score
-  end
-  Skill-level-score -.evaluates.- User-Progress-Data
-
-  subgraph user-service
-    Course-memberships
-  end
-    Course -. contains.-> Course-memberships
-
-```
+![](/images/simplified_service_dependencies.png)
+[Edit Diagram (Image and this link have to be updated manually after editing)](https://mermaid.live/edit#pako:eNqVVMluwjAQ_RXLZ8wHIIFUgXoqUkvUWy7GmSRWbSf1AmoR_97JAjimSO3Nnjd5iz3OiYqmALqgpWqOoubWk5ddbghxYV9Z3tZENME6YA7sQQroIELWfY0sl4gaz6VxuF6Rdc1bD7brAVMkLMaD8VOaDISXjSGM3XgYW5HM8wrc2NOv71rWA9_FTr9BgJEtFJKzh_CTc-CcvmLvaIi92qayWGYb7jlhcxbTj0nGbIjejMynRh61jDFzMzkR3RudnEdf2oFobIFmLxxd3KG5lGo4ltHTJCvKWmgxBq4dRojIEuXPIL-nwm9YiXhvh5SSDo0TtlJxVwtui_HCni_7DHyS4gr9SSsmSjQtHLE-zbAbaxgYIv64jApw4CpwD53A_d0nMu5DKsUUHEAlgxsDieAd9l_V0DX88tyYBr0H62rZxkNwfY3R2A2DmX5EZ1SD1VwW-N5P3bc59TVoyOkCl0pWtc9pbs7YyINvsi8j6MLbADMa2gL9byRHj5ouSq4cVnHEfGO3wx8ExUtZ0fMPxwh9jQ)
 
 In our system, data dependencies can be abstracted into three levels. The top level is the course level. A course contains a set of members and an array of chapters, which are divided into sections and contain content. Whenever a course is removed, all memberhsips, chapters, sections,and content need to also be removed.
 
