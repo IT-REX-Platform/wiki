@@ -2,7 +2,7 @@
 Stores all media content such as lecture videos, presentation slides, and PDF files and makes it available to the other services.
 It allows the lecturer and teaching assistants to upload media content and the students to watch or download it.
 
-A more technical description of the flashcard service and its GraphQL endpoints can be found in our [Github Repository README](https://github.com/IT-REX-Platform/media_service#readme).
+A more technical description of the media service and its GraphQL endpoints can be found in our [Github Repository README](https://github.com/IT-REX-Platform/media_service#readme).
 
 ## MinIO content Data
 The content Data in MinIO is structured as follows:

@@ -14,4 +14,4 @@ We also use skill types in the [content service](./content-service.md) to make c
 Calculations of the skill level of a user are triggered via a user progress event message.
 A user progress event is triggered each time a user progresses content. This is forwarded from the [content service](./content-service.md). After receiving such an event the skill level service will request all contents for the chapter of the content, for which user progress was made. This is because skill level scores are calculated on a chapter level.
 
-A more technical description of the reward service and its GraphQL endpoints can be found in our [Github Repository README](https://github.com/IT-REX-Platform/skilllevel_service#readme).
+A more technical description of the skill-level service and its GraphQL endpoints can be found in our [Github Repository README](https://github.com/IT-REX-Platform/skilllevel_service#readme).
