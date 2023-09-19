@@ -29,9 +29,9 @@ Please take a look at the [GraphQL Mesh Documentation](https://the-guild.dev/gra
 
 Sources (i.e. our different microservices) are defined at the top of the `.meshrc.yaml` file, inside the `sources` section.
 
-The gateway stiches together the schemas provided by the sources provided.
+The gateway stitches together the schemas provided by the sources provided.
 
-The `additionalTypeDefs` section defines modifications to the stiched-together graphql schema. Here, fields are added and relevant information is provided which the gateway uses to populate the fields with data.
+The `additionalTypeDefs` section defines modifications to the stiched-together GraphQL schema. Here, fields are added and relevant information is provided which the gateway uses to populate the fields with data.
 
 For example, a `contents` field is added to the Chapter type. This field's data is retrieved by sending a `contentsByChapterIds` Query to the `ContentService` source, where the query's `chapterIds` parameter is filled with the value of the `id`-field of the current `Chapter` object. 
 
