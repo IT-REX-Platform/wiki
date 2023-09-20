@@ -48,7 +48,9 @@ Try to manually force gradle to use JDK 17 in the IntelliJ settings.
 
 # Debugging Services
 
-To facilitate easy debugging of services, the docker containers are set up to expose all important ports to the host machine. This can easily be seen in Docker Desktop. Port mappings can also be found [on the wiki](https://gits-enpro.readthedocs.io/en/latest/dev-manuals/architecture/Ports.html).
+To facilitate easy debugging of services, the docker containers are set up to expose all important ports to the host
+machine. This can easily be seen in Docker Desktop. Port mappings can also be
+found [on the wiki](https://gits-enpro.readthedocs.io/en/latest/dev-manuals/backend/Ports.html).
 
 This makes it possible for you to start a service in your favorite IDE (where you can set breakpoints etc.) and for that service to hook into the rest of the system.
 
