@@ -46,27 +46,12 @@ For this reason the resource<->course lookup was consolidated into the CourseSer
 
 </details>
 
-## Basic Authorization Concept
+## Authorization Concept
 
 ![](/images/authorization-backtracking.png)
-[Edit Diagram (Image and this link have to be updated manually after editing)](https://mermaid.live/edit#pako:eNp1VMGO2yAQ_ZURl14SVd3erCqXVlpV7R7aVXvyZQyTDYoNLmCvrCj_XsA4i03WBwtm4M2bN8NcGNeCWMUs_RtIcfom8cVgVyvwH3KnDfyxZOZ9j8ZJLntUDh7R0StOpeOJhMRnMqPkVHq_6sFYetf9gybeajyXnsBidW3-B_P-cEhsKng02J9-_YQXctAFJl8aczDEtREWmgmkuKUmR3_pLY_ZnrYecqFSwV9spQhnBx8MnD6T2oCsaS-7fU7sN7nBKBhnLKkVSHXU8wVBd5C2fDIBIpqRNCZKPIoaMu2oa8jYk-wjvOliqA3bQsrMcI9ziPHBwga7oL6C3bLPu-KtSiZ0nXWB-evHnDFgoweXIgc3jihbbFpKydpNTmXX5RZPYNV4IbUYGfB4lK30CCIBAyoBKZr3uCnSChQ8ObjEnvouPu0grR5uq8_XDadNry-irMz7Qpsk-iXn4MPl24f1dgmc1eLOM1vpcafKN4XnFxPl8arE5Ar8Uu6l1KlT8xrbXitLBUa6wXasI192KfwYuoRTNXMn6qhmlV8KNOea1erqz-Hg9POkOKucGWjHhj48yzSyWHXE1nqrp-bH1tM81-J4u_4H3LW6Pw)
+[Edit Diagram (Image and this link have to be updated manually after editing)](https://mermaid.live/edit#pako:eNp1VMtu2zAQ_JUFL02BBL0LhXNo0SBAc2iD9qTLSlxHi0ikwocNI8i_hxQZmxYdH2R7H7MzyxFfRa8liUZYevGkevrJ-GRwahWED_ZOG_hnyQDa9H21ZzcA-vBw-pnU11Q5o3Hc84zKwR062uOhTjyQZHwks-Oe6myE_zT5Q3tj6ZhOBekZ-242mzy1gTuD8_DnNzyRgylO_N6ZjaFeG2mhOwDLozjehaYT3xTPf0vI_ziyjKU-rmDRXVcX_Bv4S84w7XJHv7CPPCaaOjJ24BlYbbWZ0LFWK0LVJorATckrTPFGLTO-WFhhp1ZJl2HX7M8W3MCvcO44jpm5TTLYAuYpoLcN3Nuch9l3I9uB5O1KyurcYu4sdEnOOWa9p0LSRVucRJWGOxnDRKtbF49j_62EB-y0d3mdMY075BG7kT72sFJXG7qMXNJ2REymXIiQTD6t1NXwH9Ky3UpNdtbKUoWRO8S1mCjIZBne9ddY1Qo30EStaMJPiea5Fa16C3Xh3daPB9WLxhlP18LP0fr5XhDNFkcbooFauBse0uWx3CFv775Xgwc)
 
-1. The Gateway firstly validates the user token sent by the user
-2. The Gateway retrieves course membership information of the user from the UserService
-3. The Gateway passes course membership information of the user to the in its request to other services using the GraphQL Context
-4. The service of which a resource is requested (in the example the MediaService) requests the course the resource is associated with from the CourseService
-5. The service checks if the affiliated course is available using the information returned by the CourseService and it checks whether the user has access to the affiliated course using the membership info passed by the Gateway
-
-### Retrieving Permissions for a Resource in a Service
-
-In detail, to retrieve permissions for a resource a service wants to return, the following needs to be done by the service:
-
-1. The course it is associated with needs to be retrieved
-    * For this, the CourseService provides an endpoint which can be queried with the ids of multiple resources and which returns the ids of the courses they are associated with and a boolean to indicate if that course is available depending on the course properties `published`, `startDate`, `endDate`
-2. Check if the `available` boolean for the course the resource is associated with is true
-3. Retrieve the courses the user has membership access to from the GraphQL context
-4. Check if the user has the necessary membership access to the course the resource is associated with
-5. Only return the resource if the aforementioned conditions are met
+TODO: Add description of authorization concept v.3
 
 ## Handling GraphQL requests where the user only has permissions for some subitems
 
@@ -98,24 +83,6 @@ When returning null, the frontend can just query courses indiscriminatly and whe
 </details>
 
 
-## Skipping Permissions Check Under Some Circumstances (Possible Future Optimization)
+## Speeding up nested GraphQL queries
 
-![](/images/authorization-gateway.png)
-[Edit Diagram (Image and this link have to be updated manually after editing)](https://mermaid.live/edit#pako:eNqVVM1uGyEQfpURlzZS0gdYVb4kUlVVuSRKTnsZw7hGZsEFdivH2ncPsBt7gW2l-GDBDPv9wMycGTeCWMMc_elJc3qQ-Nti12oIP-TeWHhxZKf9Ea2XXB5Re_iBnv7iqU78ohNXBg91JgI9kx0kpzp5b3rr6D9p7Un7f-YfSUjMstN_5LzbbGa1DTxFn87DGXgidGmVsOOyizBPxI0VDsZxvNyDHALC1fQUn7cB_8N0A6-opIhn-8AM3hxIFyD5BX3s7nKVvrcahglLGg1S78z0gaAVpFLP4qoTmpU0zJIm39-3dtNRtyXr9vKY4G2XqAq11aMtAmuaI8cXBwV2JT2DLdVntXB9M1QKcECpcKvo8n5mlzgL2SvllIXWpFfYleoCtda9LNKr8EuBbU_w8wG-Ss3VN2gZ9n5vrHwj0TLYSVLiprJRl30eWzMy80GoHVzxkEOWJpaddLWQGgPs3Bmf9lG35zKy5iEjrEzkeLmFufwLJBlRKpz5G3bLOgr1L0UYhed4qmV-Tx21rAlLgfbQslaP4Vzwap5PmrPG255uWX-M3T6PTdbsULkQDZRhdD5OszWN2PEdLqrnRQ)
-
-For a nested query like the following:
-
-```graphql
-courses {
-    contents {
-        mediaRecords {
-            name,
-            type
-        }
-    }
-}
-```
-
-an optimization could be performed by only checking for course permissions once (instead of all services checking access permission for their resources on their own), and passing an `authorized: yes` field to all following nested service queries, as authorization has aleady been ensured by the first query to the course service.
-
-This optimization may be implemented in the future if necessary to improve performance, but for now the authorization flow will only support the basic concept, as most GraphQL queries by the frontend won't be nested over service boundaries, which means even with the basic concept there is no unnecessary overhead.
+TODO: Add description of speedup implemented with authorization concept v.3

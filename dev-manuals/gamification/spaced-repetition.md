@@ -8,9 +8,9 @@ How does it work in GITS?
 - Additionally, we assign a **learning interval** to each content.
   This is the number of days after which the content should be repeated.
 - When the content is progressed the first time, the learning interval will be one day.
-- In each content a different initial learning interval can be configured.
+- In each content, a different initial learning interval can be configured.
 - **For each successful repetition, the learning interval will get at most doubled.**
-    - The new learning interval will be doubled if no hints were used and the correctness score is 100%.
+    - The new learning interval will be doubled if no hints are used and the correctness score is 100%.
     - Otherwise, for each **hint** used, the learning interval will be increased by 10%, but not less than the previous
       learning interval.
     - The additional learning interval will be multiplied by the correctness score.
@@ -60,7 +60,7 @@ Here is an example table for the learning intervals, when content was learned al
 Spaced repetition will only be applied to assessments and not to lectures.
 The student probably does not want to watch the same lecture video again and again.
 Also for some types of assessments, repeating the content after just one day might be too early.
-Therefore, we consider to make the base learning interval configurable for each content.
+Therefore, we consider making the base learning interval configurable for each content.
 
 Using the date when the content was last learned and the learning interval, we can calculate the next repetition date.
 At any time we can calculate the list of contents that are due for repetition, which is possibly empty.
