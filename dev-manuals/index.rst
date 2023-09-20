@@ -16,6 +16,5 @@ Developer Manuals
    ./readthedocs/index
    ./scalability-testing/index
    ./services/index
-   ./sonarqube/index
    ./feature-testing/index
 
