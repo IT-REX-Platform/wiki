@@ -1,7 +1,0 @@
-API Specifications
-==================
-
-.. toctree::
-   :glob:
-
-   *

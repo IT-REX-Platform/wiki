@@ -4,7 +4,7 @@ The gateway provides a unified API to access the functionality of the GITS backe
 
 The gateway is run as a [GraphQL Mesh](https://the-guild.dev/graphql/mesh) server which merges the GraphQL schemas of the different microservices into one unified schema.
 
-More information on the basic idea of our setup using GraphQL Mesh can be found [here](../architecture/graphql.md).
+More information on the basic idea of our setup using GraphQL Mesh can be found [here](../backend/graphql.md).
 
 ## Usage
 ### Docker Environment
