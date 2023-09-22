@@ -232,7 +232,6 @@ There are four categories of skills:
 - Analyze
 
 ![Taxonomy's Level](images/taxonomy'level.png)
-<small><i>cited from the GITS paper</i></small>
 
 ### Skill Types
 
