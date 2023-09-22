@@ -12,7 +12,6 @@
 
 ## Backend
 
-- Anja
 - Tim
 - Lukas
 - Keyuri
@@ -23,5 +22,4 @@
 
 ### QA Manager
 
-- Anja
-- Keyuri (assistant manager)
+- Rick
