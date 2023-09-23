@@ -2,8 +2,7 @@
 
 ## Join course as a student
 
-### Student wants to join a course 
-
+### Student wants to join a course
 
 **Prerequisites** a course exists that the student is not yet a part of
 

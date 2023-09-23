@@ -2,13 +2,9 @@
 
 ## Add new course
 
-
-
 ### Lecturer wants to create a new course
 
-
 **Prerequisites** lecturer is logged in and on the dashboard page
-
 
 **Step 1** the lecturer clicks the "add course" button &rarr; "create new course page" is shown
 
@@ -16,12 +12,9 @@
 
 **Postconditions** the course skeleton is created and ready to be filled by the lecturer, students can already see and join it
 
-
 ### Lecturer wants to edit the course information
 
-
 **Prerequisites** the lecturer is on the page of a course that he has the permission to edit
-
 
 **Step 1** the lecturer clicks the settings button in top right corner &rarr; editing pop-up shows up
 
@@ -29,12 +22,9 @@
 
 **Postconditions** the course information is saved and the page is shown with updated values
 
-
-
 ## Create chapters
 
 ### Lecturer wants to add a new chapter to a course
-
 
 **Prerequisites** the lecturer is on the page of a course that he has the permission to edit
 
@@ -44,9 +34,7 @@
 
 **Postconditions** the new chapter is created and added to the course
 
-
 ### Lecturer wants to edit an existing chapter
-
 
 **Prerequisites** the lecturer is on the page of a course that he has the permission to edit
 
@@ -56,9 +44,7 @@
 
 **Postconditions** the chapter information is saved and the page is shown with updated values
 
-
 ### Lecturer wants to add sections
-
 
 **Prerequisites** a chapter with all required metadata exists
 

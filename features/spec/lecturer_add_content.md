@@ -1,10 +1,8 @@
 # Add content to courses
 
-
 ## Add media content
 
-### Lecturer wants to add a pdf to a section 
-
+### Lecturer wants to add a pdf to a section
 
 **Prerequisites** a chapter with a section exists
 
@@ -22,10 +20,7 @@
 
 **Postconditions** the new pdf is added and shown in the section
 
-
-
-### Lecturer wants to add a video to a section 
-
+### Lecturer wants to add a video to a section
 
 **Prerequisites** a chapter with a section exists
 
@@ -43,17 +38,11 @@
 
 **Postconditions** the new video is added and shown in the section
 
-
 ## Add Flashcards
-
 
 ### Lecturer wants to create and add a new set of flashcards
 
-
-
-
 ### Lecturer wants to create and add a new flashcard
-
 
 ## Add Quizzes
 
@@ -71,7 +60,6 @@
 
 **Postconditions** the new quiz set is added and shown in the section
 
-
 ### Lecturer wants to create and add a new multiple choice quiz
 
 **Prerequisites** a quiz set exists
@@ -84,17 +72,15 @@
 
 **Postconditions** the new quiz is added to the quiz set and shown on the quiz set page
 
-
 ### Lecturer wants to edit a multiple choice quiz
 
 **Prerequisites** a quiz set with a multiple choice quiz exists
 
 **Step 1** the lecturer clicks on the edit button symbolized by a pen near the question &rarr; edit multiple choice quiz page is shown
 
-**Step 2** the lecturer edits the question and clicks on "save" &rarr;  page of the quiz set is shown again
+**Step 2** the lecturer edits the question and clicks on "save" &rarr; page of the quiz set is shown again
 
 **Postconditions** the question has been changed and is shown on the quiz set page
-
 
 ### Lecturer wants to create and add a new cloze test
 
@@ -108,22 +94,16 @@
 
 **Postconditions** the new cloze test is added to the quiz set and shown on the quiz set page
 
-
 ### Lecturer wants to edit a cloze test
 
 **Prerequisites** a quiz set with a cloze test exists
 
 **Step 1** the lecturer clicks on the edit button symbolized by a pen near the question &rarr; edit cloze test page is shown
 
-**Step 2** the lecturer edits the question and clicks on "save" &rarr;  page of the quiz set is shown again
+**Step 2** the lecturer edits the question and clicks on "save" &rarr; page of the quiz set is shown again
 
 **Postconditions** the question has been changed and is shown on the quiz set page
 
-
 ### Lecturer wants to create and add a new math test
 
-
-
-
 ### Lecturer wants to create and add a new association test
-
