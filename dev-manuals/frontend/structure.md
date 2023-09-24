@@ -86,7 +86,7 @@ app
 
 ### Components
 
-The `components` folder contains all sorts of components that are used in the application. If you refactor code and extract components, please put them in this folder. The folder structure is as follows:
+The `components` folder contains all sorts of components that are used in the application. If you refactor code and extract components or you create new components that should not clutter the app files, please put them in this folder. The folder structure is as follows:
 
 ```bash
 components
