@@ -159,3 +159,11 @@ components
 ├── Subheading.tsx
 └── Suggestion.tsx
 ```
+
+### src
+
+The `src` contains the GraphQL schema file. Besides that it holds files related to the relay module. Also it hold the `currentView.tsx` file, which is used to determine the current view of the application. It is used in the `layout.tsx` file in the `app` folder.
+
+### __generated__
+
+This folder is only visibile in local development. It contains all the generated files from the GraphQL queries and mutations. It is not pushed to the repository.

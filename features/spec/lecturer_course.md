@@ -1,4 +1,6 @@
-# Course tests
+# Lecturer Course tests
+
+Latest Update: 24.09.2023
 
 These manual test are for the lecturer view. They include cases for creating, updating and deleting courses, chapters and sections and stages.
 
