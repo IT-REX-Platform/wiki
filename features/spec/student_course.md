@@ -5,7 +5,7 @@ Latest Update: 24.09.2023
 This file contains the testing plans for the student view and functionalites on courses.
 
 A general prerequisite for all tests is that the user has a stable internet connection to the site.
-A general fail condition for all tests is that the view is not updated or data is not shown even after manual refresh.
+A general fail condition for all tests is that the view is not updated or data is not shown even after a manual refresh.
 
 ## Student enters the application for the first time
 
@@ -32,7 +32,7 @@ A general fail condition for all tests is that the view is not updated or data i
 - **Option 1** student scrolls through all courses in the catalog and clicks on the "Join course" button of the course he wants to join &rarr; course page opens and student is now part of the course
 - **Option 2** student uses the search bar to search for a course and clicks on the "Join course" button of the course he wants to join &rarr; course page opens and student is now part of the course
 
-**Successfull Postconditions** Student has a membership of the course now and is shown the course page. The course is shown in the navbar on the left and in the students dashboard, as well as in the course catalog under the category "My courses".
+**Successful Postconditions** Student has a membership of the course now and is shown the course page. The course is shown in the navbar on the left and in the students dashboard, as well as in the course catalog under the category "My courses".
 
 **Failed postcondition** Student is not shown the course page and is shown an error message or the course is not added to the students courses or the student is not shown the course in the navbar or the course is not shown in the course catalog under the category "My courses" or the membership is not properly saved.
 
@@ -50,7 +50,7 @@ A general fail condition for all tests is that the view is not updated or data i
 - **Option 2** student clicks on a suggestion &rarr; student is redirected the assignment corresponding to the suggestion
   - **Option 2.1** student completes the suggested assignment &rarr; student is redirected to the course page
 
-**Successfull Postconditions** Student is redirected to the course page after fullfilling all conditions (if a suggestion was selected) and can see all visibile course information.
+**Successful Postconditions** Student is redirected to the course page after fullfilling all conditions (if a suggestion was selected) and can see all visibile course information.
 
 **Failed postcondition** Student is not redirected to the course page or the student is not shown the accessible course information or the student is not shown the suggestions or shown wrongly. Another fail condition is the student is shown an error message, despite having membership.
 
@@ -72,7 +72,7 @@ A general fail condition for all tests is that the view is not updated or data i
 
 **Step 2** The student sees the scoreboard page and can interact with it &rarr; the student can increase the size of the number of entries shown and navigate through the pages
 
-**Successfull Postconditions** The student is shown the scoreboard page and can interact with it. Power score and user names are shown correctly and the student can navigate through the pages and increase the number of entries shown. The time until the scoreboard is shown is within a reasonable timeframe *(< 60s)*. The scoreboard has not to be updated in real time. The navigation back to the course page is working correctly.
+**Successful Postconditions** The student is shown the scoreboard page and can interact with it. Power score and user names are shown correctly and the student can navigate through the pages and increase the number of entries shown. The time until the scoreboard is shown is within a reasonable timeframe *(< 60s)*. The scoreboard has not to be updated in real time. The navigation back to the course page is working correctly.
 
 **Failed postcondition** The student is not shown the scoreboard page or the student is not shown the correct information or the student is not able to interact with the scoreboard or the student is not able to navigate through the pages or increase the number of entries shown or the time until the scoreboard is shown is too long *(> 60s)*. Another fail condition is that the students user name is not shown on the scoreboard, despite having a membership.
 
@@ -88,7 +88,7 @@ A general fail condition for all tests is that the view is not updated or data i
 
 **Step 3** The student sees the statistics page and can interact with it &rarr; the student can set filters for the statistics and the graphs and history are updated accordingly
 
-**Successfull Postconditions** The student is shown the statistics page and can interact with it. The graphs and history are updated accordingly and the student can set filters for the statistics. The time until the statistics are shown is within a reasonable timeframe *(< 60s)*. The statistics have not to be updated in real time. The navigation back to the course page is working correctly.
+**Successful Postconditions** The student is shown the statistics page and can interact with it. The graphs and history are updated accordingly and the student can set filters for the statistics. The time until the statistics are shown is within a reasonable timeframe *(< 60s)*. The statistics have not to be updated in real time. The navigation back to the course page is working correctly.
 
 **Failed postcondition** The student is not shown the statistics page or the student is not able to interact with the statistics or the student is not able to set filters or the time until the statistics are shown is too long *(> 60s)*. Another fail condition is that the students history is not shown despite having completed assignments and having viewed required media.
 
@@ -106,7 +106,7 @@ A general fail condition for all tests is that the view is not updated or data i
 
 **Step 4** The student clicks the download button &rarr; the media is downloaded and the media is marked as completed (see step 3)
 
-**Successfull Postconditions** The student is shown the media page and can interact with it. The media can be marked as completed and the student is shown a notification if marked. The media is downloadable and the media is marked as completed if downloaded. The time until the media is shown is within a reasonable timeframe *(< 60s)*. The navigation back to the course page is working correctly.
+**Successful Postconditions** The student is shown the media page and can interact with it. The media can be marked as completed and the student is shown a notification if marked. The media is downloadable and the media is marked as completed if downloaded. The time until the media is shown is within a reasonable timeframe *(< 60s)*. The navigation back to the course page is working correctly.
 
 **Failed postcondition** The student is not shown the media page or the student is not able to interact with the media or the student is not able to mark the media as completed or the student is not able to download the media or the time until the media is shown is too long *(> 60s)*. Another fail condition is that the students media is not marked as completed, despite having viewed it.
 
@@ -128,7 +128,7 @@ A general fail condition for all tests is that the view is not updated or data i
 
 **Step 6** When all flashcards are done the student finishes the flashcard by clicking "finish" &rarr; the student is redirected to the course page and the progress is sent to the backend
 
-**Successfull Postconditions** The student is shown the flashcards page and can interact with it. The flashcards can be answered and the feedback is saved. The flashcards are marked as completed and the progress is sent to the backend at the end. The time until the flashcards are shown is within a reasonable timeframe *(< 60s)*. The navigation back to the course page is working correctly.
+**Successful Postconditions** The student is shown the flashcards page and can interact with it. The flashcards can be answered and the feedback is saved. The flashcards are marked as completed and the progress is sent to the backend at the end. The time until the flashcards are shown is within a reasonable timeframe *(< 60s)*. The navigation back to the course page is working correctly.
 
 **Failed postcondition** The student is not shown the flashcards page or the student is not able to interact with the flashcards or the student is not able to answer the flashcards or the feedback is not saved or the flashcards are not marked as completed or the progress is not sent to the backend at the end or the time until the flashcards are shown is too long *(> 60s)*. Another fail condition is that the students flashcards are not marked as completed, despite having answered them.
 
@@ -152,7 +152,7 @@ A general fail condition for all tests is that the view is not updated or data i
 
 **Step 5** When all questions are done the student finishes the quiz by clicking "finish" &rarr; the student is redirected to the course page and the progress is sent to the backend
 
-**Successfull Postconditions** The student is shown the quizzes page and can interact with it. The quizzes can be answered and the feedback is shown. The quizzes are marked as completed and the progress is sent to the backend at the end. The time until the quizzes are shown is within a reasonable timeframe *(< 60s)*. The navigation back to the course page is working correctly.
+**Successful Postconditions** The student is shown the quizzes page and can interact with it. The quizzes can be answered and the feedback is shown. The quizzes are marked as completed and the progress is sent to the backend at the end. The time until the quizzes are shown is within a reasonable timeframe *(< 60s)*. The navigation back to the course page is working correctly.
 
 **Failed postcondition** The student is not shown the quizzes page or the student is not able to interact with the quizzes or the student is not able to answer the quizzes or the feedback is not shown or the quizzes are not marked as completed or the progress is not sent to the backend at the end or the time until the quizzes are shown is too long *(> 60s)*. Another fail condition is that the students quizzes are not marked as completed, despite having answered them.
 
@@ -166,7 +166,7 @@ A general fail condition for all tests is that the view is not updated or data i
 
 **Step 2** The student sees the quizzes or flashcards page &rarr; a message is shown, that there are no quizzes or flashcards available
 
-**Successfull Postconditions** The student is shown ehe message for empty quizzes or flashcards. The time until the quizzes or flashcards are shown is within a reasonable timeframe *(< 10s)*. The navigation back to the course page is possible and working correctly.
+**Successful Postconditions** The student is shown ehe message for empty quizzes or flashcards. The time until the quizzes or flashcards are shown is within a reasonable timeframe *(< 10s)*. The navigation back to the course page is possible and working correctly.
 
 **Failed postcondition** The student is not shown the message for empty quizzes or flashcards, but an error, or the time until the quizzes or flashcards are shown is too long *(> 10s)*.
 
@@ -178,6 +178,6 @@ A general fail condition for all tests is that the view is not updated or data i
 
 **Step 1** The student enters the URL &rarr; the user is redirected a page informing him that the course, media or assessment does not exist
 
-**Successfull Postconditions** The student is shown the message for non existing courses, media or assessments. The time until the message is shown is within a reasonable timeframe *(< 10s)*. The navigation back to the course page is possible and working correctly.
+**Successful Postconditions** The student is shown the message for non existing courses, media or assessments. The time until the message is shown is within a reasonable timeframe *(< 10s)*. The navigation back to the course page is possible and working correctly.
 
 **Failed postcondition** The student is not shown the message for non existing courses, media or assessments, but an error, or the time until the message is shown is too long *(> 10s)*.

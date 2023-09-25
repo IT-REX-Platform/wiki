@@ -5,7 +5,7 @@ Latest Update: 24.09.2023
 These manual test are for the lecturer view. They include cases for creating, updating and deleting courses, chapters and sections and stages.
 
 A general prerequisite for all tests is that the user has a stable internet connection to the site.
-A general fail condition for all tests is that the view is not updated or data is not shown even after manual refresh.
+A general fail condition for all tests is that the view is not updated or data is not shown even after a manual refresh.
 
 ## Courses
 
@@ -77,7 +77,7 @@ A general fail condition for all tests is that the view is not updated or data i
 
 **Step 2** The lecturer changes the chapter information and at the end clicks on "update" &rarr; pop-up goes away
 
-**Successfull postconditions** The chapter information is saved and the page is correctly shown with the updated values within a acceptable timeframe *(< 60s)*.
+**Successful postconditions** The chapter information is saved and the page is correctly shown with the updated values within a acceptable timeframe *(< 60s)*.
 
 **Failed postcondition** The chapter information is not saved and the lecturer is shown an error message or the chapter information is saved wrongly or the update of the data is taking too long *(> 60s)*.
 
@@ -97,7 +97,7 @@ A general fail condition for all tests is that the view is not updated or data i
 
 **Step 2** The lecturer enters the section name and clicks on "save" &rarr; pop-up goes away
 
-**Successfull Postconditions** The new section is created and shown correctly in the correct chapter. The section is shown within a reasonable timeframe *(< 60s)*.
+**Successful Postconditions** The new section is created and shown correctly in the correct chapter. The section is shown within a reasonable timeframe *(< 60s)*.
 
 **Failed postcondition** The section is not created and the lecturer is shown an error message or the section is created wrongly (e.g. wrong name) or the update of the data is taking too long *(> 60s)* or the section is created in the wrong chapter.
 
@@ -111,7 +111,7 @@ A general fail condition for all tests is that the view is not updated or data i
 
 **Step 2** The lecturer changes the section name and at the end clicks on "Save" &rarr; pop-up goes away
 
-**Successfull postconditions** The section information is saved and the page is correctly showing the updated values within a acceptable timeframe *(< 60s)*.
+**Successful postconditions** The section information is saved and the page is correctly showing the updated values within a acceptable timeframe *(< 60s)*.
 
 **Failed postcondition** The section information is not saved (notified or not) or the section information is saved wrongly or the update of the data is taking too long *(> 60s)*.
 
@@ -123,7 +123,7 @@ A general fail condition for all tests is that the view is not updated or data i
 
 **Step 1** The lecturer clicks on the red "Delete Section"-button right next to the section title &rarr; The section is deleted
 
-**Successfull postconditions** The section is deleted and the page is correctly showing the updated state of the page within a acceptable timeframe *(< 60s)*.
+**Successful postconditions** The section is deleted and the page is correctly showing the updated state of the page within a acceptable timeframe *(< 60s)*.
 
 **Failed postcondition** The section is not deleted or the update of the data is not shown after a certain time *(> 60s)*.
 
@@ -137,7 +137,7 @@ A general fail condition for all tests is that the view is not updated or data i
 
 **Step 1** The lecturer clicks the add stage button within the section &rarr; stage is added
 
-**Successfull postconditions** The new stage is created and shown correctly in the correct section. The stage is shown within a reasonable timeframe *(< 60s)*.
+**Successful postconditions** The new stage is created and shown correctly in the correct section. The stage is shown within a reasonable timeframe *(< 60s)*.
 
 **Failed postcondition** The stage is not created and the lecturer is shown an error message or the stage is created in the wrong section or the update of the data is taking too long *(> 60s)*.
 
@@ -149,7 +149,7 @@ A general fail condition for all tests is that the view is not updated or data i
 
 **Step 1** The lecturer clicks on the red "Delete stage" button right below the "Add content" button &rarr; the stage is removed from the section
 
-**Successfull postconditions** The stage is deleted and the page is correctly showing the updated state of the page within a acceptable timeframe *(< 60s)*.
+**Successful postconditions** The stage is deleted and the page is correctly showing the updated state of the page within a acceptable timeframe *(< 60s)*.
 
 **Failed postcondition** The stage is not deleted or the update of the data is not shown after a certain time *(> 60s)*.
 
