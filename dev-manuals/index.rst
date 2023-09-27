@@ -5,7 +5,6 @@ Developer Manuals
    :glob:
    :maxdepth: 3
 
-   ./api-specifications/index
    ./api-docs/index
    ./architecture/index
    ./authentication/index
