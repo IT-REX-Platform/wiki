@@ -142,7 +142,7 @@ This topic is used to communicate that a certain content has been completed by a
 <dt>PubSub-Name</dt>
 <dd>gits</dd>
 <dt>Java class</dt>
-<dd><a href="https://github.com/IT-REX-Platform/gits-common/blob/main/src/main/java/de/unistuttgart/iste/gits/common/event/UserProgressLogEvent.java">UserProgressLogEvent</a> </dd>
+<dd><a href="https://github.com/IT-REX-Platform/gits-common/blob/main/src/main/java/de/unistuttgart/iste/gits/common/event/UserProgressLogEvent.java">ContentProgressedEvent</a> </dd>
 </dl>
 
 ### Involved Services
@@ -185,7 +185,7 @@ This topic is used to communicate that the content service has processed the upd
 <dt>PubSub-Name</dt>
 <dd>gits</dd>
 <dt>Java class</dt>
-<dd><a href="https://github.com/IT-REX-Platform/gits-common/blob/main/src/main/java/de/unistuttgart/iste/gits/common/event/UserProgressLogEvent.java">UserProgressLogEvent</a> </dd>
+<dd><a href="https://github.com/IT-REX-Platform/gits-common/blob/main/src/main/java/de/unistuttgart/iste/gits/common/event/UserProgressLogEvent.java">UserProgressUpdated</a> </dd>
 </dl>
 
 ### Involved Services
@@ -205,11 +205,13 @@ This topic is used to communicate that the content service has processed the upd
 
 ### Message Content
 
-| Field          | Type    | Description                                                     |
-|----------------|---------|-----------------------------------------------------------------|
-| userId         | UUID    | The ID of the user associated with the progress log event.      |
-| contentId      | UUID    | The ID of the content associated with the progress log event.   |
-| success        | boolean | Indicates whether the user's progress was successful or not.    |
-| correctness    | double  | The level of correctness achieved by the user.                  |
-| hintsUsed      | int     | The number of hints used by the user.                           |
-| timeToComplete | Integer | The time taken by the user to complete the progress (optional). |
+| Field          | Type    | Description                                                      |
+|----------------|---------|------------------------------------------------------------------|
+| userId         | UUID    | The ID of the user associated with the progress update event.    |
+| contentId      | UUID    | The ID of the content associated with the progress update event. |
+| chapterId      | UUID    | The ID of the chapter associated with the progress update event. |
+| courseId       | UUID    | The ID of the course associated with the progress update event   |
+| success        | boolean | Indicates whether the user's progress was successful or not.     |
+| correctness    | double  | The level of correctness achieved by the user.                   |
+| hintsUsed      | int     | The number of hints used by the user.                            |
+| timeToComplete | Integer | The time taken by the user to complete the progress (optional).  |
