@@ -11,18 +11,18 @@ This includes
 
 ## Events by service
 
-| Service            | Subscribes to                                                                                                                              | Publishes                                                                                        |
-|--------------------|--------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
-| Course service     | [resource-association](#topic-resource-association)<br>                                                                                    | [course-changes](#topic-course-changes) <br>[chapter-changes](#topic-chapter-changes)            |
-| User Service       | [course-changes](#topic-course-changes)                                                                                                    |                                                                                                  |
-| Content Service    | [chapter-changes](#topic-chapter-changes)<br>[content-progressed](#topic-content-progressed)<br> [resource-update](#topic-resource-update) | [resource-association](#topic-resource-association)<br>[content-changes](#topic-content-changes)<br>[user-progress-updated](#topic-user-progress-updated) |
-| Media Service      | [content-changes](#topic-content-changes)                                                                                                  | [resource-update](#topic-resource-update)<br>[content-progressed](#topic-content-progressed)     |
-| Flashcard Service  | [content-changes](#topic-content-changes)                                                                                                  | [resource-update](#topic-resource-update)    <br>[content-progressed](#topic-content-progressed) |
-| Quiz Service       | [content-changes](#topic-content-changes)                                                                                                  | [content-progressed](#topic-content-progressed)                                                  |
-| Reward Service     | [user-progress-updated](#topic-user-progress-updated)<br>[course-changes](#topic-course-changes)                                           |                                                                                                  |
-| Skilllevel Service | [user-progress-updated](#topic-user-progress-updated)<br>[chapter-changes](#topic-chapter-changes)                                                                                        |                                                                                                  |
+| Service            | Subscribes to                                                                                      | Publishes                                                                                          |
+|--------------------|----------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
+| Course service     |                                                                                                    | [course-changed](#topic-course-changed) <br>[chapter-changed](#topic-chapter-changed)              |
+| User Service       |                                                                                                    |                                                                                                    |
+| Content Service    | [chapter-changed](#topic-chapter-changed)<br>[content-progressed](#topic-content-progressed)       | [content-changed](#topic-content-changed)<br>[user-progress-updated](#topic-user-progress-updated) |
+| Media Service      | [content-changed](#topic-content-changed)                                                          | [content-progressed](#topic-content-progressed)                                                    |
+| Flashcard Service  | [content-changed](#topic-content-changed)                                                          | [content-progressed](#topic-content-progressed)                                                    |
+| Quiz Service       | [content-changed](#topic-content-changed)                                                          | [content-progressed](#topic-content-progressed)                                                    |
+| Reward Service     | [user-progress-updated](#topic-user-progress-updated)<br>[course-changed](#topic-course-changed)   |                                                                                                    |
+| Skilllevel Service | [user-progress-updated](#topic-user-progress-updated)<br>[chapter-changed](#topic-chapter-changed) |                                                                                                    |
 
-## Topic: Course Changes
+## Topic: Course Changed
 
 This topic is used by the Course Service to inform Course-dependant Services of changes done to a Course Entity.
 
@@ -30,7 +30,7 @@ This topic is used by the Course Service to inform Course-dependant Services of 
 
 <dl>
 <dt>Name</dt>
-<dd>course-changes</dd>
+<dd>course-changed</dd>
 <dt>PubSub-Name</dt>
 <dd>gits</dd>
 <dt>Java class</dt>
@@ -46,7 +46,6 @@ This topic is used by the Course Service to inform Course-dependant Services of 
 </ul></dd>
 <dt>Subscribers</dt>
 <dd><ul>
-<li>User Service</li>
 <li>Reward Service</li>
 </ul></dd>
 </dl>
@@ -58,7 +57,7 @@ This topic is used by the Course Service to inform Course-dependant Services of 
 | courseId  | UUID | Identifier of a Course Entity                                                                             |
 | operation | Enum | Describes which type of CRUD operation was applied to the Course. Available Operations are CREATE, DELETE |
 
-## Topic: Chapter Changes
+## Topic: Chapter Changed
 
 This topic is used by the Course Service to inform Chapter-dependant Services of changes done to a Chapter Entity.
 
@@ -66,7 +65,7 @@ This topic is used by the Course Service to inform Chapter-dependant Services of
 
 <dl>
 <dt>Name</dt>
-<dd>chapter-changes</dd>
+<dd>chapter-changed</dd>
 <dt>PubSub-Name</dt>
 <dd>gits</dd>
 <dt>Java class</dt>
@@ -94,80 +93,7 @@ This topic is used by the Course Service to inform Chapter-dependant Services of
 | Operation   | Enum        | Describes which type of CRUD operation was applied to the Chapter. Available Operation is DELETE.  |
 
 
-## Topic: Resource Association
-
-This topic is used to update Course-Resource Associations in the Course Service.
-
-### Interface Description
-
-<dl>
-<dt>Name</dt>
-<dd>resource-association</dd>
-<dt>PubSub-Name</dt>
-<dd>gits</dd>
-<dt>Java class</dt>
-<dd><a href="https://github.com/IT-REX-Platform/gits-common/blob/main/src/main/java/de/unistuttgart/iste/gits/common/event/CourseAssociationEvent.java"> CourseAssociationEvent</a></dd>
-</dl>
-
-### Involved Services
-
-<dl>
-<dt>Publishers</dt>
-<dd><ul>
-<li>Content Service</li>
-</ul></dd>
-<dt>Subscribers</dt>
-<dd><ul>
-<li>Course Service</li>
-</ul></dd>
-</dl>
-
-### Message Content
-
-| Field        | Type        | Description                                                                                                                                   |
-|--------------|-------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
-| Chapter ID   | UUID        | Chapter ID of a Chapter within a Course                                                                                                       |
-| Resource IDs | List\<UUID> | A list of Resource IDs. A resource can be any Content, Media, Flashcard, etc. The IDs are each represented as a UUID.                         |
-| Operation    | Enum        | Describes which type of CRUD operation is to be applied to the Course-Resource-Associations. Available Operations are CREATE, UPDATE, DELETE. |
-
-## Topic: Resource Update
-
-This topic is used by any service that provides content to the application. This can be e.g., Media, or Flashcards.
-
-### Interface Description
-
-<dl>
-<dt>Name</dt>
-<dd>resource-update</dd>
-<dt>PubSub-Name</dt>
-<dd>gits</dd>
-<dt>Java class</dt>
-<dd><a href="https://github.com/IT-REX-Platform/gits-common/blob/main/src/main/java/de/unistuttgart/iste/gits/common/event/ResourceUpdateEvent.java"> ResourceUpdateEvent</a></dd>
-</dl>
-
-### Involved Services
-
-<dl>
-<dt>Publishers</dt>
-<dd><ul>
-<li>Media Service</li>
-<li>Flashcard Service</li>
-</ul></dd>
-<dt>Subscribers</dt>
-<dd><ul>
-<li>Content service</li>
-</ul></dd>
-</dl>
-
-### Message Content
-
-| Field        | Type        | Description                                                                                                                                   |
-|--------------|-------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
-| Chapter ID   | UUID        | Chapter ID of a Chapter within a Course                                                                                                       |
-| Resource IDs | List\<UUID> | A list of Resource IDs. A resource can be any Content, Media, Flashcard, etc. The IDs are each represented as a UUID.                         |
-| Operation    | Enum        | Describes which type of CRUD operation is to be applied to the Course-Resource-Associations. Available Operations are CREATE, UPDATE, DELETE. |
-
-## Topic: Content Changes
+## Topic: Content Changed
 
 This topic is used by the Content Service to inform Content-dependant Services of changes done to a Content Entity.
 
@@ -175,7 +101,7 @@ This topic is used by the Content Service to inform Content-dependant Services o
 
 <dl>
 <dt>Name</dt>
-<dd>content-changes</dd>
+<dd>content-changed</dd>
 <dt>PubSub-Name</dt>
 <dd>gits</dd>
 <dt>Java class</dt>
@@ -216,7 +142,7 @@ This topic is used to communicate that a certain content has been completed by a
 <dt>PubSub-Name</dt>
 <dd>gits</dd>
 <dt>Java class</dt>
-<dd><a href="https://github.com/IT-REX-Platform/gits-common/blob/main/src/main/java/de/unistuttgart/iste/gits/common/event/UserProgressLogEvent.java">UserProgressLogEvent</a> </dd>
+<dd><a href="https://github.com/IT-REX-Platform/gits-common/blob/main/src/main/java/de/unistuttgart/iste/gits/common/event/UserProgressLogEvent.java">ContentProgressedEvent</a> </dd>
 </dl>
 
 ### Involved Services
@@ -249,8 +175,7 @@ This topic is used to communicate that a certain content has been completed by a
 
 ## Topic: User Progress Updated
 
-This topic is used to communicate that a certain content has been completed by a user.
-This differs from the topic "content-progressed" in that it is published after the content service processes the event and updates the user progress data.
+This topic is used to communicate that the content service has processed the update of the user progress.
 
 ### Interface Description
 
@@ -260,7 +185,7 @@ This differs from the topic "content-progressed" in that it is published after t
 <dt>PubSub-Name</dt>
 <dd>gits</dd>
 <dt>Java class</dt>
-<dd><a href="https://github.com/IT-REX-Platform/gits-common/blob/main/src/main/java/de/unistuttgart/iste/gits/common/event/UserProgressLogEvent.java">UserProgressLogEvent</a> </dd>
+<dd><a href="https://github.com/IT-REX-Platform/gits-common/blob/main/src/main/java/de/unistuttgart/iste/gits/common/event/UserProgressLogEvent.java">UserProgressUpdated</a> </dd>
 </dl>
 
 ### Involved Services
@@ -280,11 +205,13 @@ This differs from the topic "content-progressed" in that it is published after t
 
 ### Message Content
 
-| Field          | Type    | Description                                                     |
-|----------------|---------|-----------------------------------------------------------------|
-| userId         | UUID    | The ID of the user associated with the progress log event.      |
-| contentId      | UUID    | The ID of the content associated with the progress log event.   |
-| success        | boolean | Indicates whether the user's progress was successful or not.    |
-| correctness    | double  | The level of correctness achieved by the user.                  |
-| hintsUsed      | int     | The number of hints used by the user.                           |
-| timeToComplete | Integer | The time taken by the user to complete the progress (optional). |
+| Field          | Type    | Description                                                      |
+|----------------|---------|------------------------------------------------------------------|
+| userId         | UUID    | The ID of the user associated with the progress update event.    |
+| contentId      | UUID    | The ID of the content associated with the progress update event. |
+| chapterId      | UUID    | The ID of the chapter associated with the progress update event. |
+| courseId       | UUID    | The ID of the course associated with the progress update event   |
+| success        | boolean | Indicates whether the user's progress was successful or not.     |
+| correctness    | double  | The level of correctness achieved by the user.                   |
+| hintsUsed      | int     | The number of hints used by the user.                            |
+| timeToComplete | Integer | The time taken by the user to complete the progress (optional).  |
