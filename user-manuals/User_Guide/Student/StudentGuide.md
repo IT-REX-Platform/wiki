@@ -9,10 +9,10 @@ After login, Students can find different courses in the course catalog and join 
 ### Access registered courses
 1. After joining the courses, students can see these courses with semester year at Dashboard ![dashboard.png](..%2FImages%2Fdashboard.png)
 2. Access particular courses by clicking on that course. 
-3. Once Student opens the particular course, looks like that:
+3. Once the Student opens the particular course, it looks like that:
 ![coursePage.png](..%2FImages%2FcoursePage.png)
 ### Scoring system
-1. Student can start to learn chapters and after completing particular chapters, Students has to solve quizes, flashcards etc. at the end of the chapter.
+1. Students can start learning chapters, and after completing particular chapters, they have to solve quizzes, flashcards at the end of the chapter.
 ![chapterQuizes.png](..%2FImages%2FchapterQuizes.png)
 2. After each assessment the score is updated and can see their score along with other students at scoreboard. 
 
