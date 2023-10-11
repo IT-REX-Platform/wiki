@@ -18,7 +18,7 @@ Via the 'Add course' button on the dashboard the lecturer can create a new cours
 3. Lecturer can also modify course details from this page.
 ![Course modification.png](..%2FImages%2FCourse%20modification.png)
 ### Add section and Content
-1. Lecturer can add section via "ADD SECTION" option.
+1. Lecturer can add a section via "ADD SECTION" button.
 ![Add section.png](..%2FImages%2FAdd%20section.png)
 2. After adding a stage via "ADD STAGE" to a section, lecturer can create content via "ADD CONTENT".
 3. With that option lecturer can add various types of content like Quiz,Flashcard or Media.
@@ -32,6 +32,8 @@ Via the 'Add course' button on the dashboard the lecturer can create a new cours
     - By adding Content details like name, date reward point and tags(optionally).
     - By adding media via "ADD MEDIA", lecturer can select media of any type like images, pdfs and videos etc.
     ![add media.png](..%2FImages%2Fadd%20media.png)
+    - And on clicking "ADD FILES" lecturer can upload files.
+    ![upload media.png](..%2FImages%2Fupload%20media.png)
    
    3.3  ADD QUIZ
    - Provide the quiz's information related to the content.
