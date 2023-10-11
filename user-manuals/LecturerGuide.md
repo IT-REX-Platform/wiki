@@ -1,5 +1,5 @@
 # User Guide for Lecturer
-## Introduction:
+### Introduction:
 In this section we explain how a lecturer can use the application. 
 
 In the Dashboard, lecturers have the capability to create new courses or modify existing ones. Within each specific course, instructors can also add corresponding chapters, sections, and various types of content such as media, quizzes, and flashcards during the course creation process.

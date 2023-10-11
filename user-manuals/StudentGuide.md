@@ -1,5 +1,5 @@
 # User Guide for Student
-## Introduction
+### Introduction
 These view is for Students and with this they can register/deregister courses and in that students can learn chapters.
 After ech assessment students gain or lose the score.
 

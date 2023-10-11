@@ -3,12 +3,12 @@ User Manuals
 
 .. toctree::
    :glob:
-   :caption: Lecturer Interface
+   :caption: Lecturer guide
 
-   ./lecturer-interface/**
+   ./LecturerGuide
 
 .. toctree::
    :glob:
-   :caption: Student Interface
+   :caption: Student guide
 
-   ./student-interface/**
+   ./StudentGuide
