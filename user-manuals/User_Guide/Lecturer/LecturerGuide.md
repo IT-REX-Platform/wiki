@@ -50,21 +50,26 @@ After adding flashcards, media and quiz lecturer can further add details in flas
 3. Flashcards and their sides are deletable.
 
 #### Media Details
+1. After adding media, lecturer can see that uploaded content by clicking on particular uploaded content and he or she can see that content, even delete and edit option is also there.
 
 #### Quiz Details
 1. Add question to the quiz by "ADD QUESTION".
 2. For the question type, 3 options are given: 
  ![quiz detail.png](..%2FImages%2Fquiz%20detail.png)
 
-- **Multiple Choice Question:**
-    - Students have to select all the correct answers from the available options.
-
+- **Multiple Choice Question:** : 
+Students have to select all the correct answers from the available options.
+    - Fill the required details like question, hint etc.
+    - By clicking "Add", multiple choice question will be added.
+![add asosiaction.png](..%2FImages%2Fadd%20asosiaction.png)
 - **Cloze Question:**
-    - Fill in missing words in a sentence.
-
+Fill in missing words in a sentence.
+    - lecturer can add the cloze question by adding required details shown in the Image.
+![add cloze.png](..%2FImages%2Fadd%20cloze.png)
 - **Association Question:**
-    - Match related concepts or items.
-
+Match related concepts or items.
+    - In assosication question lecturers can create question-answer pairs for assessments.
+![add asosiaction.png](..%2FImages%2Fadd%20asosiaction.png)
 ### Join as Lecturer
 After creating a course lecturer can see that created course under Course catalog and join as a lecturer.
 
