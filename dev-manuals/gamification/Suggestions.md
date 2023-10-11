@@ -50,16 +50,17 @@ Some factors that impact the suggestion score might be:
 If the score should be the same for 2 or more items, a distinction by preference might be implemented.
 For example, if a student has the same work to do for 2 courses and the scores between both scores for these courses are the same, then the course that has been marked as *favored* is suggested first.
 
-## Possibile implementation
+## Possible implementation
 
-$rewardScore * replenishingEffect$
+rewardScore * replenishingEffect
+
 ### Homepage suggestions
 One way to implement the suggestions between courses would be to rank the 4 factors mentioned above in a desired order and compare the values for each item in question. An example with the ranking ***health > fitness > reward points > skill points*** would be, the media with the biggest *media time* score would be suggested to the user. 
 But this system would be too simplistic. Why should we rank *health* higher than *fitness* or *reward points* higher than *skill points*? This is too arbitrary and if each lecturer can configure the order themselves and the amount of reward or skill points, it would defeat the purpose of suggestions because they could rig the system to their favor.
 This means it would be ideal to have a score that could be computed using the 4 (or possibly more) factors to make it more comparable.
 
 A possible formula would be: 
-$$Outcome = (0.3 * (100 - health)) + (0.3 * (100 - fitness)) + (0.2 * (reward points_{max}/ \sum reward points) * 100) + (0.2 * (skill points_{max}/ \sum skill points)*100)$$
+Outcome = (0.3 * (100 - health)) + (0.3 * (100 - fitness)) + (0.2 * (reward points{max} / sum(reward points)) * 100) + (0.2 * (skill points{max} / sum(skill points))*100)
 
 Skill points are being calculated considering the maximum amount that can be earned.
 For example, if you have 2 courses:

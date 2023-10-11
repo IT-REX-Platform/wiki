@@ -1,4 +1,4 @@
-# Team members and responsibilities
+# Enpro team members and responsibilities
 
 ## Project Manager
 
@@ -18,8 +18,6 @@
 - Rick
 - Paul
 
-## Special responsibilities
-
-### QA Manager
+## QA Manager
 
 - Rick
