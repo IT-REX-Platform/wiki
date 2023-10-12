@@ -1,5 +1,7 @@
 # Dapr Service Topic Overview
 
+![GITS-Microservice_Architecture.drawio.svg](GITS-Microservice_Architecture.drawio.svg)
+
 Here we will describe all dapr topics currently available in the system.
 This includes
 
@@ -142,7 +144,7 @@ This topic is used to communicate that a certain content has been completed by a
 <dt>PubSub-Name</dt>
 <dd>gits</dd>
 <dt>Java class</dt>
-<dd><a href="https://github.com/IT-REX-Platform/gits-common/blob/main/src/main/java/de/unistuttgart/iste/gits/common/event/UserProgressLogEvent.java">ContentProgressedEvent</a> </dd>
+<dd><a href="https://github.com/IT-REX-Platform/gits-common/blob/main/src/main/java/de/unistuttgart/iste/gits/common/event/ContentProgressedEvent.java">ContentProgressedEvent</a> </dd>
 </dl>
 
 ### Involved Services
@@ -157,8 +159,6 @@ This topic is used to communicate that a certain content has been completed by a
 <dt>Subscribers</dt>
 <dd><ul>
 <li>Content service</li>
-<li>Reward Service</li>
-<li>Skilllevel Service</li>
 </ul></dd>
 </dl>
 
@@ -185,7 +185,7 @@ This topic is used to communicate that the content service has processed the upd
 <dt>PubSub-Name</dt>
 <dd>gits</dd>
 <dt>Java class</dt>
-<dd><a href="https://github.com/IT-REX-Platform/gits-common/blob/main/src/main/java/de/unistuttgart/iste/gits/common/event/UserProgressLogEvent.java">UserProgressUpdated</a> </dd>
+<dd><a href="https://github.com/IT-REX-Platform/gits-common/blob/main/src/main/java/de/unistuttgart/iste/gits/common/event/UserProgressUpdatedEvent.java">UserProgressUpdated</a> </dd>
 </dl>
 
 ### Involved Services
