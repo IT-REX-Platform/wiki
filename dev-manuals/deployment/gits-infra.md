@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository contains the Terraform scripts responsible for orchestrating the deployment of the GITS Platform on a Kubernetes cluster.
+The `gits-infra` repository contains the Terraform scripts responsible for orchestrating the deployment of the GITS Platform on a Kubernetes cluster.
 
 ## Deployment Approach
 
