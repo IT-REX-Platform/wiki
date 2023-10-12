@@ -4,9 +4,8 @@ Backend
 
 .. toctree::
    :glob:
-   :titlesonly:
 
-   ./dapr/*
+   ./dapr/index
 
 .. toctree::
    :glob:
