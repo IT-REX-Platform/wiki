@@ -11,6 +11,7 @@ Developer Manuals
    ./project-management/index
    ./backend/index
    ./frontend/index
+   ./deployment/index
    ./readthedocs/index
    ./scalability-testing/index
    ./services/index
