@@ -5,7 +5,6 @@ Developer Manuals
    :glob:
    :maxdepth: 3
 
-   ./api-docs/index
    ./architecture/index
    ./authentication/index
    ./gamification/index
@@ -15,5 +14,4 @@ Developer Manuals
    ./readthedocs/index
    ./scalability-testing/index
    ./services/index
-   ./feature-testing/index
-
+   
