@@ -1,7 +1,0 @@
-API Docs
-========
-
-.. toctree::
-   :glob:
-
-   *
