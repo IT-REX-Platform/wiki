@@ -72,7 +72,11 @@ After adding flashcards, media and quiz lecturer can further add details in flas
     - In assosication question lecturers can create question-answer pairs for assessments.
       ![add asosiaction](Images/add_asosiaction.png)
 ### Join as Lecturer
-After creating a course lecturer can see that created course under Course catalog and join as a lecturer.
+After creating the course the lecturer is automatically added as the administrator to the course.
+
+### Upgrade members in a course
+An administrator of the course can set the roles of all users of a course on the members site. The members sites is accessible through the course page, where you can find the button in the top right corner, where also the settings of the course and the "Add Chapter" button are.
+The administrator can set the users to be students, tutors or administrators.
 
 
 
