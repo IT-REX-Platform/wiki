@@ -6,52 +6,85 @@ This document outlines the authorization concept used to ensure that graphql que
 
 * There exist global permissions (permissions for creating new courses etc.), which are not specific to a certain course
 * Also for each user, there exist course-specific permissions (permissions view the course, to modify the course, upload material etc.)
-* There are different permission levels ("roles", not to be confused with the concept in Keycloak also called roles) both on the global and on the course scale. E.g. a lecturer of a course has write-permissions in that course, but not in other courses; A student assigned to a course has read permissions only for that course. Permissions cannot be set fine-grained per user, only a role with a predefined set of permissions (either globally or on a course-specific level) can be assigned to a user
-* We assume there are no additional hierarchical permission concepts other than global permissions and course-specific permissions. This means that it is not possible for example for a user to only have permissions for some contents of a course. You either have permissions for everything that's part of the course, or you do not. (Of course this limitation does not impede on the ability of services to implement specific limitations on access to course content which is not dependent on independent user permissions but instead on other rules, e.g. a quiz which can only be accessed by students before a specific date has passed)
+* There are different permission levels ("roles") both on the global and on the course scale. E.g. a lecturer of a course has write-permissions in that course, but not in other courses; A student assigned to a course has read permissions only for that course.
+* We assume there are no additional hierarchical permission concepts other than global permissions and course-specific permissions. This means that it is not possibl, for example, for a user to only have permissions to view certain chapteres of a course. You either have permissions for everything that's part of the course, or you do not. (Of course this limitation does not impede on the ability of services to implement specific limitations on access to course content which is not dependent on independent user permissions but instead on other rules, e.g. a quiz which can only be accessed by students before a specific date has passed)
+* Locally (in a course), each user has exactly one role assigned to them
+* Globally, each user can have multiple roles assigned to them
 
 ## User Roles
+Currently, the following roles exist in the global and the local (course) scope:
+
 ### Global Roles
-Administrator: Has complete control over the application, including user management, course creation, and overall system configuration.
-Owner: This group of people have the right to create their own courses and edit them, as well as give chosen users the ability to edit the courses in ceratin ways. They can not edit/change courses, they have not created themselves or were given the right to. (Example: Lecturer)
-Moderator: Those people have all the rights Standard Users have + the right to edit course data for courses they were allowed to. Without the rights given by an admin or an owner, they can not change anything in a course they should not be able to. (Example: Tutors)
-Standard User: Has all the rights to access courses he is enrolled in, join courses he has the right to and work on his own progress in those courses. He can't change anything, unless it is his password, Username or other personal information. (Example: Student)
+* `SUPER_USER`: Has permission to do anything and everything in the application. This role is should only be assigned to the application's administrator. Also kown as `super-user` in Keycloak and in the userdata JSON format emitted by the Gateway.
+* `COURSE_CREATOR`: Has permission to create new courses. Also known as `course-creator` in Keycloak and in the userdata JSON format emitted by the Gateway.
 
 ### Course-specific Roles
-Course Creator: Users with this role can create and design their own courses within the application. They have full control over the course content, assessments, and enrollment.
-Teaching Assistant: Assists the instructor in managing the course, grading assignments, and answering student questions.
-Course Member: Enrolled in a specific course. Can access course content, participate in discussions, and complete assessments.
-
+* `ADMINISTRATOR`: Has permission to do anything and everything in the course. This role should only be assigned to the course's lecturer (and possibly their assistants).
+* `TUTOR`: Currently has no purpose. Exists for future use e.g. in the context of correcting homework done by students.
+* `STUDENT`: Has permission to view the course and its content. This role should be assigned to all students who are assigned to the course.
 
 ## Basic Components
 ### Keycloak
+Keycloak is used for user authentication and to store the global roles of users.
 
-Keycloak is used for user authentication.
+### Gateway
+* Verifies the auth token and extracts/retrieves information abou the logged in user which is then forwarded to the services.
 
 ### UserService
-
-* Saves course membership information for every user
+* Currently does not store any data of its own. Is just used to provide a graphql endpoint to retrieve user information from Keycloak.
 * Could be used in the future for saving user-specific settings
 
 ### Course Service
-
 * The CourseService provides an endpoint which can be queried with the id of a resource and which returns the id of the course it is associated with and a boolean to indicate if that course is available depending on the course properties `published`, `startDate`, `endDate`
-* Used by other services to find out if a resource should be accessible by a user
+* Stores which users are members of which courses and which role they have in that course
 
-<details>
-<summary>Reasoning for putting the Resource Lookup into the CourseService</summary>
+### Other Services
+* Ensure that resources can only be accessed by users who have the necessary permissions to access the course the resource is located in
+* To facilitate this, they store in which course the resource they manage is located (e.g. the quiz service knows which quiz belongs to which course).
+    * Obviously, the services can not know this information on their own, so when a new resource is created, the information about which course it is in has to be passed to the service.
+    * For "second-level nested" resources, e.g. when creating a new section which is located in a chapter which is located in a course, it would be unweildy to expect the frontend to also pass the correct course id to the service, even though it already has to pass the id of a chapter.
+    * So in these cases, the gateway will determine the course id of the resource by querying the parent resource for its course id and then passing that course id to the service.
+        * This is implemented by the service having an `_internal_` mutation (only callable from the gateway or other services, e.g. `_internal_createSection(courseId: UUID, input: CreateSectionInput!)`) mutation and the gateway providing an exposed mutation `createSection(input: CreateSectionInput!)`, in whose resolver it determines the course id and then calls the internal mutation.
 
-Originally it was planned to have the resource<->course lookup in its own service. However, it was noticed that a resource's availability for a user is not just dependent on if the user has access to the course, but also on if the course is currently published and available. This would have required another request by a service to the CourseService to retrieve this information.
-
-For this reason the resource<->course lookup was consolidated into the CourseService, which can then provide an endpoint for other services to return all necessary information regarding a resource's availability to a user. 
-
-</details>
 
 ## Authorization Concept
 
 ![](/images/authorization-backtracking.png)
 [Edit Diagram (Image and this link have to be updated manually after editing)](https://mermaid.live/edit#pako:eNqNU01PwzAM_StRDnxITNwrtAtIu7ADTHDqxU281VqbFCfpNE377yRt2boVJHpIU388v1fbB6msRplJh18BjcIXgg1DnRsRH1DesvhwyAJc_77bkS8FhHh4u0Vz30c2wJ4UNWC8WIDHHeynjiVqghVySwqn3mcb2OHJ3Qf0Z6o8m88H4EwsGJry7VVs0Is6gT4VPGdUlrUTxV6QPvGnNiadKfX24XMM-QkV6RQakspO2jT6gmIm3tEzYTvkqM6ZmNRYF8iupEbciCYUFblSkFlbrsGTNVfkroQn34VpNuYZawY2QzHxv0oa_6p1LXDcofNv5jQbzidpu8cxvIDCBt_Jv3XJDS1QBUWFA0F3JXU6AWPLb0JPiH2LOyKo-65P1E3hf6RF5DREY02uscbhBGPIkA-yxiiTdFyOQ4rKpS-xxlxm8aqBt7nMzTHGxWWwq71RMvMc8EGGJg3SsEgyW0PlojVSi8u07LetW7rjNyjqOcU)
 
-TODO: Add description of authorization concept v.3
+0. It is assumed the frontend (or other system which is interacting with the backend's GraphQL API) has already retrieved an auth token from Keycloak and sends it in the HTTP header's `Authorization` field of its GraphQL request.
+1. The Gateway, upon receiving a request, extracts the auth token from the request's HTTP header and verifies the token's validity.
+
+    It also extracts all relevant user information from the token (user id, username, first name, last name, global roles of this user etc.)
+
+2. The Gateway calls the course service to retrieve information about the courses the user is a member of (course id, role, published state, startdate, enddate).
+
+3. When forwarding GraphQL requests to the different microservices, the Gateway transmits the retrieved user information to the microservices in the `CurrentUser` field of the GraphQL request's HTTP header as a JSON with the following format:
+
+    ```json
+    {
+        "id": "123e4567-e89b-12d3-a456-426614174000",
+        "userName": "MyUserName",
+        "firstName": "John",
+        "lastName": "Doe",
+        "courseMemberships": [
+            {
+                "courseId":"123e4567-e89b-12d3-a456-426614174000",
+                "role": "STUDENT",
+                "published": true,
+                "startDate": "2020-01-01T00:00:00.000Z",
+                "endDate": "2021-01-01T00:00:00.000Z"
+            }
+        ],
+        "realmRoles": [
+            "course-creator"
+        ]
+    }
+    ```
+
+4. The services deserialize the HTTP header of the requests they receive using the `RequestHeaderUserProcessor` class. More information about this can be found [here](auth&accessing-user-data.md).
+
+5. Services check if the user has permissions for the course the resource they are trying to access is in.
 
 ## Handling GraphQL requests where the user only has permissions for some subitems
 

@@ -46,3 +46,5 @@ public UserProgressData userProgressData(MediaContent content, @ContextValue Log
 }
 ```
 As you can see, the value is automatically injected into the `currentUser` parameter.
+
+**The current user data can then be used e.g. to protect certain data from being accessed by a user missing the required role.**
