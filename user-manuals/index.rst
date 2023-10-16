@@ -12,3 +12,9 @@ User Manuals
    :caption: Student guide
 
    ./StudentGuide
+
+.. toctree::
+   :glob:
+   :caption: Import quizzes
+
+   ./ImportingQuizzes
