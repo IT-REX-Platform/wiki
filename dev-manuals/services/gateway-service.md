@@ -7,6 +7,9 @@ The gateway is run as a [GraphQL Mesh](https://the-guild.dev/graphql/mesh) serve
 More information on the basic idea of our setup using GraphQL Mesh can be found [here](../backend/graphql.md).
 
 ## Usage
+
+**Please note that currently all services need to be running during startup of the Gateway to allow the Gateway to fetch the services' schemas. This makes sense during the development phase but in a production environment the schemas should be imported to the gateway via the services' schema files to improve system robustness when some services are offline during gateway startup.**
+
 ### Docker Environment
 As the gateway is useless without any other services, it is recommended you run it via the [gits_backend repository](https://github.com/IT-REX-Platform/gits_backend).
 
