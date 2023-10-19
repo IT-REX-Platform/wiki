@@ -19,6 +19,8 @@ Currently, the following roles exist in the global and the local (course) scope:
 
 Global roles can be assigned to a user using the Keycloak webinterface. When in the web interface and in the GITS realm, go to the user overview, select your user, go to the roles tab, and add the desired roles. Roles can also be set programmatically using the Keycloak REST API. See the Keycloak documentation for more information.
 
+**After assigning a global role to a user it will only be applied after the user's session has been invalidated! (Up to 30mins or until the user logs out and back in again)**
+
 ## Setting Local User Roles
 
 Local roles (course-specific) can be set by a course's administrator. The creator of a course is automatically assigned the `ADMINISTRATOR` role. To assign roles to other users, go to the course's overview page (lecturer view), click the "Members" button in the top-right to view all members of the course, and assign a role as desired using the drop-downs.
