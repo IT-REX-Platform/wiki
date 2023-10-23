@@ -18,3 +18,9 @@ User Manuals
    :caption: Import quizzes
 
    ./ImportingQuizzes
+
+.. toctree::
+   :glob:
+   :caption: Import quizzes
+
+   ./CreatingUsers
